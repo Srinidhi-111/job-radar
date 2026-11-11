@@ -448,27 +448,36 @@
    },
    "NVIDIA": {
     "Embedded / Hardware": {
-     "Bangalore": 8
+     "Bangalore": 28
     },
     "Software Engineer (general)": {
-     "Bangalore": 21
+     "Bangalore": 112
     },
     "AI Engineer": {
-     "Bangalore": 1
+     "Bangalore": 3
     },
     "Cybersecurity": {
-     "Bangalore": 1
+     "Bangalore": 4
     },
     "QA / Test Automation": {
-     "Bangalore": 1
+     "Bangalore": 3
     },
     "Generative AI / LLM": {
-     "Bangalore": 1
+     "Bangalore": 5
     },
     "Solutions / Support Engineer": {
-     "Bangalore": 1
+     "Bangalore": 3
     },
     "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 13
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 3
+    },
+    "Frontend Developer": {
      "Bangalore": 1
     }
    },
@@ -480,7 +489,7 @@
      "Bangalore": 1
     },
     "Cloud / DevOps / SRE": {
-     "Bangalore": 3
+     "Bangalore": 4
     },
     "Solutions / Support Engineer": {
      "Bangalore": 1
@@ -505,19 +514,19 @@
    },
    "Intel": {
     "Software Engineer (general)": {
-     "Bangalore": 21
+     "Bangalore": 58
     },
     "Cloud / DevOps / SRE": {
-     "Bangalore": 3
+     "Bangalore": 4
     },
     "Embedded / Hardware": {
-     "Bangalore": 4
+     "Bangalore": 8
     },
     "AI Engineer": {
-     "Bangalore": 4
+     "Bangalore": 6
     },
     "Generative AI / LLM": {
-     "Bangalore": 1
+     "Bangalore": 2
     }
    },
    "PayPal": {
@@ -544,7 +553,7 @@
    },
    "Target": {
     "Software Engineer (general)": {
-     "Bangalore": 10
+     "Bangalore": 19
     },
     "Data Analyst": {
      "Bangalore": 3
@@ -553,7 +562,7 @@
      "Bangalore": 2
     },
     "UI/UX Designer": {
-     "Bangalore": 1
+     "Bangalore": 3
     },
     "Data Engineer": {
      "Bangalore": 1
@@ -562,9 +571,15 @@
      "Bangalore": 2
     },
     "Data Scientist": {
-     "Bangalore": 1
+     "Bangalore": 4
     },
     "Generative AI / LLM": {
+     "Bangalore": 2
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "AI Engineer": {
      "Bangalore": 1
     }
    },
@@ -584,27 +599,72 @@
      "Bangalore": 1
     },
     "Software Engineer (general)": {
-     "Bangalore": 5
+     "Bangalore": 7
     },
     "Cybersecurity": {
-     "Bangalore": 1
+     "Bangalore": 2
     },
     "Mobile App Developer": {
+     "Bangalore": 2
+    },
+    "AI Engineer": {
+     "Bangalore": 3
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Chennai": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 2
+    },
+    "Machine Learning Engineer": {
      "Bangalore": 1
     }
    },
    "Caterpillar": {
     "Software Engineer (general)": {
-     "Bangalore": 11,
-     "Chennai": 3
+     "Bangalore": 19,
+     "Chennai": 18
     },
     "Cloud / DevOps / SRE": {
-     "Bangalore": 1
+     "Bangalore": 2,
+     "Chennai": 1
     },
     "Cybersecurity": {
-     "Bangalore": 2
+     "Bangalore": 5
     },
     "Data Scientist": {
+     "Chennai": 2
+    },
+    "Data Engineer": {
+     "Chennai": 1,
+     "Bangalore": 2
+    },
+    "Data Analyst": {
+     "Chennai": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Chennai": 1
+    },
+    "AI Engineer": {
+     "Chennai": 1
+    },
+    "Product Manager": {
+     "Chennai": 1
+    },
+    "Embedded / Hardware": {
+     "Chennai": 2
+    },
+    "Full Stack Developer": {
+     "Bangalore": 1,
      "Chennai": 2
     }
    },
@@ -616,7 +676,7 @@
      "Bangalore": 3
     },
     "Software Engineer (general)": {
-     "Bangalore": 6
+     "Bangalore": 7
     },
     "Generative AI / LLM": {
      "Bangalore": 1
@@ -629,59 +689,66 @@
     },
     "Product Manager": {
      "Bangalore": 3
+    },
+    "Full Stack Developer": {
+     "Bangalore": 1
     }
    },
    "Amazon": {
     "Data Scientist": {
-     "Bangalore": 48,
+     "Bangalore": 73,
      "Chennai": 1
     },
     "Data Engineer": {
-     "Chennai": 4,
-     "Bangalore": 15
+     "Chennai": 6,
+     "Bangalore": 19
     },
     "Product Manager": {
-     "Bangalore": 22
+     "Bangalore": 31,
+     "Chennai": 1
     },
     "QA / Test Automation": {
-     "Bangalore": 36,
-     "Chennai": 13
+     "Bangalore": 40,
+     "Chennai": 19
     },
     "AI Engineer": {
      "Bangalore": 3
     },
     "Software Engineer (general)": {
-     "Bangalore": 171,
-     "Chennai": 17
+     "Bangalore": 229,
+     "Chennai": 26
     },
     "Solutions / Support Engineer": {
-     "Bangalore": 4,
+     "Bangalore": 13,
      "Chennai": 2
     },
     "UI/UX Designer": {
-     "Bangalore": 3
+     "Bangalore": 5
     },
     "Data Analyst": {
-     "Bangalore": 19,
+     "Bangalore": 30,
      "Chennai": 1
     },
     "Machine Learning Engineer": {
-     "Bangalore": 6,
+     "Bangalore": 10,
      "Chennai": 4
     },
     "Frontend Developer": {
      "Bangalore": 1
     },
     "Cloud / DevOps / SRE": {
-     "Bangalore": 7
+     "Bangalore": 9
     },
     "Generative AI / LLM": {
-     "Bangalore": 4
+     "Bangalore": 5
     },
     "Mobile App Developer": {
      "Bangalore": 2
     },
     "Cybersecurity": {
+     "Bangalore": 12
+    },
+    "Backend Developer": {
      "Bangalore": 1
     }
    },

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T15:08:47.531Z",
+ "updated": "2026-11-11T15:30:21.362Z",
  "sources": [
   {
    "name": "Freshworks",
@@ -86,7 +86,7 @@
    "ats": "greenhouse",
    "id": "stripe",
    "ok": true,
-   "total": 783,
+   "total": 782,
    "matched": 14
   },
   {
@@ -118,7 +118,7 @@
    "ats": "greenhouse",
    "id": "gitlab",
    "ok": true,
-   "total": 256,
+   "total": 259,
    "matched": 25
   },
   {
@@ -184,8 +184,8 @@
    "host": "nvidia.wd5.myworkdayjobs.com",
    "site": "NVIDIAExternalCareerSite",
    "ok": true,
-   "total": 40,
-   "matched": 35
+   "total": 197,
+   "matched": 176
   },
   {
    "name": "Salesforce",
@@ -194,8 +194,8 @@
    "host": "salesforce.wd12.myworkdayjobs.com",
    "site": "External_Career_Site",
    "ok": true,
-   "total": 40,
-   "matched": 10
+   "total": 69,
+   "matched": 11
   },
   {
    "name": "Adobe",
@@ -214,8 +214,8 @@
    "host": "intel.wd1.myworkdayjobs.com",
    "site": "External",
    "ok": true,
-   "total": 40,
-   "matched": 33
+   "total": 93,
+   "matched": 78
   },
   {
    "name": "Walmart Global Tech",
@@ -252,8 +252,8 @@
    "host": "target.wd5.myworkdayjobs.com",
    "site": "targetcareers",
    "ok": true,
-   "total": 40,
-   "matched": 21
+   "total": 71,
+   "matched": 38
   },
   {
    "name": "Workday",
@@ -272,8 +272,8 @@
    "host": "hp.wd5.myworkdayjobs.com",
    "site": "ExternalCareerSite",
    "ok": true,
-   "total": 40,
-   "matched": 17
+   "total": 75,
+   "matched": 30
   },
   {
    "name": "Caterpillar",
@@ -282,8 +282,8 @@
    "host": "cat.wd5.myworkdayjobs.com",
    "site": "CaterpillarCareers",
    "ok": true,
-   "total": 40,
-   "matched": 19
+   "total": 124,
+   "matched": 60
   },
   {
    "name": "Philips",
@@ -292,16 +292,16 @@
    "host": "philips.wd3.myworkdayjobs.com",
    "site": "jobs-and-careers",
    "ok": true,
-   "total": 40,
-   "matched": 17
+   "total": 46,
+   "matched": 19
   },
   {
    "name": "Amazon",
    "ats": "amazon",
    "id": "amazon",
    "ok": true,
-   "total": 1500,
-   "matched": 384
+   "total": 2092,
+   "matched": 543
   },
   {
    "name": "LinkedIn",
@@ -324,7 +324,7 @@
    "ats": "lever",
    "id": "valgenesis",
    "ok": true,
-   "total": 10,
+   "total": 11,
    "matched": 8
   },
   {
@@ -352,26 +352,12 @@
    "matched": 0
   },
   {
-   "name": "OakNorth",
-   "ats": "lever",
-   "id": "oaknorth.ai",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
    "name": "DexCare",
    "ats": "lever",
    "id": "dexcarehealth",
    "ok": true,
    "total": 5,
    "matched": 3
-  },
-  {
-   "name": "Atomicwork",
-   "ats": "greenhouse",
-   "id": "atomicwork",
-   "ok": false,
-   "error": "HTTP 404"
   },
   {
    "name": "Yugabyte",
