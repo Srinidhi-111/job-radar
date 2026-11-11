@@ -90,19 +90,9 @@
       "id": "toast"
     },
     {
-      "name": "Chargebee",
-      "ats": "lever",
-      "id": "chargebee"
-    },
-    {
-      "name": "Kissflow",
-      "ats": "lever",
-      "id": "kissflow"
-    },
-    {
       "name": "Razorpay",
-      "ats": "lever",
-      "id": "razorpay"
+      "ats": "greenhouse",
+      "id": "razorpaysoftwareprivatelimited"
     },
     {
       "name": "CRED",
@@ -115,24 +105,9 @@
       "id": "meesho"
     },
     {
-      "name": "Zepto",
-      "ats": "lever",
-      "id": "zeptonow"
-    },
-    {
       "name": "Paytm",
       "ats": "lever",
       "id": "paytm"
-    },
-    {
-      "name": "PhonePe",
-      "ats": "greenhouse",
-      "id": "phonepe"
-    },
-    {
-      "name": "Postman",
-      "ats": "greenhouse",
-      "id": "postman"
     },
     {
       "name": "Groww",
@@ -141,8 +116,8 @@
     },
     {
       "name": "BrowserStack",
-      "ats": "greenhouse",
-      "id": "browserstack"
+      "ats": "workable",
+      "id": "browserstack-2"
     },
     {
       "name": "HackerRank",
@@ -195,11 +170,6 @@
       "id": "gleanwork"
     },
     {
-      "name": "Sprinklr",
-      "ats": "greenhouse",
-      "id": "sprinklr"
-    },
-    {
       "name": "Druva",
       "ats": "greenhouse",
       "id": "druva"
@@ -210,24 +180,173 @@
       "id": "sarvam"
     },
     {
-      "name": "Rippling",
-      "ats": "ashby",
-      "id": "rippling"
-    },
-    {
       "name": "Bosch",
       "ats": "smartrecruiters",
       "id": "BoschGroup"
     },
     {
-      "name": "Visa",
-      "ats": "smartrecruiters",
-      "id": "Visa"
-    },
-    {
       "name": "ServiceNow",
       "ats": "smartrecruiters",
       "id": "ServiceNow"
+    },
+    {
+      "name": "NVIDIA",
+      "ats": "workday",
+      "id": "nvidia",
+      "host": "nvidia.wd5.myworkdayjobs.com",
+      "site": "NVIDIAExternalCareerSite"
+    },
+    {
+      "name": "Salesforce",
+      "ats": "workday",
+      "id": "salesforce",
+      "host": "salesforce.wd12.myworkdayjobs.com",
+      "site": "External_Career_Site"
+    },
+    {
+      "name": "Adobe",
+      "ats": "workday",
+      "id": "adobe",
+      "host": "adobe.wd5.myworkdayjobs.com",
+      "site": "external_experienced"
+    },
+    {
+      "name": "Intel",
+      "ats": "workday",
+      "id": "intel",
+      "host": "intel.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    {
+      "name": "Walmart Global Tech",
+      "ats": "workday",
+      "id": "walmart",
+      "host": "walmart.wd5.myworkdayjobs.com",
+      "site": "WalmartExternal"
+    },
+    {
+      "name": "PayPal",
+      "ats": "workday",
+      "id": "paypal",
+      "host": "paypal.wd1.myworkdayjobs.com",
+      "site": "jobs"
+    },
+    {
+      "name": "Dell",
+      "ats": "workday",
+      "id": "dell",
+      "host": "dell.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    {
+      "name": "Target",
+      "ats": "workday",
+      "id": "target",
+      "host": "target.wd5.myworkdayjobs.com",
+      "site": "targetcareers"
+    },
+    {
+      "name": "Workday",
+      "ats": "workday",
+      "id": "workday",
+      "host": "workday.wd5.myworkdayjobs.com",
+      "site": "Workday"
+    },
+    {
+      "name": "HP",
+      "ats": "workday",
+      "id": "hp",
+      "host": "hp.wd5.myworkdayjobs.com",
+      "site": "ExternalCareerSite"
+    },
+    {
+      "name": "Caterpillar",
+      "ats": "workday",
+      "id": "cat",
+      "host": "cat.wd5.myworkdayjobs.com",
+      "site": "CaterpillarCareers"
+    },
+    {
+      "name": "Philips",
+      "ats": "workday",
+      "id": "philips",
+      "host": "philips.wd3.myworkdayjobs.com",
+      "site": "jobs-and-careers"
+    },
+    {
+      "name": "Amazon",
+      "ats": "amazon",
+      "id": "amazon"
+    },
+    {
+      "name": "LinkedIn",
+      "ats": "lever",
+      "id": "linkedin"
+    },
+    {
+      "name": "Acceldata",
+      "ats": "lever",
+      "id": "acceldata"
+    },
+    {
+      "name": "ValGenesis",
+      "ats": "lever",
+      "id": "valgenesis"
+    },
+    {
+      "name": "100ms",
+      "ats": "lever",
+      "id": "100ms"
+    },
+    {
+      "name": "Safe Security",
+      "ats": "lever",
+      "id": "safe"
+    },
+    {
+      "name": "Equativ",
+      "ats": "lever",
+      "id": "equativ"
+    },
+    {
+      "name": "OakNorth",
+      "ats": "lever",
+      "id": "oaknorth.ai"
+    },
+    {
+      "name": "DexCare",
+      "ats": "lever",
+      "id": "dexcarehealth"
+    },
+    {
+      "name": "Atomicwork",
+      "ats": "greenhouse",
+      "id": "atomicwork"
+    },
+    {
+      "name": "Yugabyte",
+      "ats": "greenhouse",
+      "id": "yugabyte"
+    },
+    {
+      "name": "CommerceIQ",
+      "ats": "greenhouse",
+      "id": "commerceiq"
+    },
+    {
+      "name": "Enterpret",
+      "ats": "greenhouse",
+      "id": "enterpret"
+    },
+    {
+      "name": "Prophecy",
+      "ats": "greenhouse",
+      "id": "prophecysimpledatalabs"
+    },
+    {
+      "name": "Narvar",
+      "ats": "greenhouse",
+      "id": "narvar"
     }
   ],
   "smartrecruitersMaxPages": 10,
