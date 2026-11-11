@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-11T14:11:22.610Z",
+ "updated": "2026-11-11T15:08:47.531Z",
  "sources": [
   {
    "name": "Freshworks",
    "ats": "smartrecruiters",
    "id": "Freshworks",
    "ok": true,
-   "total": 121,
+   "total": 32,
    "matched": 14
   },
   {
@@ -14,29 +14,16 @@
    "ats": "greenhouse",
    "id": "toast",
    "ok": true,
-   "total": 338,
+   "total": 340,
    "matched": 13
   },
   {
-   "name": "Chargebee",
-   "ats": "lever",
-   "id": "chargebee",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
-   "name": "Kissflow",
-   "ats": "lever",
-   "id": "kissflow",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
    "name": "Razorpay",
-   "ats": "lever",
-   "id": "razorpay",
-   "ok": false,
-   "error": "HTTP 404"
+   "ats": "greenhouse",
+   "id": "razorpaysoftwareprivatelimited",
+   "ok": true,
+   "total": 26,
+   "matched": 11
   },
   {
    "name": "CRED",
@@ -55,33 +42,12 @@
    "matched": 15
   },
   {
-   "name": "Zepto",
-   "ats": "lever",
-   "id": "zeptonow",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
    "name": "Paytm",
    "ats": "lever",
    "id": "paytm",
    "ok": true,
-   "total": 203,
+   "total": 201,
    "matched": 5
-  },
-  {
-   "name": "PhonePe",
-   "ats": "greenhouse",
-   "id": "phonepe",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
-   "name": "Postman",
-   "ats": "greenhouse",
-   "id": "postman",
-   "ok": false,
-   "error": "HTTP 404"
   },
   {
    "name": "Groww",
@@ -93,10 +59,11 @@
   },
   {
    "name": "BrowserStack",
-   "ats": "greenhouse",
-   "id": "browserstack",
-   "ok": false,
-   "error": "HTTP 404"
+   "ats": "workable",
+   "id": "browserstack-2",
+   "ok": true,
+   "total": 0,
+   "matched": 0
   },
   {
    "name": "HackerRank",
@@ -111,7 +78,7 @@
    "ats": "greenhouse",
    "id": "databricks",
    "ok": true,
-   "total": 917,
+   "total": 916,
    "matched": 64
   },
   {
@@ -119,7 +86,7 @@
    "ats": "greenhouse",
    "id": "stripe",
    "ok": true,
-   "total": 782,
+   "total": 783,
    "matched": 14
   },
   {
@@ -127,7 +94,7 @@
    "ats": "greenhouse",
    "id": "rubrik",
    "ok": true,
-   "total": 152,
+   "total": 153,
    "matched": 15
   },
   {
@@ -143,7 +110,7 @@
    "ats": "greenhouse",
    "id": "zscaler",
    "ok": true,
-   "total": 371,
+   "total": 372,
    "matched": 51
   },
   {
@@ -159,7 +126,7 @@
    "ats": "greenhouse",
    "id": "twilio",
    "ok": true,
-   "total": 126,
+   "total": 125,
    "matched": 9
   },
   {
@@ -179,13 +146,6 @@
    "matched": 10
   },
   {
-   "name": "Sprinklr",
-   "ats": "greenhouse",
-   "id": "sprinklr",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
    "name": "Druva",
    "ats": "greenhouse",
    "id": "druva",
@@ -202,35 +162,256 @@
    "matched": 29
   },
   {
-   "name": "Rippling",
-   "ats": "ashby",
-   "id": "rippling",
-   "ok": false,
-   "error": "HTTP 404"
-  },
-  {
    "name": "Bosch",
    "ats": "smartrecruiters",
    "id": "BoschGroup",
    "ok": true,
-   "total": 1000,
-   "matched": 67
-  },
-  {
-   "name": "Visa",
-   "ats": "smartrecruiters",
-   "id": "Visa",
-   "ok": true,
-   "total": 0,
-   "matched": 0
+   "total": 603,
+   "matched": 293
   },
   {
    "name": "ServiceNow",
    "ats": "smartrecruiters",
    "id": "ServiceNow",
    "ok": true,
-   "total": 778,
+   "total": 79,
    "matched": 7
+  },
+  {
+   "name": "NVIDIA",
+   "ats": "workday",
+   "id": "nvidia",
+   "host": "nvidia.wd5.myworkdayjobs.com",
+   "site": "NVIDIAExternalCareerSite",
+   "ok": true,
+   "total": 40,
+   "matched": 35
+  },
+  {
+   "name": "Salesforce",
+   "ats": "workday",
+   "id": "salesforce",
+   "host": "salesforce.wd12.myworkdayjobs.com",
+   "site": "External_Career_Site",
+   "ok": true,
+   "total": 40,
+   "matched": 10
+  },
+  {
+   "name": "Adobe",
+   "ats": "workday",
+   "id": "adobe",
+   "host": "adobe.wd5.myworkdayjobs.com",
+   "site": "external_experienced",
+   "ok": true,
+   "total": 26,
+   "matched": 4
+  },
+  {
+   "name": "Intel",
+   "ats": "workday",
+   "id": "intel",
+   "host": "intel.wd1.myworkdayjobs.com",
+   "site": "External",
+   "ok": true,
+   "total": 40,
+   "matched": 33
+  },
+  {
+   "name": "Walmart Global Tech",
+   "ats": "workday",
+   "id": "walmart",
+   "host": "walmart.wd5.myworkdayjobs.com",
+   "site": "WalmartExternal",
+   "ok": false,
+   "error": "HTTP 422"
+  },
+  {
+   "name": "PayPal",
+   "ats": "workday",
+   "id": "paypal",
+   "host": "paypal.wd1.myworkdayjobs.com",
+   "site": "jobs",
+   "ok": true,
+   "total": 18,
+   "matched": 8
+  },
+  {
+   "name": "Dell",
+   "ats": "workday",
+   "id": "dell",
+   "host": "dell.wd1.myworkdayjobs.com",
+   "site": "External",
+   "ok": false,
+   "error": "HTTP 422"
+  },
+  {
+   "name": "Target",
+   "ats": "workday",
+   "id": "target",
+   "host": "target.wd5.myworkdayjobs.com",
+   "site": "targetcareers",
+   "ok": true,
+   "total": 40,
+   "matched": 21
+  },
+  {
+   "name": "Workday",
+   "ats": "workday",
+   "id": "workday",
+   "host": "workday.wd5.myworkdayjobs.com",
+   "site": "Workday",
+   "ok": true,
+   "total": 0,
+   "matched": 0
+  },
+  {
+   "name": "HP",
+   "ats": "workday",
+   "id": "hp",
+   "host": "hp.wd5.myworkdayjobs.com",
+   "site": "ExternalCareerSite",
+   "ok": true,
+   "total": 40,
+   "matched": 17
+  },
+  {
+   "name": "Caterpillar",
+   "ats": "workday",
+   "id": "cat",
+   "host": "cat.wd5.myworkdayjobs.com",
+   "site": "CaterpillarCareers",
+   "ok": true,
+   "total": 40,
+   "matched": 19
+  },
+  {
+   "name": "Philips",
+   "ats": "workday",
+   "id": "philips",
+   "host": "philips.wd3.myworkdayjobs.com",
+   "site": "jobs-and-careers",
+   "ok": true,
+   "total": 40,
+   "matched": 17
+  },
+  {
+   "name": "Amazon",
+   "ats": "amazon",
+   "id": "amazon",
+   "ok": true,
+   "total": 1500,
+   "matched": 384
+  },
+  {
+   "name": "LinkedIn",
+   "ats": "lever",
+   "id": "linkedin",
+   "ok": true,
+   "total": 23,
+   "matched": 6
+  },
+  {
+   "name": "Acceldata",
+   "ats": "lever",
+   "id": "acceldata",
+   "ok": true,
+   "total": 35,
+   "matched": 13
+  },
+  {
+   "name": "ValGenesis",
+   "ats": "lever",
+   "id": "valgenesis",
+   "ok": true,
+   "total": 10,
+   "matched": 8
+  },
+  {
+   "name": "100ms",
+   "ats": "lever",
+   "id": "100ms",
+   "ok": true,
+   "total": 10,
+   "matched": 6
+  },
+  {
+   "name": "Safe Security",
+   "ats": "lever",
+   "id": "safe",
+   "ok": true,
+   "total": 21,
+   "matched": 11
+  },
+  {
+   "name": "Equativ",
+   "ats": "lever",
+   "id": "equativ",
+   "ok": true,
+   "total": 22,
+   "matched": 0
+  },
+  {
+   "name": "OakNorth",
+   "ats": "lever",
+   "id": "oaknorth.ai",
+   "ok": false,
+   "error": "HTTP 404"
+  },
+  {
+   "name": "DexCare",
+   "ats": "lever",
+   "id": "dexcarehealth",
+   "ok": true,
+   "total": 5,
+   "matched": 3
+  },
+  {
+   "name": "Atomicwork",
+   "ats": "greenhouse",
+   "id": "atomicwork",
+   "ok": false,
+   "error": "HTTP 404"
+  },
+  {
+   "name": "Yugabyte",
+   "ats": "greenhouse",
+   "id": "yugabyte",
+   "ok": true,
+   "total": 14,
+   "matched": 0
+  },
+  {
+   "name": "CommerceIQ",
+   "ats": "greenhouse",
+   "id": "commerceiq",
+   "ok": true,
+   "total": 17,
+   "matched": 5
+  },
+  {
+   "name": "Enterpret",
+   "ats": "greenhouse",
+   "id": "enterpret",
+   "ok": true,
+   "total": 14,
+   "matched": 5
+  },
+  {
+   "name": "Prophecy",
+   "ats": "greenhouse",
+   "id": "prophecysimpledatalabs",
+   "ok": true,
+   "total": 6,
+   "matched": 1
+  },
+  {
+   "name": "Narvar",
+   "ats": "greenhouse",
+   "id": "narvar",
+   "ok": true,
+   "total": 2,
+   "matched": 0
   }
  ]
 }
