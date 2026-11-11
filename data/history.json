@@ -1,0 +1,419 @@
+{
+ "2026-11-11": {
+  "counts": {
+   "Freshworks": {
+    "Solutions / Support Engineer": {
+     "Chennai": 3,
+     "Bangalore": 3
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1,
+     "Chennai": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1,
+     "Chennai": 1
+    },
+    "Full Stack Developer": {
+     "Chennai": 2
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Chennai": 1
+    }
+   },
+   "Toast": {
+    "Software Engineer (general)": {
+     "Bangalore": 7,
+     "Chennai": 3
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Full Stack Developer": {
+     "Chennai": 2
+    }
+   },
+   "CRED": {
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    }
+   },
+   "Meesho": {
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Data Scientist": {
+     "Bangalore": 4
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 3
+    },
+    "UI/UX Designer": {
+     "Bangalore": 1
+    },
+    "AI Engineer": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    }
+   },
+   "Paytm": {
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Backend Developer": {
+     "Bangalore": 2
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    }
+   },
+   "Groww": {},
+   "HackerRank": {
+    "Software Engineer (general)": {
+     "Bangalore": 7
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    }
+   },
+   "Databricks": {
+    "Software Engineer (general)": {
+     "Bangalore": 29,
+     "Remote (India)": 4
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 5
+    },
+    "Backend Developer": {
+     "Bangalore": 10
+    },
+    "AI Engineer": {
+     "Bangalore": 3
+    },
+    "Data Engineer": {
+     "Bangalore": 4
+    },
+    "QA / Test Automation": {
+     "Bangalore": 2
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 4
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 2
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    }
+   },
+   "Stripe": {
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 10
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    }
+   },
+   "Rubrik": {
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 2
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 4
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "AI Engineer": {
+     "Bangalore": 3
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    }
+   },
+   "Harness": {
+    "Software Engineer (general)": {
+     "Bangalore": 8
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    }
+   },
+   "Zscaler": {
+    "Solutions / Support Engineer": {
+     "Bangalore": 3
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 4,
+     "Remote (India)": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 32
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 2
+    },
+    "Backend Developer": {
+     "Bangalore": 3
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "AI Engineer": {
+     "Remote (India)": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 1
+    }
+   },
+   "GitLab (remote)": {
+    "Software Engineer (general)": {
+     "Bangalore": 6
+    },
+    "Cybersecurity": {
+     "Bangalore": 4
+    },
+    "Backend Developer": {
+     "Bangalore": 5
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 2
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 4
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    }
+   },
+   "Twilio": {
+    "Software Engineer (general)": {
+     "Remote (India)": 6
+    },
+    "Solutions / Support Engineer": {
+     "Remote (India)": 2
+    },
+    "Machine Learning Engineer": {
+     "Remote (India)": 1
+    }
+   },
+   "Okta": {
+    "Solutions / Support Engineer": {
+     "Bangalore": 3
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 37
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 12
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Data Engineer": {
+     "Bangalore": 2
+    },
+    "Mobile App Developer": {
+     "Bangalore": 1
+    },
+    "Full Stack Developer": {
+     "Bangalore": 11
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 4
+    },
+    "UI/UX Designer": {
+     "Bangalore": 3
+    }
+   },
+   "Glean": {
+    "Data Analyst": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    }
+   },
+   "Druva": {},
+   "Sarvam AI": {
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 5
+    },
+    "Frontend Developer": {
+     "Bangalore": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 2
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 5,
+     "Chennai": 2
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 2
+    },
+    "Backend Developer": {
+     "Bangalore": 4
+    },
+    "Software Engineer (general)": {
+     "Chennai": 2,
+     "Bangalore": 5
+    }
+   },
+   "Bosch": {
+    "QA / Test Automation": {
+     "Bangalore": 4,
+     "Chennai": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    },
+    "Mobile App Developer": {
+     "Coimbatore": 6
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 23
+    },
+    "Embedded / Hardware": {
+     "Coimbatore": 5,
+     "Bangalore": 7
+    },
+    "Data Engineer": {
+     "Bangalore": 4
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 5,
+     "Coimbatore": 1
+    },
+    "Full Stack Developer": {
+     "Bangalore": 2
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 3
+    },
+    "AI Engineer": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Chennai": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Data Analyst": {
+     "Bangalore": 1
+    }
+   },
+   "Visa": {},
+   "ServiceNow": {
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 2
+    },
+    "UI/UX Designer": {
+     "Bangalore": 2
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 2
+    }
+   }
+  }
+ }
+}
