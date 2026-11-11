@@ -1,0 +1,35 @@
+# Collects fresh job data and saves it into the repo.
+# Runs by itself every Monday morning, and whenever you press
+# Actions tab → "Collect jobs" → "Run workflow".
+name: Collect jobs
+
+on:
+  schedule:
+    - cron: "17 1 * * 1" # Mondays at 01:17 UTC = 06:47 IST
+  workflow_dispatch: # adds the manual "Run workflow" button
+
+permissions:
+  contents: write # allows the workflow to commit the data files
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch job data from company careers pages
+        run: node scripts/collect.mjs
+
+      - name: Save the data to the repo
+        run: |
+          git config user.name "job-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --staged --quiet || git commit -m "data: $(date -u +%F)"
+          git push

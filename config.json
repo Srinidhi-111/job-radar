@@ -1,0 +1,235 @@
+{
+  "cities": {
+    "Chennai": "chennai|madras",
+    "Bangalore": "bangalore|bengaluru",
+    "Coimbatore": "coimbatore|kovai"
+  },
+  "roles": [
+    {
+      "name": "Generative AI / LLM",
+      "match": "gen ?ai|generative|\\bllm|agentic|ai agent"
+    },
+    {
+      "name": "AI Engineer",
+      "match": "\\bai\\b.*engineer|artificial intelligence"
+    },
+    {
+      "name": "Machine Learning Engineer",
+      "match": "machine learning|\\bml\\b|mlops"
+    },
+    {
+      "name": "Data Scientist",
+      "match": "data scien|applied scien|research scien"
+    },
+    {
+      "name": "Data Engineer",
+      "match": "data engineer|data platform|big data|etl"
+    },
+    {
+      "name": "Data Analyst",
+      "match": "data analyst|business analyst|analytics|\\bbi\\b"
+    },
+    {
+      "name": "Cloud / DevOps / SRE",
+      "match": "devops|\\bsre\\b|site reliability|cloud|platform engineer|infrastructure"
+    },
+    {
+      "name": "Cybersecurity",
+      "match": "secur|soc analyst|penetration|appsec|iam\\b"
+    },
+    {
+      "name": "Frontend Developer",
+      "match": "front[- ]?end|\\bui engineer|react|angular"
+    },
+    {
+      "name": "Backend Developer",
+      "match": "back[- ]?end|\\bapi\\b|java developer|golang|node"
+    },
+    {
+      "name": "Full Stack Developer",
+      "match": "full[- ]?stack"
+    },
+    {
+      "name": "Mobile App Developer",
+      "match": "android|\\bios\\b|mobile|flutter|react native"
+    },
+    {
+      "name": "QA / Test Automation",
+      "match": "\\bqa\\b|quality|\\btest|\\bsdet\\b"
+    },
+    {
+      "name": "UI/UX Designer",
+      "match": "designer|\\bux\\b|user experience|user research"
+    },
+    {
+      "name": "Embedded / Hardware",
+      "match": "embedded|firmware|hardware|vlsi|asic|fpga"
+    },
+    {
+      "name": "Product Manager",
+      "match": "product manager|product owner|\\bapm\\b"
+    },
+    {
+      "name": "Solutions / Support Engineer",
+      "match": "solutions? engineer|support engineer|customer success engineer|implementation"
+    },
+    {
+      "name": "Software Engineer (general)",
+      "match": "software|developer|engineer|\\bsde\\b|programmer"
+    }
+  ],
+  "companies": [
+    {
+      "name": "Freshworks",
+      "ats": "smartrecruiters",
+      "id": "Freshworks"
+    },
+    {
+      "name": "Toast",
+      "ats": "greenhouse",
+      "id": "toast"
+    },
+    {
+      "name": "Chargebee",
+      "ats": "lever",
+      "id": "chargebee"
+    },
+    {
+      "name": "Kissflow",
+      "ats": "lever",
+      "id": "kissflow"
+    },
+    {
+      "name": "Razorpay",
+      "ats": "lever",
+      "id": "razorpay"
+    },
+    {
+      "name": "CRED",
+      "ats": "lever",
+      "id": "cred"
+    },
+    {
+      "name": "Meesho",
+      "ats": "lever",
+      "id": "meesho"
+    },
+    {
+      "name": "Zepto",
+      "ats": "lever",
+      "id": "zeptonow"
+    },
+    {
+      "name": "Paytm",
+      "ats": "lever",
+      "id": "paytm"
+    },
+    {
+      "name": "PhonePe",
+      "ats": "greenhouse",
+      "id": "phonepe"
+    },
+    {
+      "name": "Postman",
+      "ats": "greenhouse",
+      "id": "postman"
+    },
+    {
+      "name": "Groww",
+      "ats": "greenhouse",
+      "id": "groww"
+    },
+    {
+      "name": "BrowserStack",
+      "ats": "greenhouse",
+      "id": "browserstack"
+    },
+    {
+      "name": "HackerRank",
+      "ats": "greenhouse",
+      "id": "hackerrank"
+    },
+    {
+      "name": "Databricks",
+      "ats": "greenhouse",
+      "id": "databricks"
+    },
+    {
+      "name": "Stripe",
+      "ats": "greenhouse",
+      "id": "stripe"
+    },
+    {
+      "name": "Rubrik",
+      "ats": "greenhouse",
+      "id": "rubrik"
+    },
+    {
+      "name": "Harness",
+      "ats": "greenhouse",
+      "id": "harnessinc"
+    },
+    {
+      "name": "Zscaler",
+      "ats": "greenhouse",
+      "id": "zscaler"
+    },
+    {
+      "name": "GitLab (remote)",
+      "ats": "greenhouse",
+      "id": "gitlab"
+    },
+    {
+      "name": "Twilio",
+      "ats": "greenhouse",
+      "id": "twilio"
+    },
+    {
+      "name": "Okta",
+      "ats": "greenhouse",
+      "id": "okta"
+    },
+    {
+      "name": "Glean",
+      "ats": "greenhouse",
+      "id": "gleanwork"
+    },
+    {
+      "name": "Sprinklr",
+      "ats": "greenhouse",
+      "id": "sprinklr"
+    },
+    {
+      "name": "Druva",
+      "ats": "greenhouse",
+      "id": "druva"
+    },
+    {
+      "name": "Sarvam AI",
+      "ats": "ashby",
+      "id": "sarvam"
+    },
+    {
+      "name": "Rippling",
+      "ats": "ashby",
+      "id": "rippling"
+    },
+    {
+      "name": "Bosch",
+      "ats": "smartrecruiters",
+      "id": "BoschGroup"
+    },
+    {
+      "name": "Visa",
+      "ats": "smartrecruiters",
+      "id": "Visa"
+    },
+    {
+      "name": "ServiceNow",
+      "ats": "smartrecruiters",
+      "id": "ServiceNow"
+    }
+  ],
+  "smartrecruitersMaxPages": 10,
+  "skipTitles": "sales|account exec|account manager|marketing|recruit|talent acq|finance|accountant|legal|counsel|\\bhr\\b|human resources|people partner|payroll|office admin|executive assistant"
+}

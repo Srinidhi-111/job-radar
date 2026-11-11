@@ -1,0 +1,271 @@
+// Job Radar — dashboard logic
+// Loads data/history.json (daily counts) and data/jobs.json (postings),
+// then draws the three tabs. No build step, no libraries: plain JavaScript.
+
+const CITIES = ["Chennai", "Bangalore", "Coimbatore", "Remote (India)"];
+
+// Skills we look for in job titles/descriptions. Add more any time.
+const SKILLS = {
+  "Python": /\bpython\b/i, "Java": /\bjava\b(?!script)/i, "JavaScript": /\bjavascript\b|\bjs\b/i,
+  "TypeScript": /\btypescript\b/i, "C++": /c\+\+/i, "C#/.NET": /\bc#|\.net\b/i, "Go": /\bgolang\b/i,
+  "SQL": /\bsql\b/i, "React": /\breact(\.js|js)?\b/i, "Angular": /\bangular\b/i, "Node.js": /\bnode(\.js|js)?\b/i,
+  "Spring Boot": /\bspring\b/i, "Django/Flask/FastAPI": /\bdjango\b|\bflask\b|\bfastapi\b/i,
+  "REST APIs": /\brest(ful)?\b|\bapis?\b/i, "Microservices": /micro-?services/i,
+  "AWS": /\baws\b|amazon web services/i, "Azure": /\bazure\b/i, "GCP": /\bgcp\b|google cloud/i,
+  "Docker": /\bdocker\b/i, "Kubernetes": /\bkubernetes\b|\bk8s\b/i, "Terraform": /\bterraform\b/i,
+  "CI/CD": /ci\s?\/\s?cd|jenkins|github actions/i, "Linux": /\blinux\b/i, "Git": /\bgit\b/i,
+  "Machine Learning": /machine learning|\bml\b/i, "Deep Learning": /deep learning|neural net/i,
+  "LLMs / GenAI": /\bllms?\b|generative ai|gen ?ai|\bgpt\b|large language/i, "RAG": /\brag\b|retrieval.augmented/i,
+  "AI Agents": /\bagents?\b|agentic/i, "PyTorch": /pytorch/i, "TensorFlow": /tensorflow/i,
+  "NLP": /\bnlp\b|natural language/i, "Computer Vision": /computer vision|\bopencv\b/i,
+  "Spark / Big Data": /\bspark\b|hadoop|big data|databricks/i, "Power BI / Tableau": /power ?bi|tableau/i,
+  "Excel": /\bexcel\b/i, "Statistics": /statistic/i, "Data pipelines / ETL": /\betl\b|data pipeline/i,
+  "MongoDB / NoSQL": /mongo|nosql/i, "Selenium / Testing": /selenium|playwright|cypress|test automation/i,
+  "Security": /security|siem|soc\b|penetration|vapt/i, "Figma": /\bfigma\b/i,
+  "Android / Kotlin": /android|kotlin/i, "Flutter": /\bflutter\b/i, "Embedded C": /embedded|microcontroller|rtos/i,
+  "Salesforce": /salesforce/i, "Agile / Scrum": /\bagile\b|\bscrum\b/i, "Communication": /communication skills/i,
+};
+
+const state = { history: {}, jobs: [], sources: [], roles: [], updated: null, cities: new Set(CITIES) };
+
+// ---------- helpers ----------
+const $ = (id) => document.getElementById(id);
+const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const fmt = (n) => n.toLocaleString("en-IN");
+const daysBetween = (a, b) => Math.round((new Date(b) - new Date(a)) / 86400000);
+const ago = (iso) => {
+  const d = daysBetween(iso.slice(0, 10), new Date().toISOString().slice(0, 10));
+  return d <= 0 ? "today" : d === 1 ? "1 day ago" : `${d} days ago`;
+};
+
+async function load(file, fallback) {
+  try {
+    const r = await fetch(file, { cache: "no-store" });
+    return r.ok ? await r.json() : fallback;
+  } catch { return fallback; }
+}
+
+// ---------- city filter (shared by all tabs) ----------
+function drawCityButtons() {
+  $("cityFilter").innerHTML = CITIES.map(
+    (c) => `<button data-city="${c}" aria-pressed="${state.cities.has(c)}">${c}</button>`
+  ).join("");
+}
+$("cityFilter").addEventListener("click", (e) => {
+  const city = e.target.dataset?.city;
+  if (!city) return;
+  if (state.cities.has(city) && state.cities.size > 1) state.cities.delete(city);
+  else state.cities.add(city);
+  drawCityButtons();
+  renderAll();
+});
+
+// ---------- TRENDS ----------
+// Open jobs for a role on a date, counting only the given companies and selected cities.
+function totalFor(date, role, companies) {
+  const counts = state.history[date]?.counts ?? {};
+  let sum = 0;
+  for (const co of companies) for (const c of state.cities) sum += counts[co]?.[role]?.[c] ?? 0;
+  return sum;
+}
+const companiesOn = (date) => new Set(Object.keys(state.history[date]?.counts ?? {}));
+
+function sparkline(values) {
+  if (values.length < 2) return "";
+  const w = 300, h = 34, max = Math.max(...values, 1), min = Math.min(...values);
+  const span = max - min || 1;
+  const pts = values.map((v, i) => `${(i / (values.length - 1)) * w},${h - 3 - ((v - min) / span) * (h - 6)}`);
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="${pts.join(" ")}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+function renderTrends() {
+  const dates = Object.keys(state.history).sort();
+  if (!dates.length) {
+    $("roleList").innerHTML = `<li class="empty">No data yet. Run the collector once (see README) and refresh.</li>`;
+    $("historyNote").textContent = "";
+    return;
+  }
+  const last = dates[dates.length - 1];
+  const lastCos = companiesOn(last);
+  // Compare with the most recent run that is at least 6 days older.
+  const base = [...dates].reverse().find((d) => daysBetween(d, last) >= 6);
+  // Only companies whose feed worked on both dates, so a broken feed doesn't look like a crash in hiring.
+  const shared = base ? [...lastCos].filter((c) => companiesOn(base).has(c)) : [...lastCos];
+  $("historyNote").textContent = base
+    ? `Open jobs at ${shared.length} tracked companies, compared with ${base} (${daysBetween(base, last)} days earlier).`
+    : `Open jobs at ${lastCos.size} tracked companies. Growth appears after a second run at least 6 days later (${dates.length} run so far).`;
+
+  const roles = state.roles.map((role) => {
+    const now = totalFor(last, role, lastCos);
+    const nowShared = totalFor(last, role, shared);
+    const then = base ? totalFor(base, role, shared) : null;
+    const diff = then === null ? null : nowShared - then;
+    const change = then ? (diff / then) * 100 : null;
+    const series = dates.slice(-12).map((d) => totalFor(d, role, companiesOn(d)));
+    const perCity = [...state.cities].map((c) => {
+      let n = 0;
+      for (const co of lastCos) n += state.history[last].counts[co]?.[role]?.[c] ?? 0;
+      return `${c} ${fmt(n)}`;
+    }).join(" · ");
+    return { role, now, diff, change, series, perCity };
+  });
+
+  const sort = $("trendSort").value;
+  const key = (r) => r.change ?? (r.diff ? Math.sign(r.diff) * 100 : 0);
+  roles.sort((a, b) =>
+    sort === "growth" ? key(b) - key(a) || b.now - a.now
+    : sort === "decline" ? key(a) - key(b) || b.now - a.now
+    : b.now - a.now);
+
+  $("roleList").innerHTML = roles.map((r) => {
+    let badge = `<span class="badge flat">first run</span>`;
+    if (r.diff !== null) {
+      const big = Math.abs(r.diff) >= 2 && (r.change === null || Math.abs(r.change) >= 15);
+      const cls = !big ? "flat" : r.diff > 0 ? "up" : "down";
+      const word = cls === "up" ? "Rising" : cls === "down" ? "Falling" : "Steady";
+      const pct = r.change === null ? (r.diff ? " (new)" : "") : ` (${r.change > 0 ? "+" : ""}${r.change.toFixed(0)}%)`;
+      badge = `<span class="badge ${cls}">${word}${r.diff ? ` ${r.diff > 0 ? "+" : ""}${r.diff}` : ""}${pct}</span>`;
+    }
+    return `<li class="role">
+      <h3>${esc(r.role)}</h3><span class="count">${fmt(r.now)}</span>
+      <span class="meta">open jobs</span>${badge}
+      ${sparkline(r.series)}
+      <span class="cityline">${esc(r.perCity)}</span>
+    </li>`;
+  }).join("");
+}
+
+// ---------- COMPANIES ----------
+// "New" = first appeared in the latest run (only meaningful from the second run on).
+const latestRun = () => Object.keys(state.history).sort().at(-1);
+const isNew = (j) => Object.keys(state.history).length > 1 && j.firstSeen === latestRun();
+
+function filteredJobs() {
+  const q = $("companySearch").value.trim().toLowerCase();
+  const role = $("roleFilter").value, type = $("typeFilter").value, mode = $("modeFilter").value;
+  const newOnly = $("newOnly").checked;
+  return state.jobs.filter((j) =>
+    state.cities.has(j.city) &&
+    (!role || j.role === role) &&
+    (!type || j.type === type) &&
+    (!mode || j.mode === mode) &&
+    (!newOnly || isNew(j)) &&
+    (!q || `${j.company} ${j.title} ${j.role}`.toLowerCase().includes(q)));
+}
+
+function renderCompanies() {
+  if (!state.jobs.length) {
+    $("companyList").innerHTML = `<p class="empty">No postings yet. Run the collector once (see README).</p>`;
+    $("companyCount").textContent = "";
+    return;
+  }
+  const groups = new Map();
+  for (const j of filteredJobs()) {
+    if (!groups.has(j.company)) groups.set(j.company, []);
+    groups.get(j.company).push(j);
+  }
+  const list = [...groups.entries()].sort((a, b) => b[1].length - a[1].length);
+  const shown = list.slice(0, 150);
+  const total = list.reduce((s, [, js]) => s + js.length, 0);
+  $("companyCount").textContent = `${fmt(list.length)} companies · ${fmt(total)} openings${list.length > shown.length ? " (showing top 150)" : ""}`;
+
+  $("companyList").innerHTML = shown.map(([company, js]) => {
+    const interns = js.filter((j) => j.type === "Internship").length;
+    return `<details class="company">
+      <summary><strong>${esc(company)}</strong>
+        <span class="n">${js.length} open${interns ? ` · ${interns} intern` : ""}</span></summary>
+      <div class="postings">${js.map((j) => `
+        <div class="posting">
+          <a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a>
+          <div class="chips">
+            ${isNew(j) ? `<span class="chip new">NEW</span>` : ""}
+            <span class="chip ${j.type === "Internship" ? "intern" : ""}">${j.type}</span>
+            <span class="chip">${esc(j.mode)}</span>
+            <span class="chip">${esc(j.city)}</span>
+            <span class="chip">${esc(j.role)}</span>
+            ${j.created ? `<span class="chip">posted ${ago(j.created)}</span>` : ""}
+          </div>
+          ${j.snippet ? `<p>${esc(j.snippet.slice(0, 180))}…</p>` : ""}
+        </div>`).join("")}
+      </div>
+    </details>`;
+  }).join("") || `<p class="empty">No matches. Try loosening the filters.</p>`;
+  renderSources();
+}
+
+function renderSources() {
+  const ok = state.sources.filter((s) => s.ok), bad = state.sources.filter((s) => !s.ok);
+  $("sourcesSummary").textContent = `Company feeds: ${ok.length} of ${state.sources.length} working`;
+  $("sourcesList").innerHTML = `<ul>${[
+    ...bad.map((s) => `<li class="bad">✗ ${esc(s.name)} (${esc(s.ats)} "${esc(s.id)}"): ${esc(s.error)}</li>`),
+    ...ok.map((s) => `<li>✓ ${esc(s.name)}: ${s.matched} here / ${s.total} worldwide</li>`),
+  ].join("")}</ul>`;
+}
+
+// ---------- SKILLS ----------
+function renderSkills() {
+  const role = $("skillRoleFilter").value;
+  const jobs = state.jobs.filter((j) => state.cities.has(j.city) && (!role || j.role === role));
+  if (!jobs.length) {
+    $("skillList").innerHTML = `<li class="empty">No postings yet.</li>`;
+    return;
+  }
+  const stats = Object.keys(SKILLS).map((name) => ({ name, count: 0, roles: new Set() }));
+  for (const j of jobs) {
+    const text = `${j.title} ${j.snippet}`;
+    for (const s of stats) if (SKILLS[s.name].test(text)) { s.count++; s.roles.add(j.role); }
+  }
+  const totalRoles = new Set(jobs.map((j) => j.role)).size;
+  const ranked = stats.filter((s) => s.count > 0).sort((a, b) => b.count - a.count);
+  const max = ranked[0]?.count || 1;
+
+  $("skillList").innerHTML = ranked.map((s) => {
+    const pct = ((s.count / jobs.length) * 100).toFixed(0);
+    const transferable = !role && totalRoles >= 4 && s.roles.size >= Math.ceil(totalRoles * 0.4);
+    return `<li class="skill">
+      <span><strong>${esc(s.name)}</strong>${transferable ? `<span class="tag">TRANSFERABLE</span>` : ""}</span>
+      <span class="meta">${pct}% of postings${role ? "" : ` · ${s.roles.size} role${s.roles.size === 1 ? "" : "s"}`}</span>
+      <div class="bar"><span style="width:${(s.count / max) * 100}%"></span></div>
+    </li>`;
+  }).join("");
+}
+
+// ---------- tabs & startup ----------
+document.querySelector(".tabs").addEventListener("click", (e) => {
+  const tab = e.target.dataset?.tab;
+  if (!tab) return;
+  document.querySelectorAll(".tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  document.querySelectorAll(".panel").forEach((p) => (p.hidden = p.id !== tab));
+});
+
+function renderAll() { renderTrends(); renderCompanies(); renderSkills(); }
+
+["trendSort"].forEach((id) => $(id).addEventListener("change", renderTrends));
+["companySearch", "roleFilter", "typeFilter", "modeFilter", "newOnly"].forEach((id) =>
+  $(id).addEventListener("input", renderCompanies));
+$("skillRoleFilter").addEventListener("change", renderSkills);
+
+(async function init() {
+  drawCityButtons();
+  const [history, jobsFile, sourcesFile, config] = await Promise.all([
+    load("data/history.json", {}),
+    load("data/jobs.json", { updated: null, jobs: [] }),
+    load("data/sources.json", { sources: [] }),
+    load("config.json", { roles: [] }),
+  ]);
+  state.history = history;
+  state.jobs = jobsFile.jobs;
+  state.updated = jobsFile.updated;
+  state.sources = sourcesFile.sources;
+  state.roles = config.roles.map((r) => r.name);
+
+  const opts = state.roles.map((r) => `<option>${esc(r)}</option>`).join("");
+  $("roleFilter").insertAdjacentHTML("beforeend", opts);
+  $("skillRoleFilter").insertAdjacentHTML("beforeend", opts);
+
+  $("updated").textContent = jobsFile.updated
+    ? `Updated ${new Date(jobsFile.updated).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })} · ${Object.keys(history).length} run(s) so far`
+    : "No data collected yet";
+  renderAll();
+})();

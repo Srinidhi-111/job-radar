@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Radar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#04060d" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <h1>Job Radar</h1>
+    </div>
+    <p class="sub" id="updated">Loading data…</p>
+    <div class="cities" id="cityFilter" role="group" aria-label="Cities"></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="trends" aria-selected="true">Trends</button>
+    <button role="tab" data-tab="companies" aria-selected="false">Companies</button>
+    <button role="tab" data-tab="skills" aria-selected="false">Skills</button>
+  </nav>
+
+  <main>
+    <!-- TRENDS -->
+    <section id="trends" class="panel">
+      <div class="toolbar">
+        <label>Sort by
+          <select id="trendSort">
+            <option value="count">Most postings</option>
+            <option value="growth">Fastest growing</option>
+            <option value="decline">Fastest falling</option>
+          </select>
+        </label>
+      </div>
+      <p class="note" id="historyNote"></p>
+      <ol class="roles" id="roleList"></ol>
+    </section>
+
+    <!-- COMPANIES -->
+    <section id="companies" class="panel" hidden>
+      <div class="toolbar wrap">
+        <input type="search" id="companySearch" placeholder="Search company, title, role…" />
+        <select id="roleFilter"><option value="">All roles</option></select>
+        <select id="typeFilter">
+          <option value="">Jobs + internships</option>
+          <option value="Job">Jobs only</option>
+          <option value="Internship">Internships only</option>
+        </select>
+        <select id="modeFilter">
+          <option value="">Any work mode</option>
+          <option>Remote</option>
+          <option>Hybrid</option>
+          <option>On-site</option>
+          <option>Not stated</option>
+        </select>
+        <label class="check"><input type="checkbox" id="newOnly" /> New since last run only</label>
+      </div>
+      <p class="note" id="companyCount"></p>
+      <div id="companyList"></div>
+      <details class="sources" id="sourcesBox"><summary id="sourcesSummary">Company feeds</summary><div id="sourcesList"></div></details>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="panel" hidden>
+      <p class="note">Skills mentioned in current postings. <strong>Transferable</strong> = appears across many different roles, so it stays useful even if one role fades.</p>
+      <div class="toolbar">
+        <select id="skillRoleFilter"><option value="">Across all roles</option></select>
+      </div>
+      <ol class="skills" id="skillList"></ol>
+    </section>
+  </main>
+
+  <footer>Data: public careers pages of the companies in config.json. Counts = open jobs on the day collected.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
