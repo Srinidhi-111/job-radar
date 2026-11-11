@@ -115,11 +115,6 @@
       "id": "groww"
     },
     {
-      "name": "BrowserStack",
-      "ats": "workable",
-      "id": "browserstack-2"
-    },
-    {
       "name": "HackerRank",
       "ats": "greenhouse",
       "id": "hackerrank"
@@ -218,25 +213,11 @@
       "site": "External"
     },
     {
-      "name": "Walmart Global Tech",
-      "ats": "workday",
-      "id": "walmart",
-      "host": "walmart.wd5.myworkdayjobs.com",
-      "site": "WalmartExternal"
-    },
-    {
       "name": "PayPal",
       "ats": "workday",
       "id": "paypal",
       "host": "paypal.wd1.myworkdayjobs.com",
       "site": "jobs"
-    },
-    {
-      "name": "Dell",
-      "ats": "workday",
-      "id": "dell",
-      "host": "dell.wd1.myworkdayjobs.com",
-      "site": "External"
     },
     {
       "name": "Target",
