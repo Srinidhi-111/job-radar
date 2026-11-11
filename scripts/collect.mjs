@@ -30,6 +30,7 @@ const BASE = {
   ashby: process.env.ASHBY_BASE || "https://api.ashbyhq.com/posting-api/job-board",
   smartrecruiters: process.env.SMARTRECRUITERS_BASE || "https://api.smartrecruiters.com/v1/companies",
   workable: process.env.WORKABLE_BASE || "https://apply.workable.com/api/v1/widget/accounts",
+  workableV3: process.env.WORKABLE3_BASE || "https://apply.workable.com/api/v3/accounts",
   workday: process.env.WORKDAY_BASE || null, // null = use each company's own Workday address
   amazon: process.env.AMAZON_BASE || "https://www.amazon.jobs/en/search.json",
 };
@@ -131,74 +132,116 @@ const readers = {
     return jobs;
   },
 
+  // Workable has two feeds; some companies only fill the newer one, so try both.
   async workable(id) {
     const data = await getJson(`${BASE.workable}/${id}?details=true`);
-    return (data.jobs ?? []).map((j) => {
-      const locs = (j.locations?.length ? j.locations : [j]).map((l) => [l.city, l.region ?? l.state, l.country].filter(Boolean).join(", "));
-      return {
-        id: `wk-${j.shortcode}`,
-        title: j.title,
-        location: locs.join(" · "),
-        url: j.url || j.shortlink || j.application_url,
-        created: j.published_on || j.created_at,
-        text: plain(j.description),
-        mode: j.telecommuting ? "Remote" : undefined,
-        type: /intern/i.test(j.employment_type ?? "") ? "Internship" : undefined,
-      };
-    });
+    if (data.jobs?.length) {
+      return data.jobs.map((j) => {
+        const locs = (j.locations?.length ? j.locations : [j]).map((l) => [l.city, l.region ?? l.state, l.country].filter(Boolean).join(", "));
+        return {
+          id: `wk-${j.shortcode}`,
+          title: j.title,
+          location: locs.join(" · "),
+          url: j.url || j.shortlink || j.application_url,
+          created: j.published_on || j.created_at,
+          text: plain(j.description),
+          mode: j.telecommuting ? "Remote" : undefined,
+          type: /intern/i.test(j.employment_type ?? "") ? "Internship" : undefined,
+        };
+      });
+    }
+    const jobs = [];
+    let token;
+    for (let page = 0; page < 10; page++) {
+      const r = await getJson(`${BASE.workableV3}/${id}/jobs`, { query: "", location: [], department: [], worktype: [], remote: [], ...(token ? { token } : {}) });
+      for (const j of r.results ?? []) {
+        const locs = [j.location, ...(j.locations ?? [])].filter(Boolean).map((l) => [l.city, l.region, l.country].filter(Boolean).join(", "));
+        jobs.push({
+          id: `wk-${j.shortcode}`,
+          title: j.title,
+          location: [...new Set(locs)].join(" · "),
+          url: `https://apply.workable.com/${id}/j/${j.shortcode}/`,
+          created: j.published,
+          text: "",
+          mode: j.remote || j.workplace === "remote" ? "Remote" : j.workplace === "hybrid" ? "Hybrid" : undefined,
+          type: /intern/i.test(j.type ?? "") ? "Internship" : undefined,
+        });
+      }
+      token = r.nextPage;
+      if (!token) break;
+    }
+    return jobs;
   },
+
   // Workday: used by many big companies (career links contain "myworkdayjobs.com").
   // Not an official public API — it's the data feed behind their careers page.
   // Step 1: ask for the location filters and pick the ones in our cities.
   // Step 2: page through jobs with those filters (20 per page).
+  // If a company rejects that (HTTP 422), search by city name instead.
   async workday(id, company) {
     const root = BASE.workday ?? `https://${company.host}`;
     const api = `${root}/wday/cxs/${id}/${company.site}`;
-    const first = await getJson(`${api}/jobs`, { appliedFacets: {}, limit: 1, offset: 0, searchText: "" });
-
     const cityRe = new RegExp(Object.values(config.cities).join("|"), "i");
-    const facets = {};
-    (function walk(list, param) {
-      for (const f of list ?? []) {
-        const p = f.facetParameter ?? param;
-        if (f.values) walk(f.values, p);
-        else if (f.id && cityRe.test(f.descriptor ?? "")) (facets[p] ??= []).push(f.id);
-      }
-    })(first.facets);
-    if (!Object.keys(facets).length) return []; // no openings in our cities right now
+    const search = (facets, offset, searchText) =>
+      getJson(`${api}/jobs`, { appliedFacets: facets, limit: 20, offset, searchText });
 
-    const jobs = [];
-    for (let page = 0; page < (company.maxPages ?? 25); page++) {
-      const data = await getJson(`${api}/jobs`, { appliedFacets: facets, limit: 20, offset: page * 20, searchText: "" });
-      for (const j of data.jobPostings ?? []) {
-        let location = j.locationsText ?? "";
-        // "3 Locations" hides the cities, so open that one job to read them.
-        if (!cityRe.test(location)) {
-          try {
-            const d = await getJson(`${api}${j.externalPath}`);
-            location = [d.jobPostingInfo?.location, ...(d.jobPostingInfo?.additionalLocations ?? [])].filter(Boolean).join(" · ");
-          } catch { /* keep the short text */ }
+    const jobs = new Map();
+    let detailsOpened = 0;
+    async function collectPages(facets, searchText) {
+      let total;
+      for (let page = 0; page < (company.maxPages ?? 25); page++) {
+        const data = await search(facets, page * 20, searchText);
+        total ??= data.total; // Workday only sends the real total on the first page
+        for (const j of data.jobPostings ?? []) {
+          if (jobs.has(j.externalPath)) continue;
+          let location = j.locationsText ?? "";
+          // "3 Locations" hides the cities, so open that job to read them (limited, to stay polite).
+          if (!cityRe.test(location) && detailsOpened < 60) {
+            detailsOpened++;
+            try {
+              const d = await getJson(`${api}${j.externalPath}`);
+              location = [d.jobPostingInfo?.location, ...(d.jobPostingInfo?.additionalLocations ?? [])].filter(Boolean).join(" · ");
+            } catch { /* keep the short text */ }
+          }
+          jobs.set(j.externalPath, {
+            id: `wd-${id}-${j.bulletFields?.[0] ?? j.externalPath}`,
+            title: j.title,
+            location,
+            url: `https://${company.host}/en-US/${company.site}${j.externalPath}`,
+            created: workdayDate(j.postedOn),
+            text: "",
+            mode: /remote/i.test(location) ? "Remote" : undefined,
+          });
         }
-        jobs.push({
-          id: `wd-${id}-${j.bulletFields?.[0] ?? j.externalPath}`,
-          title: j.title,
-          location,
-          url: `https://${company.host}/en-US/${company.site}${j.externalPath}`,
-          created: workdayDate(j.postedOn),
-          text: "",
-          mode: /remote/i.test(location) ? "Remote" : undefined,
-        });
+        if ((page + 1) * 20 >= (total ?? 0)) break;
+        await sleep(400);
       }
-      if ((page + 1) * 20 >= (data.total ?? 0)) break;
-      await sleep(400);
     }
-    return jobs;
+
+    try {
+      const first = await search({}, 0, "");
+      const facets = {};
+      (function walk(list, param) {
+        for (const f of list ?? []) {
+          const p = f.facetParameter ?? param;
+          if (f.values) walk(f.values, p);
+          else if (f.id && cityRe.test(f.descriptor ?? "")) (facets[p] ??= []).push(f.id);
+        }
+      })(first.facets);
+      if (!Object.keys(facets).length) return []; // no openings in our cities right now
+      await collectPages(facets, "");
+      return [...jobs.values()];
+    } catch (err) {
+      if (!/HTTP 4(00|22)/.test(err.message)) throw err;
+    }
+    for (const city of ["Bengaluru", "Bangalore", "Chennai", "Coimbatore"]) await collectPages({}, city);
+    return [...jobs.values()];
   },
 
   // Amazon: the data feed behind amazon.jobs, India only.
   async amazon(_id, company) {
     const jobs = [];
-    for (let page = 0; page < (company.maxPages ?? 15); page++) {
+    for (let page = 0; page < (company.maxPages ?? 25); page++) {
       const data = await getJson(`${BASE.amazon}?normalized_country_code%5B%5D=IND&result_limit=100&sort=recent&offset=${page * 100}`);
       for (const j of data.jobs ?? []) {
         jobs.push({

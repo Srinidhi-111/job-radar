@@ -309,19 +309,9 @@
       "id": "equativ"
     },
     {
-      "name": "OakNorth",
-      "ats": "lever",
-      "id": "oaknorth.ai"
-    },
-    {
       "name": "DexCare",
       "ats": "lever",
       "id": "dexcarehealth"
-    },
-    {
-      "name": "Atomicwork",
-      "ats": "greenhouse",
-      "id": "atomicwork"
     },
     {
       "name": "Yugabyte",
