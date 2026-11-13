@@ -62,7 +62,7 @@ const detectSkills = (text) => new Set(Object.keys(SKILLS).filter((name) => SKIL
 function roleProfiles() {
   const byRole = {};
   for (const j of state.jobs) {
-    if (!state.cities.has(j.city)) continue;
+    if (!inCities(j)) continue;
     (byRole[j.role] ??= []).push(`${j.title} ${j.snippet}`);
   }
   return Object.entries(byRole).filter(([, texts]) => texts.length >= 5).map(([role, texts]) => {
@@ -127,9 +127,9 @@ window.renderResume = renderResume;
 
 function fillJobs() {
   const role = $("tailorRole").value;
-  const jobs = state.jobs.filter((j) => j.role === role && state.cities.has(j.city)).slice(0, 60);
+  const jobs = state.jobs.filter((j) => j.role === role && inCities(j)).slice(0, 60);
   $("tailorJob").innerHTML = `<option value="">Any ${esc(role)} job (general)</option>`
-    + jobs.map((j) => `<option value="${esc(j.id)}">${esc(j.company)} — ${esc(j.title)} (${esc(j.city)})</option>`).join("");
+    + jobs.map((j) => `<option value="${esc(j.id)}">${esc(j.company)} — ${esc(j.title)} (${esc(cityLabel(j))})</option>`).join("");
 }
 $("tailorRole").addEventListener("change", () => { fillJobs(); $("tailorOut").innerHTML = ""; });
 $("tailorJob").addEventListener("change", () => { $("tailorOut").innerHTML = ""; });

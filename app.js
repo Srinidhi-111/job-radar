@@ -73,19 +73,28 @@ async function load(file, fallback) {
 }
 
 // ---------- city filter (shared by all tabs) ----------
+// "All" shows everything. Tapping a city while "All" is on shows ONLY that city;
+// after that, tapping cities adds or removes them. Removing the last one goes back to "All".
+const allCities = () => state.cities.size === CITIES.length;
 function drawCityButtons() {
-  $("cityFilter").innerHTML = CITIES.map(
-    (c) => `<button data-city="${c}" aria-pressed="${state.cities.has(c)}">${c}</button>`
-  ).join("");
+  $("cityFilter").innerHTML = `<button data-city="*" aria-pressed="${allCities()}">All</button>`
+    + CITIES.map((c) => `<button data-city="${c}" aria-pressed="${!allCities() && state.cities.has(c)}">${c}</button>`).join("");
 }
 $("cityFilter").addEventListener("click", (e) => {
   const city = e.target.dataset?.city;
   if (!city) return;
-  if (state.cities.has(city) && state.cities.size > 1) state.cities.delete(city);
+  if (city === "*") state.cities = new Set(CITIES);
+  else if (allCities()) state.cities = new Set([city]);
+  else if (state.cities.has(city)) state.cities.delete(city);
   else state.cities.add(city);
+  if (!state.cities.size) state.cities = new Set(CITIES);
   drawCityButtons();
   renderAll();
 });
+
+// Is a job in any selected city? Older data only has "city", newer has "cities".
+const inCities = (j) => (j.cities ?? [j.city]).some((c) => state.cities.has(c));
+const cityLabel = (j) => (j.cities ?? [j.city]).join(" · ");
 
 // ---------- TRENDS ----------
 // Open jobs for a role on a date, counting only the given companies and selected cities.
@@ -175,7 +184,7 @@ function filteredJobs() {
   const newOnly = $("newOnly").checked;
   const sal = $("salaryFilter").value, edu = $("eduFilter").value;
   return state.jobs.filter((j) =>
-    state.cities.has(j.city) &&
+    inCities(j) &&
     inArea(j.role, role) &&
     (!sal || (sal === "listed" ? !!j.salary : !!j.salary && (j.salary.max ?? j.salary.min) >= +sal)) &&
     (!edu || (edu === "fresher" ? j.level === "Fresher" || j.level === "Internship" : (j.degrees ?? []).includes(edu))) &&
@@ -201,8 +210,8 @@ function renderCompanies() {
   const total = list.reduce((s, [, js]) => s + js.length, 0);
   let note = `${fmt(list.length)} companies · ${fmt(total)} openings${list.length > shown.length ? " (showing top 150)" : ""}`;
   // Be upfront: most Indian postings don't state salary or degree.
-  const inCities = state.jobs.filter((j) => state.cities.has(j.city));
-  const share = (f) => Math.round((inCities.filter(f).length / (inCities.length || 1)) * 100);
+  const here = state.jobs.filter(inCities);
+  const share = (f) => Math.round((here.filter(f).length / (here.length || 1)) * 100);
   if ($("salaryFilter").value) note += ` · only ${share((j) => j.salary)}% of postings state a salary`;
   if ($("eduFilter").value && $("eduFilter").value !== "fresher") note += ` · ${share((j) => j.degrees?.length)}% mention a degree`;
   $("companyCount").textContent = note;
@@ -219,7 +228,7 @@ function renderCompanies() {
             ${isNew(j) ? `<span class="chip new">NEW</span>` : ""}
             <span class="chip ${j.type === "Internship" ? "intern" : ""}">${j.type}</span>
             <span class="chip">${esc(j.mode)}</span>
-            <span class="chip">${esc(j.city)}</span>
+            <span class="chip">${esc(cityLabel(j))}</span>
             <span class="chip">${esc(j.role)}</span>
             ${j.salary ? `<span class="chip pay">${lpa(j.salary)}</span>` : ""}
             ${j.level === "Fresher" ? `<span class="chip intern">Fresher-friendly</span>` : ""}
@@ -247,7 +256,7 @@ function renderSources() {
 // ---------- SKILLS ----------
 function renderSkills() {
   const role = $("skillRoleFilter").value;
-  const jobs = state.jobs.filter((j) => state.cities.has(j.city) && inArea(j.role, role));
+  const jobs = state.jobs.filter((j) => inCities(j) && inArea(j.role, role));
   if (!jobs.length) {
     $("skillList").innerHTML = `<li class="empty">No postings yet.</li>`;
     return;
@@ -276,7 +285,7 @@ function renderSkills() {
 // How much a skill is asked for: share of postings overall and the roles that ask most.
 function skillDemand(name) {
   const re = SKILLS[name];
-  const jobs = state.jobs.filter((j) => state.cities.has(j.city));
+  const jobs = state.jobs.filter(inCities);
   const byRole = {};
   let hits = 0;
   for (const j of jobs) {

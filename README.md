@@ -80,6 +80,8 @@ After each run, the **Company feeds** list at the bottom of the Companies tab sh
 
 ## Good to know
 
+- **City buttons:** "All" shows everything. Tapping a city shows only that city; tap more cities to add them, tap again to remove. Jobs listed in several cities (e.g. "Bengaluru · Coimbatore") appear under each. The Trends tab counts each job once, under the first city it lists.
+
 - **Trends compare only companies whose feed worked on both dates**, so one broken feed doesn't look like a hiring crash.
 - Counts cover **the companies in your list**, not all of India. Mass recruiters (TCS, Infosys, Wipro) use systems this can't read; their hiring mostly runs through campus placement drives.
 - **Roles** are decided from job titles by the patterns in `config.json`; the first matching role wins. Each role belongs to a department, and each department is marked IT or Non-IT (`departments` in `config.json`). Titles that match nothing land in "Other roles".

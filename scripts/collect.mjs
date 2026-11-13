@@ -295,11 +295,12 @@ function workdayDate(text = "") {
 const cityRules = Object.entries(config.cities).map(([city, pattern]) => [city, new RegExp(pattern, "i")]);
 const roleRules = config.roles.map((r) => [r.name, new RegExp(r.match, "i")]);
 
-function cityOf(job) {
-  for (const [city, re] of cityRules) if (re.test(job.location)) return city;
+// Every one of our places a job is listed in (e.g. "Bengaluru · Coimbatore" → both).
+function citiesOf(job) {
+  const found = cityRules.filter(([, re]) => re.test(job.location)).map(([city]) => city);
   const remote = job.mode === "Remote" || /remote/i.test(job.location);
-  if (remote && /india/i.test(job.location)) return "Remote (India)";
-  return null; // not one of our places
+  if (remote && /india/i.test(job.location)) found.push("Remote (India)");
+  return found; // empty = not one of our places
 }
 
 const roleOf = (title) => roleRules.find(([, re]) => re.test(title))?.[0] ?? null;
@@ -378,16 +379,18 @@ for (const company of config.companies) {
     // Keep only jobs in our cities that match a role.
     const kept = [];
     for (const j of raw) {
-      const city = cityOf(j);
-      const role = city && roleOf(j.title);
-      if (role) kept.push({ j, city, role });
+      const cities = citiesOf(j);
+      const role = cities.length && roleOf(j.title);
+      // "city" = first place listed (used for trend counts, so a job is counted once);
+      // "cities" = all our places it's listed in (used by the filters).
+      if (role) kept.push({ j, city: cities[0], cities, role });
     }
     // Open the full posting when the feed left out the description: 6 at a time, max 150 per company.
     const needText = kept.filter(({ j }) => !j.text && j.detail).slice(0, company.maxDetails ?? 150);
     await eachLimit(needText, 6, async ({ j }) => {
       try { j.text = await j.detail(); } catch { /* fine, keep going without it */ }
     });
-    for (const { j, city, role } of kept) {
+    for (const { j, city, cities, role } of kept) {
       const type = typeOf(j);
       const { level, minYears } = levelOf(j, type);
       jobs.push({
@@ -396,6 +399,7 @@ for (const company of config.companies) {
         title: j.title.trim(),
         role,
         city,
+        cities,
         location: j.location,
         url: j.url,
         created: j.created,
