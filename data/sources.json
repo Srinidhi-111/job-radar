@@ -1,53 +1,53 @@
 {
- "updated": "2026-11-11T15:30:21.362Z",
+ "updated": "2026-11-13T09:25:58.153Z",
  "sources": [
   {
    "name": "Freshworks",
    "ats": "smartrecruiters",
    "id": "Freshworks",
    "ok": true,
-   "total": 32,
-   "matched": 14
+   "total": 33,
+   "matched": 28
   },
   {
    "name": "Toast",
    "ats": "greenhouse",
    "id": "toast",
    "ok": true,
-   "total": 340,
-   "matched": 13
+   "total": 357,
+   "matched": 20
   },
   {
    "name": "Razorpay",
    "ats": "greenhouse",
    "id": "razorpaysoftwareprivatelimited",
    "ok": true,
-   "total": 26,
-   "matched": 11
+   "total": 25,
+   "matched": 20
   },
   {
    "name": "CRED",
    "ats": "lever",
    "id": "cred",
    "ok": true,
-   "total": 14,
-   "matched": 2
+   "total": 15,
+   "matched": 11
   },
   {
    "name": "Meesho",
    "ats": "lever",
    "id": "meesho",
    "ok": true,
-   "total": 49,
-   "matched": 15
+   "total": 48,
+   "matched": 46
   },
   {
    "name": "Paytm",
    "ats": "lever",
    "id": "paytm",
    "ok": true,
-   "total": 201,
-   "matched": 5
+   "total": 202,
+   "matched": 40
   },
   {
    "name": "Groww",
@@ -55,47 +55,39 @@
    "id": "groww",
    "ok": true,
    "total": 9,
-   "matched": 0
-  },
-  {
-   "name": "BrowserStack",
-   "ats": "workable",
-   "id": "browserstack-2",
-   "ok": true,
-   "total": 0,
-   "matched": 0
+   "matched": 8
   },
   {
    "name": "HackerRank",
    "ats": "greenhouse",
    "id": "hackerrank",
    "ok": true,
-   "total": 29,
-   "matched": 12
+   "total": 31,
+   "matched": 18
   },
   {
    "name": "Databricks",
    "ats": "greenhouse",
    "id": "databricks",
    "ok": true,
-   "total": 916,
-   "matched": 64
+   "total": 906,
+   "matched": 84
   },
   {
    "name": "Stripe",
    "ats": "greenhouse",
    "id": "stripe",
    "ok": true,
-   "total": 782,
-   "matched": 14
+   "total": 787,
+   "matched": 43
   },
   {
    "name": "Rubrik",
    "ats": "greenhouse",
    "id": "rubrik",
    "ok": true,
-   "total": 153,
-   "matched": 15
+   "total": 181,
+   "matched": 35
   },
   {
    "name": "Harness",
@@ -103,54 +95,54 @@
    "id": "harnessinc",
    "ok": true,
    "total": 69,
-   "matched": 12
+   "matched": 16
   },
   {
    "name": "Zscaler",
    "ats": "greenhouse",
    "id": "zscaler",
    "ok": true,
-   "total": 372,
-   "matched": 51
+   "total": 378,
+   "matched": 76
   },
   {
    "name": "GitLab (remote)",
    "ats": "greenhouse",
    "id": "gitlab",
    "ok": true,
-   "total": 259,
-   "matched": 25
+   "total": 254,
+   "matched": 37
   },
   {
    "name": "Twilio",
    "ats": "greenhouse",
    "id": "twilio",
    "ok": true,
-   "total": 125,
-   "matched": 9
+   "total": 116,
+   "matched": 11
   },
   {
    "name": "Okta",
    "ats": "greenhouse",
    "id": "okta",
    "ok": true,
-   "total": 378,
-   "matched": 79
+   "total": 368,
+   "matched": 103
   },
   {
    "name": "Glean",
    "ats": "greenhouse",
    "id": "gleanwork",
    "ok": true,
-   "total": 124,
-   "matched": 10
+   "total": 120,
+   "matched": 20
   },
   {
    "name": "Druva",
    "ats": "greenhouse",
    "id": "druva",
    "ok": true,
-   "total": 28,
+   "total": 29,
    "matched": 0
   },
   {
@@ -158,24 +150,24 @@
    "ats": "ashby",
    "id": "sarvam",
    "ok": true,
-   "total": 48,
-   "matched": 29
+   "total": 49,
+   "matched": 40
   },
   {
    "name": "Bosch",
    "ats": "smartrecruiters",
    "id": "BoschGroup",
    "ok": true,
-   "total": 603,
-   "matched": 293
+   "total": 592,
+   "matched": 478
   },
   {
    "name": "ServiceNow",
    "ats": "smartrecruiters",
    "id": "ServiceNow",
    "ok": true,
-   "total": 79,
-   "matched": 7
+   "total": 82,
+   "matched": 20
   },
   {
    "name": "NVIDIA",
@@ -184,8 +176,8 @@
    "host": "nvidia.wd5.myworkdayjobs.com",
    "site": "NVIDIAExternalCareerSite",
    "ok": true,
-   "total": 197,
-   "matched": 176
+   "total": 196,
+   "matched": 194
   },
   {
    "name": "Salesforce",
@@ -194,8 +186,8 @@
    "host": "salesforce.wd12.myworkdayjobs.com",
    "site": "External_Career_Site",
    "ok": true,
-   "total": 69,
-   "matched": 11
+   "total": 72,
+   "matched": 72
   },
   {
    "name": "Adobe",
@@ -204,8 +196,8 @@
    "host": "adobe.wd5.myworkdayjobs.com",
    "site": "external_experienced",
    "ok": true,
-   "total": 26,
-   "matched": 4
+   "total": 25,
+   "matched": 25
   },
   {
    "name": "Intel",
@@ -214,17 +206,8 @@
    "host": "intel.wd1.myworkdayjobs.com",
    "site": "External",
    "ok": true,
-   "total": 93,
-   "matched": 78
-  },
-  {
-   "name": "Walmart Global Tech",
-   "ats": "workday",
-   "id": "walmart",
-   "host": "walmart.wd5.myworkdayjobs.com",
-   "site": "WalmartExternal",
-   "ok": false,
-   "error": "HTTP 422"
+   "total": 98,
+   "matched": 98
   },
   {
    "name": "PayPal",
@@ -233,17 +216,8 @@
    "host": "paypal.wd1.myworkdayjobs.com",
    "site": "jobs",
    "ok": true,
-   "total": 18,
-   "matched": 8
-  },
-  {
-   "name": "Dell",
-   "ats": "workday",
-   "id": "dell",
-   "host": "dell.wd1.myworkdayjobs.com",
-   "site": "External",
-   "ok": false,
-   "error": "HTTP 422"
+   "total": 17,
+   "matched": 17
   },
   {
    "name": "Target",
@@ -252,8 +226,8 @@
    "host": "target.wd5.myworkdayjobs.com",
    "site": "targetcareers",
    "ok": true,
-   "total": 71,
-   "matched": 38
+   "total": 63,
+   "matched": 63
   },
   {
    "name": "Workday",
@@ -273,7 +247,7 @@
    "site": "ExternalCareerSite",
    "ok": true,
    "total": 75,
-   "matched": 30
+   "matched": 75
   },
   {
    "name": "Caterpillar",
@@ -282,8 +256,8 @@
    "host": "cat.wd5.myworkdayjobs.com",
    "site": "CaterpillarCareers",
    "ok": true,
-   "total": 124,
-   "matched": 60
+   "total": 117,
+   "matched": 117
   },
   {
    "name": "Philips",
@@ -292,16 +266,16 @@
    "host": "philips.wd3.myworkdayjobs.com",
    "site": "jobs-and-careers",
    "ok": true,
-   "total": 46,
-   "matched": 19
+   "total": 47,
+   "matched": 47
   },
   {
    "name": "Amazon",
    "ats": "amazon",
    "id": "amazon",
    "ok": true,
-   "total": 2092,
-   "matched": 543
+   "total": 2107,
+   "matched": 1089
   },
   {
    "name": "LinkedIn",
@@ -309,23 +283,23 @@
    "id": "linkedin",
    "ok": true,
    "total": 23,
-   "matched": 6
+   "matched": 14
   },
   {
    "name": "Acceldata",
    "ats": "lever",
    "id": "acceldata",
    "ok": true,
-   "total": 35,
-   "matched": 13
+   "total": 38,
+   "matched": 15
   },
   {
    "name": "ValGenesis",
    "ats": "lever",
    "id": "valgenesis",
    "ok": true,
-   "total": 11,
-   "matched": 8
+   "total": 12,
+   "matched": 10
   },
   {
    "name": "100ms",
@@ -333,7 +307,7 @@
    "id": "100ms",
    "ok": true,
    "total": 10,
-   "matched": 6
+   "matched": 10
   },
   {
    "name": "Safe Security",
@@ -348,7 +322,7 @@
    "ats": "lever",
    "id": "equativ",
    "ok": true,
-   "total": 22,
+   "total": 21,
    "matched": 0
   },
   {
@@ -356,7 +330,7 @@
    "ats": "lever",
    "id": "dexcarehealth",
    "ok": true,
-   "total": 5,
+   "total": 3,
    "matched": 3
   },
   {
@@ -364,7 +338,7 @@
    "ats": "greenhouse",
    "id": "yugabyte",
    "ok": true,
-   "total": 14,
+   "total": 15,
    "matched": 0
   },
   {
@@ -372,8 +346,8 @@
    "ats": "greenhouse",
    "id": "commerceiq",
    "ok": true,
-   "total": 17,
-   "matched": 5
+   "total": 19,
+   "matched": 10
   },
   {
    "name": "Enterpret",
@@ -381,14 +355,14 @@
    "id": "enterpret",
    "ok": true,
    "total": 14,
-   "matched": 5
+   "matched": 7
   },
   {
    "name": "Prophecy",
    "ats": "greenhouse",
    "id": "prophecysimpledatalabs",
    "ok": true,
-   "total": 6,
+   "total": 4,
    "matched": 1
   },
   {
