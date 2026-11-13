@@ -178,16 +178,33 @@ function renderTrends() {
 const latestRun = () => Object.keys(state.history).sort().at(-1);
 const isNew = (j) => Object.keys(state.history).length > 1 && j.firstSeen === latestRun();
 
+// Minimum years a job asks for: from "3+ years" in the posting, or 0 for freshers/interns.
+// null = the posting doesn't say.
+function yearsOf(j) {
+  if (j.level === "Fresher" || j.level === "Internship") return 0;
+  return typeof j.minYears === "number" ? j.minYears : null;
+}
+
+// exp is "fresher", "none", or a range like "2-5" (from 2 up to, but not including, 5).
+function expMatches(j, exp) {
+  const y = yearsOf(j);
+  if (exp === "fresher") return y === 0;
+  if (exp === "none") return y === null;
+  const [lo, hi] = exp.split("-").map(Number);
+  return y !== null && y >= lo && (lo === 0 ? y <= hi : y < hi);
+}
+
 function filteredJobs() {
   const q = $("companySearch").value.trim().toLowerCase();
   const role = $("roleFilter").value, type = $("typeFilter").value, mode = $("modeFilter").value;
   const newOnly = $("newOnly").checked;
-  const sal = $("salaryFilter").value, edu = $("eduFilter").value;
+  const sal = $("salaryFilter").value, edu = $("eduFilter").value, exp = $("expFilter").value;
   return state.jobs.filter((j) =>
     inCities(j) &&
     inArea(j.role, role) &&
     (!sal || (sal === "listed" ? !!j.salary : !!j.salary && (j.salary.max ?? j.salary.min) >= +sal)) &&
-    (!edu || (edu === "fresher" ? j.level === "Fresher" || j.level === "Internship" : (j.degrees ?? []).includes(edu))) &&
+    (!edu || (j.degrees ?? []).includes(edu)) &&
+    (!exp || expMatches(j, exp)) &&
     (!type || j.type === type) &&
     (!mode || j.mode === mode) &&
     (!newOnly || isNew(j)) &&
@@ -213,7 +230,8 @@ function renderCompanies() {
   const here = state.jobs.filter(inCities);
   const share = (f) => Math.round((here.filter(f).length / (here.length || 1)) * 100);
   if ($("salaryFilter").value) note += ` · only ${share((j) => j.salary)}% of postings state a salary`;
-  if ($("eduFilter").value && $("eduFilter").value !== "fresher") note += ` · ${share((j) => j.degrees?.length)}% mention a degree`;
+  if ($("eduFilter").value) note += ` · ${share((j) => j.degrees?.length)}% mention a degree`;
+  if ($("expFilter").value && $("expFilter").value !== "none") note += ` · ${share((j) => yearsOf(j) !== null)}% state experience`;
   $("companyCount").textContent = note;
 
   $("companyList").innerHTML = shown.map(([company, js]) => {
@@ -336,7 +354,7 @@ function renderAll() {
 }
 
 ["trendSort", "trendArea"].forEach((id) => $(id).addEventListener("change", renderTrends));
-["companySearch", "roleFilter", "typeFilter", "modeFilter", "salaryFilter", "eduFilter", "newOnly"].forEach((id) =>
+["companySearch", "roleFilter", "typeFilter", "modeFilter", "salaryFilter", "expFilter", "eduFilter", "newOnly"].forEach((id) =>
   $(id).addEventListener("input", renderCompanies));
 $("skillRoleFilter").addEventListener("change", renderSkills);
 
