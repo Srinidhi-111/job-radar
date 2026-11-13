@@ -251,9 +251,12 @@ const readers = {
           else if (f.id && cityRe.test(f.descriptor ?? "")) (facets[p] ??= []).push(f.id);
         }
       })(first.facets);
-      if (!Object.keys(facets).length) return []; // no openings in our cities right now
-      await collectPages(facets, "");
-      return [...jobs.values()];
+      // If the location filter has our cities, use it. If not (some sites name places
+      // differently), fall through to searching by city name below.
+      if (Object.keys(facets).length) {
+        await collectPages(facets, "");
+        return [...jobs.values()];
+      }
     } catch (err) {
       if (!/HTTP 4(00|22)/.test(err.message)) throw err;
     }
