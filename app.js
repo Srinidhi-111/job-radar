@@ -119,38 +119,107 @@ function sparkline(values) {
 let outlookGroup = "Roles";
 const pctLabel = (v) => v === "stable" ? "Stable" : `${v > 0 ? "+" : ""}${v}%`;
 const pctNum = (v) => (v === "stable" ? 0 : v);
+const monthName = (m) => new Date(`${m}-01T00:00:00`).toLocaleString("en-IN", { month: "short" });
+
+// Turn a field's monthly numbers into a plain-English direction.
+function trendOf(series, months) {
+  const have = months.filter((m) => series[m] !== undefined);
+  const vals = have.map((m) => pctNum(series[m]));
+  const recent = vals.slice(-3), earlier = vals.slice(0, -3);
+  const avg = (a) => a.reduce((x, y) => x + y, 0) / (a.length || 1);
+  const r = avg(recent);
+  let label;
+  if (vals.length < 3) {
+    label = vals.every((v) => v >= 5) ? "Growing (limited data)" : vals.every((v) => v <= -3) ? "Falling (limited data)" : "Limited data";
+  } else if (recent.every((v) => v >= 5)) label = "Rising steadily";
+  else if (recent.every((v) => v <= -3)) label = "Falling steadily";
+  else if (vals.at(-1) >= 3 && vals.at(-2) >= 0 && Math.min(...vals.slice(0, -2)) <= -5) label = "Recovering";
+  else if (earlier.length && avg(earlier) >= 10 && r < avg(earlier) - 6) label = "Cooling";
+  else if (r >= 5 && recent.every((v) => v > -3)) label = "Mostly growing";
+  else if (r <= -3 && recent.every((v) => v < 5)) label = "Mostly falling";
+  else label = "Mixed";
+  const bucket = /Rising|Mostly growing|Recovering|Growing/.test(label) ? "grow" : /Falling|falling/.test(label) ? "fall" : "mixed";
+  return { label, bucket, score: r, latest: series[have.at(-1)], latestMonth: have.at(-1), enough: vals.length >= 3 };
+}
+
+// One bar per month: up = more postings than a year ago, down = fewer. Gaps = not reported.
+function monthBars(series, months) {
+  const max = Math.max(10, ...months.map((m) => Math.abs(pctNum(series[m] ?? 0))));
+  const w = 100 / months.length;
+  const bars = months.map((m, i) => {
+    if (series[m] === undefined) return `<rect x="${i * w + w * 0.3}" y="19" width="${w * 0.4}" height="2" class="gap"/>`;
+    const v = pctNum(series[m]);
+    const h = Math.max(1.5, (Math.abs(v) / max) * 18);
+    return `<rect x="${i * w + w * 0.15}" y="${v >= 0 ? 20 - h : 20}" width="${w * 0.7}" height="${h}" rx="1" class="${v > 0 ? "pos" : v < 0 ? "neg" : "zero"}"><title>${monthName(m)}: ${pctLabel(series[m])}</title></rect>`;
+  }).join("");
+  const labels = months.map((m) => `<span>${monthName(m).slice(0, 3)}</span>`).join("");
+  return `<div class="mchart"><svg class="mbars" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="100" y2="20"/>${bars}</svg><div class="mlabels" style="grid-template-columns:repeat(${months.length},1fr)">${labels}</div></div>`;
+}
 
 function renderOutlook() {
   const o = state.outlook;
   if (!o?.groups) return;
   $("outlook").hidden = false;
-  const [prev, latest] = o.periods;
-  $("outlookAbout").textContent = `${o.about} Overall: ${pctLabel(o.overall[latest])} in ${latest}, ${pctLabel(o.overall[prev])} in ${prev}.`;
-  $("outlookTabs").innerHTML = Object.keys(o.groups).map((g) =>
+  const months = o.months;
+  const period = `${monthName(months[0])}–${monthName(months.at(-1))} ${months.at(-1).slice(0, 4)}`;
+
+  // Headline: the clearest risers and fallers among roles and industries (only fields with enough data).
+  const all = [...(o.groups.Roles ?? []), ...(o.groups.Industries ?? [])]
+    .map((r) => ({ name: r.name, t: trendOf(r.series, months) })).filter((r) => r.t.enough);
+  const up = all.filter((r) => r.t.bucket === "grow").sort((a, b) => b.t.score - a.t.score).slice(0, 3);
+  const down = all.filter((r) => r.t.bucket === "fall").sort((a, b) => a.t.score - b.t.score).slice(0, 3);
+  // Short names for the headline: "Global Capability Centres (GCCs)" → "GCCs", "Hospitality & travel" → "Hospitality".
+  const short = (n) => esc(n.match(/\(([^)]+)\)$/)?.[1] ?? n.replace(/ & .*$/, ""));
+  $("outlookHeadline").innerHTML =
+    (up.length ? `<p><span class="hl up">Growing</span> ${up.map((r) => short(r.name)).join(", ")}</p>` : "")
+    + (down.length ? `<p><span class="hl down">Losing ground</span> ${down.map((r) => short(r.name)).join(", ")}</p>` : "");
+
+  const groups = [...Object.keys(o.groups), ...(o.longTerm ? ["By 2030"] : [])];
+  $("outlookTabs").innerHTML = groups.map((g) =>
     `<button role="tab" data-group="${esc(g)}" aria-selected="${g === outlookGroup}">${esc(g)}</button>`).join("");
 
-  // Sort by the most recent figure available for each row.
-  const latestOf = (r) => (r.values[latest] !== undefined ? [latest, r.values[latest]] : [prev, r.values[prev]]);
-  const rows = [...o.groups[outlookGroup]].sort((a, b) => pctNum(latestOf(b)[1]) - pctNum(latestOf(a)[1]));
-  const max = Math.max(...rows.map((r) => Math.abs(pctNum(latestOf(r)[1]))), 1);
+  if (outlookGroup === "By 2030") return renderLongTerm(o.longTerm);
+  $("outlookAbout").textContent = `How hiring across India has moved over the last six months (${period}). Tap a field to see month by month.`;
 
-  $("outlookRows").innerHTML = rows.map((r) => {
-    const [period, v] = latestOf(r);
-    const n = pctNum(v);
-    const cls = v === "stable" || Math.abs(n) < 3 ? "flat" : n > 0 ? "up" : "down";
-    const other = period === latest && r.values[prev] !== undefined ? `${prev.slice(0, 3)} ${pctLabel(r.values[prev])}` : "";
-    return `<li class="ol-row">
-      <span class="ol-name">${esc(r.name)}</span>
-      <span class="badge ${cls}">${pctLabel(v)}</span>
-      <div class="ol-bar ${cls}"><span style="width:${(Math.abs(n) / max) * 100}%"></span></div>
-      <span class="ol-meta">${esc(period)}${other ? ` · ${esc(other)}` : ""}</span>
-      ${r.area ? `<button class="link" data-area="${esc(r.area)}">See jobs →</button>` : ""}
-    </li>`;
+  const rows = o.groups[outlookGroup].map((r) => ({ ...r, t: trendOf(r.series, months) }));
+  const sections = [["grow", "Growing"], ["mixed", "Mixed or slowing"], ["fall", "Losing ground"]];
+  $("outlookRows").innerHTML = sections.map(([key, title]) => {
+    const list = rows.filter((r) => r.t.bucket === key).sort((a, b) => b.t.enough - a.t.enough || b.t.score - a.t.score);
+    if (!list.length) return "";
+    return `<li class="ol-head ${key}">${title}</li>` + list.map((r) => `
+      <li><details class="ol-item">
+        <summary>
+          <span class="ol-name">${esc(r.name)}</span>
+          <span class="badge ${key === "grow" ? "up" : key === "fall" ? "down" : "flat"}">${esc(r.t.label.replace(" (limited data)", "*"))}</span>
+        </summary>
+        ${monthBars(r.series, months)}
+        <p class="ol-meta">${monthName(r.t.latestMonth)}: ${pctLabel(r.t.latest)} compared with a year earlier${r.t.enough ? "" : " · only reported " + (Object.keys(r.series).length === 1 ? "once" : "twice") + " so far"}</p>
+        ${r.area ? `<button class="link" data-area="${esc(r.area)}">See jobs →</button>` : ""}
+      </details></li>`).join("");
   }).join("");
 
-  $("outlookNote").textContent = [o.notes?.[outlookGroup], o.caveat].filter(Boolean).join(" ");
-  $("outlookSources").innerHTML = `<ul>${o.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>
-    <p>These are year-on-year changes: October 2026 compared with October 2025. A positive number means more job postings than a year ago, not that a field is easy to get into. Updated ${esc(o.updated)}.</p>`;
+  const overall = months.map((m) => `${monthName(m)} ${pctLabel(o.overall[m] ?? "–")}`).join(" · ");
+  $("outlookSources").innerHTML = `
+    <p>Each month's bar compares job postings in that field with the <strong>same month a year earlier</strong> (this removes seasonal swings like appraisal season or Diwali). Bar up = more postings than a year ago, bar down = fewer.</p>
+    <p><strong>Rising steadily</strong> = at least +5% in each of the last 3 reports. <strong>Falling steadily</strong> = at least −3% in each. <strong>Recovering</strong> = was falling, now positive. <strong>Cooling</strong> = was strong, now much weaker. <strong>*</strong> = reported only once or twice, so the direction is less certain.</p>
+    ${o.notes?.[outlookGroup] ? `<p>${esc(o.notes[outlookGroup])}</p>` : ""}
+    <p>${esc(o.caveat)}</p>
+    <p>All of India, all fields: ${esc(overall)}.</p>
+    <p>More postings means more openings, not that a field is easy to get into. Updated ${esc(o.updated)}.</p>
+    <ul>${o.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>`;
+}
+
+function renderLongTerm(lt) {
+  $("outlookAbout").textContent = "Expected change in these jobs worldwide between 2025 and 2030.";
+  const max = Math.max(...lt.growing.map(([, v]) => v), ...lt.shrinking.map(([, v]) => -v));
+  const row = ([name, v]) => `<li class="ol-row">
+      <span class="ol-name">${esc(name)}</span><span class="badge ${v > 0 ? "up" : "down"}">${v > 0 ? "+" : ""}${v}%</span>
+      <div class="ol-bar ${v > 0 ? "up" : "down"}"><span style="width:${(Math.abs(v) / max) * 100}%"></span></div></li>`;
+  $("outlookRows").innerHTML = `<li class="ol-head grow">Fastest growing</li>${lt.growing.map(row).join("")}
+    <li class="ol-head fall">Fastest shrinking</li>${lt.shrinking.map(row).join("")}`;
+  $("outlookSources").innerHTML = `<p>${esc(lt.about)}</p>
+    <p>Most of the fastest-growing jobs are tech and data roles; most shrinking ones are clerical and routine tasks that software and AI now handle.</p>
+    <ul>${lt.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>`;
 }
 
 $("outlookTabs").addEventListener("click", (e) => {

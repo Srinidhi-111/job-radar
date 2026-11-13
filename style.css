@@ -282,3 +282,36 @@ dialog#guide::backdrop { background: rgba(4,6,13,.7); backdrop-filter: blur(4px)
 .ol-bar.flat span { background: #4b4870; min-width: 4px; }
 .ol-meta { font: 11px var(--mono); color: var(--muted); }
 .ol-row button.link { padding: 0; justify-self: end; font-size: 12px; }
+
+.ol-months { display: flex; flex-direction: column; gap: 2px; margin: 0 0 10px; font: 11px var(--mono); color: var(--muted); }
+.ol-head { margin-top: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--line); font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.ol-head.grow { color: var(--green); }
+.ol-head.mixed { color: var(--muted); }
+.ol-head.fall { color: #b7b3d6; }
+.mchart { grid-column: 1 / -1; }
+.mbars { display: block; width: 100%; height: 34px; }
+.mlabels { display: grid; text-align: center; font: 10px var(--mono); color: var(--muted); opacity: .8; }
+.mbars line { stroke: var(--line); stroke-width: .6; vector-effect: non-scaling-stroke; }
+.mbars .pos { fill: var(--green); opacity: .85; }
+.mbars .neg { fill: #8c87b8; }
+.mbars .zero { fill: var(--muted); }
+.mbars .gap { fill: var(--line); }
+
+/* compact outlook */
+.ol-headline { margin: 4px 0 10px; display: grid; gap: 4px; font-size: 14px; }
+.ol-headline p { margin: 0; }
+.hl { font: 600 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 6px; margin-right: 6px; }
+.hl.up { color: var(--green); background: rgba(110,231,183,.1); }
+.hl.down { color: #c9c5e6; background: rgba(140,135,184,.15); }
+.ol-rows > li:not(.ol-head):not(.ol-row) { list-style: none; }
+.ol-item summary { display: flex; justify-content: space-between; align-items: center; gap: 10px; cursor: pointer; list-style: none; padding: 4px 0; }
+.ol-item summary::-webkit-details-marker { display: none; }
+.ol-item summary .ol-name::before { content: "›"; display: inline-block; width: 12px; color: var(--muted); transition: transform .2s; }
+.ol-item[open] summary .ol-name::before { transform: rotate(90deg); }
+.ol-item[open] { padding-bottom: 6px; }
+.ol-item .ol-meta { margin: 4px 0 0; }
+.ol-item button.link { padding-top: 4px; }
+.ol-rows { gap: 6px; }
+.outlook .sources p { font-size: 13px; margin: 8px 0; }
+.ol-item summary .badge { white-space: nowrap; flex: none; }
+.ol-item summary .ol-name { flex: 1; min-width: 0; }

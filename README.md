@@ -73,16 +73,30 @@ After each run, the **Company feeds** list at the bottom of the Companies tab sh
 
 ## India-wide outlook (top of the Trends tab)
 
-Shows which roles, industries, experience levels and cities are growing or falling **across India**, year on year, from Naukri's monthly JobSpeak hiring index. The list below it shows openings at the companies Job Radar tracks.
+Shows which roles, industries, experience levels and cities are **growing or losing ground across India**, using the last six monthly Naukri JobSpeak reports. Each month is compared with the same month a year earlier (this removes seasonal swings). Each field gets a small month-by-month bar chart and a label:
 
-The figures live in `outlook.json` and are updated by hand once a month (Naukri publishes early each month):
+| Label | Meaning (based on the last 3 reports) |
+|---|---|
+| Rising steadily | +5% or more in each |
+| Mostly growing | average +5% or more, none clearly negative |
+| Recovering | was falling earlier, positive in the latest reports |
+| Cooling | was strongly positive earlier, now much weaker |
+| Mixed | ups and downs |
+| Mostly falling / Falling steadily | the negative versions of the above |
+| … (limited data) | reported fewer than 3 times |
+
+A **By 2030** view adds the World Economic Forum's list of the fastest growing and shrinking jobs (Future of Jobs Report 2025).
+
+### Updating it each month (about 10 minutes)
+
+Naukri publishes JobSpeak early each month. The numbers live in `outlook.json`:
 
 1. Search "Naukri JobSpeak" + the month and open the report or a news article about it.
-2. In `outlook.json`, set `periods` to the last two months, e.g. `["Oct 2026", "Nov 2026"]`, and update each row's `values` with the same month names. Use a number for a % change (`12`, `-4`) or `"stable"`. Leave a month out if the report doesn't give it.
-3. Update `overall`, `sources`, `updated` and, if needed, `caveat`.
-4. Commit and push. No workflow run needed.
+2. Add the new month to `months` (e.g. `"2026-11"`) and remove the oldest, so there are 6.
+3. For each row, add the new month to `series`: a number for a % change (`12`, `-4`), `"stable"` if the report says so, or leave it out if not reported. Remove the dropped month.
+4. Update `overall`, `sources` and `updated`. Commit and push; no workflow run needed.
 
-Each row can have an `area` that links "See jobs →" to the Companies tab: `d:` + a department name or `r:` + a role name from `config.json`.
+Each row can have an `area` that links "See jobs →" to the Companies tab: `d:` + department, `r:` + role, or `g:IT` / `g:Non-IT`.
 
 ## Résumé tab
 

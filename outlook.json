@@ -1,59 +1,519 @@
 {
-  "updated": "2026-11-13",
-  "about": "Year-on-year change in white-collar job postings across India (Naukri JobSpeak index). Positive = more postings than the same month last year.",
-  "periods": ["Sep 2026", "Oct 2026"],
-  "caveat": "October 2026 looks extra strong partly because Diwali fell in October 2025, which lowered last year's number. Read October together with September.",
-  "sources": [
-    { "title": "Naukri JobSpeak — September 2026 data (Naukri blog, 6 Oct 2026)", "url": "https://www.naukri.com/blog/naukri-jobspeak-october-2026-white-collar-hiring-ai-ml-growth/" },
-    { "title": "Naukri JobSpeak — October 2026 data (Wocult, 8 Nov 2026)", "url": "https://www.wocult.com/posts/hiring-is-up-14-per-cent-software-engineering-hiring-is-up-1" },
-    { "title": "Naukri JobSpeak — October 2026 data (Remunance, 4 Nov 2026)", "url": "https://remunance.com/industry-news/naukri-jobspeak-october-2026-white-collar-hiring/" }
+ "updated": "2026-11-13",
+ "about": "How job postings in each field changed compared with the same month a year earlier, across India, for each of the last six months (Naukri JobSpeak). A field that stays positive month after month is growing; one that stays negative is losing ground.",
+ "months": [
+  "2026-05",
+  "2026-06",
+  "2026-07",
+  "2026-08",
+  "2026-09",
+  "2026-10"
+ ],
+ "caveat": "Each month is compared with the same month last year, which removes seasonal swings like appraisal season or Diwali. October 2026 still looks extra strong partly because Diwali fell in October 2025. Not every field is reported every month, so some have gaps.",
+ "overall": {
+  "2026-05": 1,
+  "2026-06": 6,
+  "2026-07": 5,
+  "2026-08": 14,
+  "2026-09": 2,
+  "2026-10": 14
+ },
+ "groups": {
+  "Roles": [
+   {
+    "name": "AI / Machine Learning",
+    "series": {
+     "2026-06": 25,
+     "2026-07": 33,
+     "2026-08": 31,
+     "2026-09": 20,
+     "2026-10": 32
+    },
+    "area": "d:AI & Data"
+   },
+   {
+    "name": "IT & information security",
+    "series": {
+     "2026-06": 18,
+     "2026-08": 32
+    },
+    "area": "d:Cloud & Security"
+   },
+   {
+    "name": "Healthcare & life sciences",
+    "series": {
+     "2026-06": 22,
+     "2026-08": 34
+    },
+    "area": "d:Science & Healthcare"
+   },
+   {
+    "name": "Media production & entertainment",
+    "series": {
+     "2026-06": 24,
+     "2026-08": 33
+    }
+   },
+   {
+    "name": "Engineering – hardware & networks",
+    "series": {
+     "2026-08": 30,
+     "2026-09": 19
+    },
+    "area": "r:Embedded / Hardware"
+   },
+   {
+    "name": "Production & manufacturing",
+    "series": {
+     "2026-06": 14,
+     "2026-10": 39
+    },
+    "area": "r:Mechanical / Manufacturing"
+   },
+   {
+    "name": "BFSI, investments & trading",
+    "series": {
+     "2026-08": 29
+    },
+    "area": "r:Finance / Accounting"
+   },
+   {
+    "name": "Research & development",
+    "series": {
+     "2026-09": 19
+    }
+   },
+   {
+    "name": "Merchandising, retail & e-commerce",
+    "series": {
+     "2026-09": 18
+    }
+   },
+   {
+    "name": "Construction & site engineering",
+    "series": {
+     "2026-09": 17
+    }
+   },
+   {
+    "name": "Marketing & communications",
+    "series": {
+     "2026-06": 12
+    },
+    "area": "d:Marketing"
+   },
+   {
+    "name": "Software engineering & QA",
+    "series": {
+     "2026-10": 1
+    },
+    "area": "d:Software Engineering"
+   }
   ],
-  "overall": { "Sep 2026": 2, "Oct 2026": 14 },
-  "groups": {
-    "Roles": [
-      { "name": "AI / Machine Learning", "values": { "Sep 2026": 20, "Oct 2026": 32 }, "area": "d:AI & Data" },
-      { "name": "Production & manufacturing", "values": { "Oct 2026": 39 }, "area": "r:Mechanical / Manufacturing" },
-      { "name": "Research & development", "values": { "Sep 2026": 19 } },
-      { "name": "Engineering – hardware & networks", "values": { "Sep 2026": 19 }, "area": "r:Embedded / Hardware" },
-      { "name": "Merchandising, retail & e-commerce", "values": { "Sep 2026": 18 } },
-      { "name": "Construction & site engineering", "values": { "Sep 2026": 17 } },
-      { "name": "Software engineering & QA", "values": { "Oct 2026": 1 }, "area": "d:Software Engineering" }
-    ],
-    "Industries": [
-      { "name": "Automobile & auto parts", "values": { "Sep 2026": 11, "Oct 2026": 36 } },
-      { "name": "Global Capability Centres (GCCs)", "values": { "Sep 2026": 4, "Oct 2026": 18 } },
-      { "name": "BPO / IT-enabled services", "values": { "Sep 2026": 4, "Oct 2026": 17 } },
-      { "name": "Banking & financial services", "values": { "Sep 2026": "stable", "Oct 2026": 16 } },
-      { "name": "FMCG", "values": { "Sep 2026": -4, "Oct 2026": 6 } },
-      { "name": "IT & software services", "values": { "Sep 2026": -4, "Oct 2026": 5 } },
-      { "name": "Insurance", "values": { "Sep 2026": "stable" } },
-      { "name": "Retail", "values": { "Sep 2026": "stable" } },
-      { "name": "Real estate", "values": { "Sep 2026": "stable" } },
-      { "name": "Healthcare", "values": { "Sep 2026": -3 } },
-      { "name": "Pharma & biotech", "values": { "Sep 2026": -4 } },
-      { "name": "Hospitality & travel", "values": { "Sep 2026": -11 } },
-      { "name": "Education", "values": { "Sep 2026": -18 } }
-    ],
-    "Experience": [
-      { "name": "Freshers", "values": { "Sep 2026": 1, "Oct 2026": 15 } },
-      { "name": "4–7 years", "values": { "Sep 2026": -2 } },
-      { "name": "8–12 years", "values": { "Sep 2026": 5 } },
-      { "name": "13–16 years", "values": { "Sep 2026": 7, "Oct 2026": 22 } },
-      { "name": "16+ years", "values": { "Sep 2026": 5, "Oct 2026": 22 } },
-      { "name": "AI/ML freshers", "values": { "Sep 2026": 19 } }
-    ],
-    "Cities": [
-      { "name": "Hyderabad", "values": { "Sep 2026": 9, "Oct 2026": 15 } },
-      { "name": "Pune", "values": { "Sep 2026": "stable", "Oct 2026": 14 } },
-      { "name": "Delhi NCR", "values": { "Sep 2026": -6, "Oct 2026": 13 } },
-      { "name": "Bengaluru", "values": { "Sep 2026": 4, "Oct 2026": 12 } },
-      { "name": "Mumbai", "values": { "Sep 2026": -6, "Oct 2026": 12 } },
-      { "name": "Chennai", "values": { "Sep 2026": 6 } },
-      { "name": "Kolkata", "values": { "Sep 2026": 4, "Oct 2026": "stable" } }
-    ]
+  "Industries": [
+   {
+    "name": "Automobile & auto parts",
+    "series": {
+     "2026-05": -7,
+     "2026-06": 0,
+     "2026-07": 1,
+     "2026-08": 19,
+     "2026-09": 11,
+     "2026-10": 36
+    }
+   },
+   {
+    "name": "BPO / IT-enabled services",
+    "series": {
+     "2026-05": 9,
+     "2026-06": 4,
+     "2026-07": 5,
+     "2026-08": 8,
+     "2026-09": 4,
+     "2026-10": 17
+    }
+   },
+   {
+    "name": "Global Capability Centres (GCCs)",
+    "series": {
+     "2026-06": -1,
+     "2026-08": 10,
+     "2026-09": 4,
+     "2026-10": 18
+    }
+   },
+   {
+    "name": "Banking & financial services",
+    "series": {
+     "2026-05": -15,
+     "2026-06": -12,
+     "2026-07": -5,
+     "2026-08": 10,
+     "2026-09": "stable",
+     "2026-10": 16
+    }
+   },
+   {
+    "name": "Insurance",
+    "series": {
+     "2026-05": 19,
+     "2026-06": 16,
+     "2026-07": 10,
+     "2026-08": 12,
+     "2026-09": "stable"
+    }
+   },
+   {
+    "name": "Real estate",
+    "series": {
+     "2026-05": 2,
+     "2026-06": 5,
+     "2026-07": 8,
+     "2026-08": 8,
+     "2026-09": "stable"
+    }
+   },
+   {
+    "name": "Retail",
+    "series": {
+     "2026-05": 1,
+     "2026-06": 0,
+     "2026-07": 3,
+     "2026-08": 15,
+     "2026-09": "stable"
+    }
+   },
+   {
+    "name": "Healthcare & hospitals",
+    "series": {
+     "2026-05": 6,
+     "2026-07": 6,
+     "2026-08": 16,
+     "2026-09": -3
+    }
+   },
+   {
+    "name": "FMCG",
+    "series": {
+     "2026-05": 1,
+     "2026-06": 7,
+     "2026-07": 5,
+     "2026-08": 10,
+     "2026-09": -4,
+     "2026-10": 6
+    }
+   },
+   {
+    "name": "IT & software services",
+    "series": {
+     "2026-05": -7,
+     "2026-06": -3,
+     "2026-07": 6,
+     "2026-08": 11,
+     "2026-09": -4,
+     "2026-10": 5
+    },
+    "area": "g:IT"
+   },
+   {
+    "name": "Oil, gas & energy",
+    "series": {
+     "2026-05": -6,
+     "2026-06": 0,
+     "2026-07": 0,
+     "2026-08": 8
+    }
+   },
+   {
+    "name": "Pharma & biotech",
+    "series": {
+     "2026-05": -8,
+     "2026-06": 4,
+     "2026-07": -6,
+     "2026-08": 0,
+     "2026-09": -4
+    }
+   },
+   {
+    "name": "Hospitality & travel",
+    "series": {
+     "2026-05": 5,
+     "2026-06": -3,
+     "2026-07": -7,
+     "2026-08": -4,
+     "2026-09": -11
+    }
+   },
+   {
+    "name": "Education",
+    "series": {
+     "2026-05": -6,
+     "2026-06": -4,
+     "2026-07": -12,
+     "2026-08": -8,
+     "2026-09": -18
+    }
+   }
+  ],
+  "Experience": [
+   {
+    "name": "Freshers",
+    "series": {
+     "2026-06": 8,
+     "2026-08": 15,
+     "2026-09": 1,
+     "2026-10": 15
+    }
+   },
+   {
+    "name": "4–7 years",
+    "series": {
+     "2026-06": 2,
+     "2026-08": 10,
+     "2026-09": -2
+    }
+   },
+   {
+    "name": "8–12 years",
+    "series": {
+     "2026-06": 7,
+     "2026-08": 16,
+     "2026-09": 5
+    }
+   },
+   {
+    "name": "13–16 years",
+    "series": {
+     "2026-06": 12,
+     "2026-08": 18,
+     "2026-09": 7,
+     "2026-10": 22
+    }
+   },
+   {
+    "name": "16+ years",
+    "series": {
+     "2026-06": 9,
+     "2026-08": 13,
+     "2026-09": 5,
+     "2026-10": 22
+    }
+   }
+  ],
+  "Cities": [
+   {
+    "name": "Hyderabad",
+    "series": {
+     "2026-05": 6,
+     "2026-06": 11,
+     "2026-07": 16,
+     "2026-08": 23,
+     "2026-09": 9,
+     "2026-10": 15
+    }
+   },
+   {
+    "name": "Chennai",
+    "series": {
+     "2026-05": 0,
+     "2026-06": 10,
+     "2026-07": 11,
+     "2026-08": 20,
+     "2026-09": 6
+    }
+   },
+   {
+    "name": "Coimbatore",
+    "series": {
+     "2026-05": 8,
+     "2026-06": 10,
+     "2026-07": 7
+    }
+   },
+   {
+    "name": "Bengaluru",
+    "series": {
+     "2026-05": 2,
+     "2026-06": 7,
+     "2026-07": 8,
+     "2026-08": 14,
+     "2026-09": 4,
+     "2026-10": 12
+    }
+   },
+   {
+    "name": "Kolkata",
+    "series": {
+     "2026-05": -5,
+     "2026-06": 12,
+     "2026-07": 17,
+     "2026-08": 22,
+     "2026-09": 4,
+     "2026-10": "stable"
+    }
+   },
+   {
+    "name": "Pune",
+    "series": {
+     "2026-05": -1,
+     "2026-07": 4,
+     "2026-08": 14,
+     "2026-09": "stable",
+     "2026-10": 14
+    }
+   },
+   {
+    "name": "Mumbai",
+    "series": {
+     "2026-05": -6,
+     "2026-07": -1,
+     "2026-08": 7,
+     "2026-09": -6,
+     "2026-10": 12
+    }
+   },
+   {
+    "name": "Delhi NCR",
+    "series": {
+     "2026-05": -2,
+     "2026-07": -2,
+     "2026-08": 10,
+     "2026-09": -6,
+     "2026-10": 13
+    }
+   }
+  ]
+ },
+ "notes": {
+  "Roles": "Naukri reports a different set of roles each month, so most roles have only one or two data points. AI/ML is the only role reported every month.",
+  "Cities": "Coimbatore was reported for May–July only. Chennai wasn't given separately for October."
+ },
+ "longTerm": {
+  "title": "By 2030: fastest growing and shrinking jobs",
+  "about": "Expected change in the number of these jobs between 2025 and 2030, from the World Economic Forum's survey of over 1,000 large employers worldwide (India included). It's a forecast, not a count.",
+  "growing": [
+   [
+    "Big data specialists",
+    113
+   ],
+   [
+    "FinTech engineers",
+    93
+   ],
+   [
+    "AI and machine learning specialists",
+    82
+   ],
+   [
+    "Software and application developers",
+    57
+   ],
+   [
+    "Security management specialists",
+    53
+   ],
+   [
+    "Data warehousing specialists",
+    49
+   ],
+   [
+    "Autonomous and electric vehicle specialists",
+    48
+   ],
+   [
+    "UI and UX designers",
+    48
+   ],
+   [
+    "Light truck or delivery drivers",
+    46
+   ],
+   [
+    "Internet of Things specialists",
+    42
+   ],
+   [
+    "Data analysts and scientists",
+    41
+   ]
+  ],
+  "shrinking": [
+   [
+    "Postal service clerks",
+    -34
+   ],
+   [
+    "Bank tellers and related clerks",
+    -31
+   ],
+   [
+    "Data entry clerks",
+    -26
+   ],
+   [
+    "Cashiers and ticket clerks",
+    -20
+   ],
+   [
+    "Administrative assistants and executive secretaries",
+    -20
+   ],
+   [
+    "Printing workers",
+    -20
+   ],
+   [
+    "Accounting, bookkeeping and payroll clerks",
+    -18
+   ],
+   [
+    "Material-recording and stock-keeping clerks",
+    -16
+   ],
+   [
+    "Door-to-door salespeople and street vendors",
+    -14
+   ]
+  ],
+  "sources": [
+   {
+    "title": "WEF Future of Jobs Report 2025",
+    "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/"
+   },
+   {
+    "title": "Fastest growing and declining jobs, with percentages (Euronews, Feb 2025)",
+    "url": "https://euronews.com/business/2025/02/01/jobs-market-at-a-crossroads-which-are-the-fastest-growing-and-declining-jobs"
+   }
+  ]
+ },
+ "sources": [
+  {
+   "title": "Naukri JobSpeak, May 2026 (Info Edge PDF)",
+   "url": "https://www.infoedge.in/pdfs/News_Events_pdfs/Naukri-Jobspeak-May-2026.pdf"
   },
-  "notes": {
-    "Roles": "Only roles the reports give a number for are listed. Sales, marketing, HR and finance weren't broken out.",
-    "Cities": "Coimbatore isn't reported separately (it's counted under emerging cities, which were flat in September)."
+  {
+   "title": "Naukri JobSpeak, June 2026 (Naukri blog)",
+   "url": "https://www.naukri.com/blog/naukri-jobspeak-white-collar-hiring-grows-6-in-june-2026-ai-ml-and-fresher-hiring-lead-the-charge/"
+  },
+  {
+   "title": "Naukri JobSpeak, July 2026 (Info Edge PDF)",
+   "url": "https://www.infoedge.in/pdfs/News_Events_pdfs/Naukri-Jobspeak-July-2026.pdf"
+  },
+  {
+   "title": "Naukri JobSpeak, August 2026 (Naukri blog)",
+   "url": "https://www.naukri.com/blog/naukri-jobspeak-white-collar-hiring-grows-14-in-aug-fresher-hiring-ai-roles-lead/"
+  },
+  {
+   "title": "Naukri JobSpeak, September 2026 (Naukri blog)",
+   "url": "https://www.naukri.com/blog/naukri-jobspeak-october-2026-white-collar-hiring-ai-ml-growth/"
+  },
+  {
+   "title": "Naukri JobSpeak, October 2026 (Wocult)",
+   "url": "https://www.wocult.com/posts/hiring-is-up-14-per-cent-software-engineering-hiring-is-up-1"
+  },
+  {
+   "title": "Naukri JobSpeak, October 2026 (Remunance)",
+   "url": "https://remunance.com/industry-news/naukri-jobspeak-october-2026-white-collar-hiring/"
   }
+ ]
 }
