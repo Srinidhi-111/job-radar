@@ -433,11 +433,6 @@
       "id": "appian"
     },
     {
-      "name": "Arcadia",
-      "ats": "greenhouse",
-      "id": "arcadiacareers"
-    },
-    {
       "name": "WPP",
       "ats": "greenhouse",
       "id": "wpp"
@@ -534,13 +529,6 @@
       "id": "hillenbrand",
       "host": "hillenbrand.wd3.myworkdayjobs.com",
       "site": "Global"
-    },
-    {
-      "name": "Poshmark",
-      "ats": "workday",
-      "id": "poshmark",
-      "host": "poshmark.wd5.myworkdayjobs.com",
-      "site": "Poshmark_Careers"
     },
     {
       "name": "KLA",

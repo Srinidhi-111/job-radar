@@ -255,7 +255,8 @@ const readers = {
       // differently), fall through to searching by city name below.
       if (Object.keys(facets).length) {
         await collectPages(facets, "");
-        return [...jobs.values()];
+        // Only trust the filter if it actually brought back jobs in our cities.
+        if ([...jobs.values()].some((j) => cityRe.test(j.location))) return [...jobs.values()];
       }
     } catch (err) {
       if (!/HTTP 4(00|22)/.test(err.message)) throw err;
