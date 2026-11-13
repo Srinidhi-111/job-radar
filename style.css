@@ -104,6 +104,7 @@ main { max-width: 900px; margin: 0 auto; padding: 14px 16px 40px; }
 .toolbar.wrap { flex-wrap: wrap; }
 .toolbar input[type="search"] { flex: 1 1 100%; }
 .toolbar.wrap select { flex: 1 1 140px; }
+.toolbar select.area { flex: 1 1 100%; }
 input, select {
   font: inherit; color: var(--ink); min-width: 0;
   background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
@@ -163,6 +164,8 @@ details.company summary .n { font: 600 13px var(--mono); color: var(--violet); w
 .chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 4px; }
 .chip { font: 11px var(--mono); background: var(--chip); padding: 2px 7px; border-radius: 6px; color: var(--muted); }
 .chip.intern { color: var(--green); }
+.chip.pay { color: #f3e8ff; background: rgba(167,139,250,.18); }
+optgroup { background: #12132a; color: var(--muted); }
 .chip.new { background: linear-gradient(90deg, var(--violet), var(--green)); color: #120d26; font-weight: 600; }
 .posting p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
 .sources { margin-top: 16px; font-size: 13px; color: var(--muted); }

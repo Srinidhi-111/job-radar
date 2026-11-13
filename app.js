@@ -23,10 +23,16 @@ const SKILLS = {
   "MongoDB / NoSQL": /mongo|nosql/i, "Selenium / Testing": /selenium|playwright|cypress|test automation/i,
   "Security": /security|siem|soc\b|penetration|vapt/i, "Figma": /\bfigma\b/i,
   "Android / Kotlin": /android|kotlin/i, "Flutter": /\bflutter\b/i, "Embedded C": /embedded|microcontroller|rtos/i,
-  "Salesforce": /salesforce/i, "Agile / Scrum": /\bagile\b|\bscrum\b/i, "Communication": /communication skills/i,
+  "Salesforce": /salesforce/i, "Agile / Scrum": /\bagile\b|\bscrum\b/i,
+  // useful outside IT too
+  "Communication": /communication/i, "Stakeholder management": /stakeholder/i, "Problem solving": /problem[- ]solving/i,
+  "Leadership": /leadership|people management/i, "Project management": /project management|\bpmp\b/i,
+  "Negotiation": /negotiat/i, "CRM (Salesforce/HubSpot)": /\bcrm\b|hubspot/i, "Digital marketing / SEO": /\bseo\b|\bsem\b|google ads|digital marketing/i,
+  "SAP / ERP": /\bsap\b|\berp\b|oracle (financials|ebs)/i, "Tally / GST": /\btally\b|\bgst\b/i,
+  "AutoCAD / SolidWorks": /autocad|solidworks|catia|\bcreo\b/i, "MATLAB": /matlab/i, "Six Sigma / Lean": /six sigma|\blean\b/i,
 };
 
-const state = { history: {}, jobs: [], sources: [], roles: [], updated: null, cities: new Set(CITIES) };
+const state = { history: {}, jobs: [], sources: [], roles: [], deptOf: {}, groupOf: {}, updated: null, cities: new Set(CITIES) };
 
 // ---------- helpers ----------
 const $ = (id) => document.getElementById(id);
@@ -37,6 +43,27 @@ const ago = (iso) => {
   const d = daysBetween(iso.slice(0, 10), new Date().toISOString().slice(0, 10));
   return d <= 0 ? "today" : d === 1 ? "1 day ago" : `${d} days ago`;
 };
+
+// The "department or role" dropdown: "", "g:IT", "d:Marketing" or "r:Data Engineer".
+function inArea(role, value) {
+  if (!value) return true;
+  const [kind, name] = [value.slice(0, 1), value.slice(2)];
+  const dept = state.deptOf[role] ?? "Other";
+  if (kind === "g") return (state.groupOf[dept] ?? "Non-IT") === name;
+  if (kind === "d") return dept === name;
+  return role === name;
+}
+
+function areaOptions(allLabel) {
+  const depts = (group) => Object.keys(state.groupOf).filter((d) => state.groupOf[d] === group);
+  const opt = (v, label) => `<option value="${esc(v)}">${esc(label)}</option>`;
+  return opt("", allLabel) + opt("g:IT", "All IT roles") + opt("g:Non-IT", "All non-IT roles")
+    + `<optgroup label="IT departments">${depts("IT").map((d) => opt(`d:${d}`, d)).join("")}</optgroup>`
+    + `<optgroup label="Non-IT departments">${depts("Non-IT").map((d) => opt(`d:${d}`, d)).join("")}</optgroup>`
+    + `<optgroup label="Specific role">${state.roles.map((r) => opt(`r:${r}`, r)).join("")}</optgroup>`;
+}
+
+const lpa = (s) => s && (s.min === s.max || !s.max ? `₹${s.min ?? s.max} LPA` : `₹${s.min}–${s.max} LPA`);
 
 async function load(file, fallback) {
   try {
@@ -96,7 +123,8 @@ function renderTrends() {
     ? `Open jobs at ${shared.length} tracked companies, compared with ${base} (${daysBetween(base, last)} days earlier).`
     : `Open jobs at ${lastCos.size} tracked companies. Growth appears after a second run at least 6 days later (${dates.length} run so far).`;
 
-  const roles = state.roles.map((role) => {
+  const area = $("trendArea").value;
+  const roles = state.roles.filter((role) => inArea(role, area)).map((role) => {
     const now = totalFor(last, role, lastCos);
     const nowShared = totalFor(last, role, shared);
     const then = base ? totalFor(base, role, shared) : null;
@@ -145,9 +173,12 @@ function filteredJobs() {
   const q = $("companySearch").value.trim().toLowerCase();
   const role = $("roleFilter").value, type = $("typeFilter").value, mode = $("modeFilter").value;
   const newOnly = $("newOnly").checked;
+  const sal = $("salaryFilter").value, edu = $("eduFilter").value;
   return state.jobs.filter((j) =>
     state.cities.has(j.city) &&
-    (!role || j.role === role) &&
+    inArea(j.role, role) &&
+    (!sal || (sal === "listed" ? !!j.salary : !!j.salary && (j.salary.max ?? j.salary.min) >= +sal)) &&
+    (!edu || (edu === "fresher" ? j.level === "Fresher" || j.level === "Internship" : (j.degrees ?? []).includes(edu))) &&
     (!type || j.type === type) &&
     (!mode || j.mode === mode) &&
     (!newOnly || isNew(j)) &&
@@ -168,7 +199,13 @@ function renderCompanies() {
   const list = [...groups.entries()].sort((a, b) => b[1].length - a[1].length);
   const shown = list.slice(0, 150);
   const total = list.reduce((s, [, js]) => s + js.length, 0);
-  $("companyCount").textContent = `${fmt(list.length)} companies · ${fmt(total)} openings${list.length > shown.length ? " (showing top 150)" : ""}`;
+  let note = `${fmt(list.length)} companies · ${fmt(total)} openings${list.length > shown.length ? " (showing top 150)" : ""}`;
+  // Be upfront: most Indian postings don't state salary or degree.
+  const inCities = state.jobs.filter((j) => state.cities.has(j.city));
+  const share = (f) => Math.round((inCities.filter(f).length / (inCities.length || 1)) * 100);
+  if ($("salaryFilter").value) note += ` · only ${share((j) => j.salary)}% of postings state a salary`;
+  if ($("eduFilter").value && $("eduFilter").value !== "fresher") note += ` · ${share((j) => j.degrees?.length)}% mention a degree`;
+  $("companyCount").textContent = note;
 
   $("companyList").innerHTML = shown.map(([company, js]) => {
     const interns = js.filter((j) => j.type === "Internship").length;
@@ -184,6 +221,10 @@ function renderCompanies() {
             <span class="chip">${esc(j.mode)}</span>
             <span class="chip">${esc(j.city)}</span>
             <span class="chip">${esc(j.role)}</span>
+            ${j.salary ? `<span class="chip pay">${lpa(j.salary)}</span>` : ""}
+            ${j.level === "Fresher" ? `<span class="chip intern">Fresher-friendly</span>` : ""}
+            ${j.level === "Experienced" && j.minYears ? `<span class="chip">${j.minYears}+ yrs</span>` : ""}
+            ${(j.degrees ?? []).map((d) => `<span class="chip">${esc(d)}</span>`).join("")}
             ${j.created ? `<span class="chip">posted ${ago(j.created)}</span>` : ""}
           </div>
           ${j.snippet ? `<p>${esc(j.snippet.slice(0, 180))}…</p>` : ""}
@@ -206,7 +247,7 @@ function renderSources() {
 // ---------- SKILLS ----------
 function renderSkills() {
   const role = $("skillRoleFilter").value;
-  const jobs = state.jobs.filter((j) => state.cities.has(j.city) && (!role || j.role === role));
+  const jobs = state.jobs.filter((j) => state.cities.has(j.city) && inArea(j.role, role));
   if (!jobs.length) {
     $("skillList").innerHTML = `<li class="empty">No postings yet.</li>`;
     return;
@@ -222,10 +263,10 @@ function renderSkills() {
 
   $("skillList").innerHTML = ranked.map((s) => {
     const pct = ((s.count / jobs.length) * 100).toFixed(0);
-    const transferable = !role && totalRoles >= 4 && s.roles.size >= Math.ceil(totalRoles * 0.4);
+    const transferable = !role.startsWith("r:") && totalRoles >= 4 && s.roles.size >= Math.ceil(totalRoles * 0.4);
     return `<li class="skill">
       <span><strong>${esc(s.name)}</strong>${transferable ? `<span class="tag">TRANSFERABLE</span>` : ""}</span>
-      <span class="meta">${pct}% of postings${role ? "" : ` · ${s.roles.size} role${s.roles.size === 1 ? "" : "s"}`}</span>
+      <span class="meta">${pct}% of postings${role.startsWith("r:") ? "" : ` · ${s.roles.size} role${s.roles.size === 1 ? "" : "s"}`}</span>
       <div class="bar"><span style="width:${(s.count / max) * 100}%"></span></div>
     </li>`;
   }).join("");
@@ -241,8 +282,8 @@ document.querySelector(".tabs").addEventListener("click", (e) => {
 
 function renderAll() { renderTrends(); renderCompanies(); renderSkills(); }
 
-["trendSort"].forEach((id) => $(id).addEventListener("change", renderTrends));
-["companySearch", "roleFilter", "typeFilter", "modeFilter", "newOnly"].forEach((id) =>
+["trendSort", "trendArea"].forEach((id) => $(id).addEventListener("change", renderTrends));
+["companySearch", "roleFilter", "typeFilter", "modeFilter", "salaryFilter", "eduFilter", "newOnly"].forEach((id) =>
   $(id).addEventListener("input", renderCompanies));
 $("skillRoleFilter").addEventListener("change", renderSkills);
 
@@ -259,10 +300,12 @@ $("skillRoleFilter").addEventListener("change", renderSkills);
   state.updated = jobsFile.updated;
   state.sources = sourcesFile.sources;
   state.roles = config.roles.map((r) => r.name);
+  for (const r of config.roles) state.deptOf[r.name] = r.department;
+  state.groupOf = config.departments ?? {};
 
-  const opts = state.roles.map((r) => `<option>${esc(r)}</option>`).join("");
-  $("roleFilter").insertAdjacentHTML("beforeend", opts);
-  $("skillRoleFilter").insertAdjacentHTML("beforeend", opts);
+  $("trendArea").innerHTML = areaOptions("All roles");
+  $("roleFilter").innerHTML = areaOptions("All roles");
+  $("skillRoleFilter").innerHTML = areaOptions("Across all roles");
 
   $("updated").textContent = jobsFile.updated
     ? `Updated ${new Date(jobsFile.updated).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })} · ${Object.keys(history).length} run(s) so far`

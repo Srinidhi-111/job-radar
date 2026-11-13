@@ -29,14 +29,13 @@
   <main>
     <!-- TRENDS -->
     <section id="trends" class="panel">
-      <div class="toolbar">
-        <label>Sort by
-          <select id="trendSort">
-            <option value="count">Most postings</option>
-            <option value="growth">Fastest growing</option>
-            <option value="decline">Fastest falling</option>
-          </select>
-        </label>
+      <div class="toolbar wrap">
+        <select id="trendArea" class="area" aria-label="Department or role"></select>
+        <select id="trendSort" aria-label="Sort by">
+          <option value="count">Most postings</option>
+          <option value="growth">Fastest growing</option>
+          <option value="decline">Fastest falling</option>
+        </select>
       </div>
       <p class="note" id="historyNote"></p>
       <ol class="roles" id="roleList"></ol>
@@ -46,7 +45,7 @@
     <section id="companies" class="panel" hidden>
       <div class="toolbar wrap">
         <input type="search" id="companySearch" placeholder="Search company, title, role…" />
-        <select id="roleFilter"><option value="">All roles</option></select>
+        <select id="roleFilter" class="area" aria-label="Department or role"></select>
         <select id="typeFilter">
           <option value="">Jobs + internships</option>
           <option value="Job">Jobs only</option>
@@ -59,6 +58,22 @@
           <option>On-site</option>
           <option>Not stated</option>
         </select>
+        <select id="salaryFilter" aria-label="Salary">
+          <option value="">Any salary</option>
+          <option value="listed">Salary listed</option>
+          <option value="3">₹3 LPA and above</option>
+          <option value="6">₹6 LPA and above</option>
+          <option value="10">₹10 LPA and above</option>
+          <option value="15">₹15 LPA and above</option>
+          <option value="25">₹25 LPA and above</option>
+        </select>
+        <select id="eduFilter" aria-label="Education and experience">
+          <option value="">Any education</option>
+          <option value="fresher">Freshers (incl. internships)</option>
+          <option value="Bachelor's">Bachelor's degree</option>
+          <option value="Master's">Master's degree</option>
+          <option value="PhD">PhD</option>
+        </select>
         <label class="check"><input type="checkbox" id="newOnly" /> New since last run only</label>
       </div>
       <p class="note" id="companyCount"></p>
@@ -70,7 +85,7 @@
     <section id="skills" class="panel" hidden>
       <p class="note">Skills mentioned in current postings. <strong>Transferable</strong> = appears across many different roles, so it stays useful even if one role fades.</p>
       <div class="toolbar">
-        <select id="skillRoleFilter"><option value="">Across all roles</option></select>
+        <select id="skillRoleFilter" class="area" aria-label="Department or role"></select>
       </div>
       <ol class="skills" id="skillList"></ol>
     </section>

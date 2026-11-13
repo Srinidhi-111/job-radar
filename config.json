@@ -6,76 +6,159 @@
   },
   "roles": [
     {
+      "name": "Sales / Business Development",
+      "department": "Sales & Business",
+      "match": "sales|account exec|account manager|key account|business development|\\bbdr\\b|\\bsdr\\b|pre-?sales|partnerships?|inside sales"
+    },
+    {
+      "name": "HR / Recruiting",
+      "department": "HR & Recruiting",
+      "match": "recruit|talent acq|human resources|\\bhr\\b|hrbp|people partner|people operations|learning (and|&) development"
+    },
+    {
+      "name": "Finance / Accounting",
+      "department": "Finance & Accounting",
+      "match": "accountant|accounting|audit|\\btax\\b|treasury|fp&a|payroll|financial analyst|finance|controller|accounts (payable|receivable)|billing"
+    },
+    {
+      "name": "Legal / Compliance",
+      "department": "Legal & Compliance",
+      "match": "legal|counsel|lawyer|paralegal|compliance|company secretary"
+    },
+    {
       "name": "Generative AI / LLM",
+      "department": "AI & Data",
       "match": "gen ?ai|generative|\\bllm|agentic|ai agent"
     },
     {
       "name": "AI Engineer",
+      "department": "AI & Data",
       "match": "\\bai\\b.*engineer|artificial intelligence"
     },
     {
       "name": "Machine Learning Engineer",
+      "department": "AI & Data",
       "match": "machine learning|\\bml\\b|mlops"
     },
     {
       "name": "Data Scientist",
+      "department": "AI & Data",
       "match": "data scien|applied scien|research scien"
     },
     {
       "name": "Data Engineer",
+      "department": "AI & Data",
       "match": "data engineer|data platform|big data|etl"
     },
     {
       "name": "Data Analyst",
+      "department": "AI & Data",
       "match": "data analyst|business analyst|analytics|\\bbi\\b"
     },
     {
       "name": "Cloud / DevOps / SRE",
+      "department": "Cloud & Security",
       "match": "devops|\\bsre\\b|site reliability|cloud|platform engineer|infrastructure"
     },
     {
       "name": "Cybersecurity",
+      "department": "Cloud & Security",
       "match": "secur|soc analyst|penetration|appsec|iam\\b"
     },
     {
       "name": "Frontend Developer",
+      "department": "Software Engineering",
       "match": "front[- ]?end|\\bui engineer|react|angular"
     },
     {
       "name": "Backend Developer",
+      "department": "Software Engineering",
       "match": "back[- ]?end|\\bapi\\b|java developer|golang|node"
     },
     {
       "name": "Full Stack Developer",
+      "department": "Software Engineering",
       "match": "full[- ]?stack"
     },
     {
       "name": "Mobile App Developer",
+      "department": "Software Engineering",
       "match": "android|\\bios\\b|mobile|flutter|react native"
     },
     {
       "name": "QA / Test Automation",
-      "match": "\\bqa\\b|quality|\\btest|\\bsdet\\b"
+      "department": "Software Engineering",
+      "match": "\\bqa\\b|quality assurance|\\btest|\\bsdet\\b"
     },
     {
       "name": "UI/UX Designer",
+      "department": "Product & Design",
       "match": "designer|\\bux\\b|user experience|user research"
     },
     {
       "name": "Embedded / Hardware",
-      "match": "embedded|firmware|hardware|vlsi|asic|fpga"
+      "department": "Core Engineering",
+      "match": "embedded|firmware|hardware|vlsi|asic|fpga|silicon|chip"
+    },
+    {
+      "name": "Mechanical / Manufacturing",
+      "department": "Core Engineering",
+      "match": "mechanical|manufactur|production|quality engineer|process engineer|industrial|automotive|civil|cad\\b|maintenance|plant|tooling|calibration"
+    },
+    {
+      "name": "Electrical / Electronics",
+      "department": "Core Engineering",
+      "match": "electrical|electronics|power (systems|electronics)|instrumentation|pcb|analog|rf engineer"
     },
     {
       "name": "Product Manager",
+      "department": "Product & Design",
       "match": "product manager|product owner|\\bapm\\b"
     },
     {
+      "name": "Program / Project Manager",
+      "department": "Product & Design",
+      "match": "program manager|project manager|scrum master|delivery manager|\\btpm\\b"
+    },
+    {
       "name": "Solutions / Support Engineer",
-      "match": "solutions? engineer|support engineer|customer success engineer|implementation"
+      "department": "Customer Success & Support",
+      "match": "solutions? (engineer|architect|consultant)|support engineer|customer success engineer|implementation"
     },
     {
       "name": "Software Engineer (general)",
-      "match": "software|developer|engineer|\\bsde\\b|programmer"
+      "department": "Software Engineering",
+      "match": "software|developer|engineer|\\bsde\\b|programmer|architect"
+    },
+    {
+      "name": "Marketing",
+      "department": "Marketing",
+      "match": "marketing|\\bseo\\b|content|brand|growth|communications|social media|public relations|copywriter"
+    },
+    {
+      "name": "Customer Success / Support",
+      "department": "Customer Success & Support",
+      "match": "customer|support|client|service desk|helpdesk|call cent"
+    },
+    {
+      "name": "Operations / Supply Chain",
+      "department": "Operations & Supply Chain",
+      "match": "operations|supply chain|logistics|procure|purchas|warehouse|fulfil|inventory|area manager|shift|planner|sourcing|vendor|fleet|transport"
+    },
+    {
+      "name": "Science / Healthcare",
+      "department": "Science & Healthcare",
+      "match": "clinical|pharma|nurse|medical|biolog|chemist|laborator|scientist|regulatory"
+    },
+    {
+      "name": "Admin / Office",
+      "department": "Operations & Supply Chain",
+      "match": "admin|executive assistant|office|facilit|front desk|reception"
+    },
+    {
+      "name": "Other roles",
+      "department": "Other",
+      "match": "."
     }
   ],
   "companies": [
@@ -321,5 +404,20 @@
     }
   ],
   "smartrecruitersMaxPages": 10,
-  "skipTitles": "sales|account exec|account manager|marketing|recruit|talent acq|finance|accountant|legal|counsel|\\bhr\\b|human resources|people partner|payroll|office admin|executive assistant"
+  "departments": {
+    "AI & Data": "IT",
+    "Software Engineering": "IT",
+    "Cloud & Security": "IT",
+    "Product & Design": "IT",
+    "Core Engineering": "Non-IT",
+    "Sales & Business": "Non-IT",
+    "Marketing": "Non-IT",
+    "Customer Success & Support": "Non-IT",
+    "Finance & Accounting": "Non-IT",
+    "HR & Recruiting": "Non-IT",
+    "Operations & Supply Chain": "Non-IT",
+    "Legal & Compliance": "Non-IT",
+    "Science & Healthcare": "Non-IT",
+    "Other": "Non-IT"
+  }
 }

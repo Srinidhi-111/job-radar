@@ -1,6 +1,6 @@
 # Job Radar
 
-A personal dashboard that tracks which tech roles are growing or shrinking in **Chennai, Bangalore, Coimbatore and Remote (India)**, which companies are hiring (jobs and internships), and which skills show up across many roles.
+A personal dashboard that tracks which roles (IT and non-IT) are growing or shrinking in **Chennai, Bangalore, Coimbatore and Remote (India)**, which companies are hiring (jobs and internships), and which skills show up across many roles.
 
 It costs ₹0 to run: no paid APIs, no API keys. GitHub collects the data and hosts the website for free.
 
@@ -73,7 +73,9 @@ After each run, the **Company feeds** list at the bottom of the Companies tab sh
 
 - **Trends compare only companies whose feed worked on both dates**, so one broken feed doesn't look like a hiring crash.
 - Counts cover **the companies in your list**, not all of India. Mass recruiters (TCS, Infosys, Wipro) use systems this can't read; their hiring mostly runs through campus placement drives.
-- **Roles** are decided from job titles by the patterns in `config.json`; the first matching role wins. Non-tech titles (sales, HR, finance…) are skipped.
+- **Roles** are decided from job titles by the patterns in `config.json`; the first matching role wins. Each role belongs to a department, and each department is marked IT or Non-IT (`departments` in `config.json`). Titles that match nothing land in "Other roles".
+- **Salary** comes from the feed (Lever, Ashby) or from text like "12–18 LPA" / "₹40,000 per month". Most Indian postings don't state pay, so the salary filter only sees a small share of jobs.
+- **Freshers / degrees** are read from the posting text ("0–1 years", "freshers", "B.Tech", "Master's", "PhD"). Postings that don't mention them won't appear under those filters.
 - **Work mode** and **internship** come from the feed when it provides them, otherwise from words in the posting, so some show "Not stated".
 - GitHub may pause scheduled workflows if a repo has no activity for 60 days; the weekly data commits normally keep it active.
 

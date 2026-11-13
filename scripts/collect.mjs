@@ -4,8 +4,9 @@
 //   1. Reads the company list, roles and cities from config.json
 //   2. Downloads each company's open jobs from its public careers feed
 //      (Greenhouse, Lever, Ashby, SmartRecruiters, Workable, Workday or Amazon — free, no key)
-//   3. Keeps only tech jobs in Chennai / Bangalore / Coimbatore / Remote (India)
-//   4. Sorts each job into a role (e.g. "Data Engineer") using its title
+//   3. Keeps jobs in Chennai / Bangalore / Coimbatore / Remote (India)
+//   4. Sorts each job into a role (e.g. "Data Engineer", "Marketing") using its title,
+//      and reads salary, experience level and degree from the posting text
 //   5. Saves:
 //        data/jobs.json     → every matching open job (Companies + Skills tabs)
 //        data/history.json  → counts per role/city for this run (Trends tab)
@@ -90,11 +91,12 @@ const readers = {
       text: plain(j.descriptionPlain || j.description),
       mode: { remote: "Remote", hybrid: "Hybrid", onsite: "On-site" }[j.workplaceType],
       type: /intern/i.test(j.categories?.commitment ?? "") ? "Internship" : undefined,
+      salary: j.salaryRange && toLpa(j.salaryRange.min, j.salaryRange.max, j.salaryRange.currency, j.salaryRange.interval),
     }));
   },
 
   async ashby(id) {
-    const data = await getJson(`${BASE.ashby}/${id}`);
+    const data = await getJson(`${BASE.ashby}/${id}?includeCompensation=true`);
     return data.jobs.map((j) => ({
       id: `ab-${j.id}`,
       title: j.title,
@@ -104,6 +106,10 @@ const readers = {
       text: plain(j.descriptionPlain || j.descriptionHtml),
       mode: j.isRemote ? "Remote" : { Remote: "Remote", Hybrid: "Hybrid", OnSite: "On-site" }[j.workplaceType],
       type: /intern/i.test(j.employmentType ?? "") ? "Internship" : undefined,
+      salary: (() => {
+        const c = (j.compensation?.summaryComponents ?? []).find((x) => x.compensationType === "Salary");
+        return c && toLpa(c.minValue, c.maxValue, c.currencyCode, c.interval);
+      })(),
     }));
   },
 
@@ -121,7 +127,12 @@ const readers = {
           location: [loc.city, loc.region, loc.country === "in" ? "India" : loc.country].filter(Boolean).join(", "),
           url: `https://jobs.smartrecruiters.com/${id}/${j.id}`,
           created: j.releasedDate,
-          text: "", // the list doesn't include descriptions
+          text: "", // the list doesn't include descriptions…
+          detail: async () => { // …so open the posting when we need its text
+            const d = await getJson(`${BASE.smartrecruiters}/${id}/postings/${j.id}`);
+            const sec = d.jobAd?.sections ?? {};
+            return plain(`${sec.jobDescription?.text ?? ""} ${sec.qualifications?.text ?? ""}`);
+          },
           mode: loc.remote ? "Remote" : loc.hybrid ? "Hybrid" : undefined,
           type: /intern/i.test(j.typeOfEmployment?.label ?? "") ? "Internship" : undefined,
         });
@@ -195,12 +206,15 @@ const readers = {
         for (const j of data.jobPostings ?? []) {
           if (jobs.has(j.externalPath)) continue;
           let location = j.locationsText ?? "";
+          let text = "";
+          const openJob = async () => (await getJson(`${api}${j.externalPath}`)).jobPostingInfo ?? {};
           // "3 Locations" hides the cities, so open that job to read them (limited, to stay polite).
           if (!cityRe.test(location) && detailsOpened < 60) {
             detailsOpened++;
             try {
-              const d = await getJson(`${api}${j.externalPath}`);
-              location = [d.jobPostingInfo?.location, ...(d.jobPostingInfo?.additionalLocations ?? [])].filter(Boolean).join(" · ");
+              const info = await openJob();
+              location = [info.location, ...(info.additionalLocations ?? [])].filter(Boolean).join(" · ");
+              text = plain(info.jobDescription);
             } catch { /* keep the short text */ }
           }
           jobs.set(j.externalPath, {
@@ -209,7 +223,8 @@ const readers = {
             location,
             url: `https://${company.host}/en-US/${company.site}${j.externalPath}`,
             created: workdayDate(j.postedOn),
-            text: "",
+            text,
+            detail: async () => plain((await openJob()).jobDescription),
             mode: /remote/i.test(location) ? "Remote" : undefined,
           });
         }
@@ -250,7 +265,7 @@ const readers = {
           location: j.normalized_location || j.location || j.city || "",
           url: `https://www.amazon.jobs${j.job_path}`,
           created: j.posted_date ? new Date(j.posted_date).toISOString() : undefined,
-          text: plain(`${j.description_short ?? ""} ${j.basic_qualifications ?? ""}`),
+          text: plain(`${j.description_short ?? ""} ${j.basic_qualifications ?? ""} ${j.preferred_qualifications ?? ""}`),
           type: /intern/i.test(`${j.title} ${j.job_schedule_type ?? ""}`) ? "Internship" : undefined,
         });
       }
@@ -271,7 +286,6 @@ function workdayDate(text = "") {
 
 const cityRules = Object.entries(config.cities).map(([city, pattern]) => [city, new RegExp(pattern, "i")]);
 const roleRules = config.roles.map((r) => [r.name, new RegExp(r.match, "i")]);
-const skipRule = new RegExp(config.skipTitles, "i");
 
 function cityOf(job) {
   for (const [city, re] of cityRules) if (re.test(job.location)) return city;
@@ -291,7 +305,51 @@ function modeOf(job) {
   return "Not stated";
 }
 
-const typeOf = (job) => job.type ?? (/\bintern(ship)?s?\b|\btrainee\b/i.test(job.title) ? "Internship" : "Job");
+const typeOf = (job) => job.type ?? (/\bintern(ship)?s?\b|\bapprentice/i.test(job.title) ? "Internship" : "Job");
+
+// ---------- salary (in lakhs per annum, "LPA") ----------
+// Structured salary from the feed, if any (only INR counts — USD pay is for other countries).
+function toLpa(min, max, currency, interval = "") {
+  if (!/inr/i.test(currency ?? "") || !(min || max)) return null;
+  const perYear = /month/i.test(interval) ? 12 : /hour/i.test(interval) ? 2000 : 1;
+  const lpa = (v) => (v ? Math.round((v * perYear) / 1e4) / 10 : null);
+  return { min: lpa(min ?? max), max: lpa(max ?? min) };
+}
+
+// Salary written in the text: "12-18 LPA", "₹6,00,000 - ₹9,00,000 per annum", "₹40,000/month".
+function salaryFromText(text) {
+  let m = text.match(/(\d{1,2}(?:\.\d)?)\s*(?:-|–|to)\s*(\d{1,2}(?:\.\d)?)\s*(?:lpa|lakhs?|l\.?p\.?a)/i);
+  if (m) return { min: +m[1], max: +m[2] };
+  m = text.match(/(\d{1,2}(?:\.\d)?)\s*(?:lpa|lakhs? per annum)/i);
+  if (m) return { min: +m[1], max: +m[1] };
+  m = text.match(/(?:₹|inr|rs\.?)\s*([\d,]{5,})(?:\s*(?:-|–|to)\s*(?:₹|inr|rs\.?)?\s*([\d,]{5,}))?\s*(per month|\/\s*month|monthly|pm\b)?/i);
+  if (m) {
+    const n = (x) => +x.replace(/,/g, "");
+    return toLpa(n(m[1]), m[2] ? n(m[2]) : n(m[1]), "INR", m[3] ? "month" : "year");
+  }
+  return null;
+}
+
+// ---------- experience level and degrees ----------
+function levelOf(job, type) {
+  if (type === "Internship") return { level: "Internship", minYears: 0 };
+  const t = `${job.title} ${job.text}`;
+  const years = t.match(/(\d{1,2})\s*\+?\s*(?:(?:-|–|to)\s*\d{1,2}\s*)?\+?\s*(?:years|yrs)/i);
+  const minYears = years && +years[1] <= 30 ? +years[1] : null;
+  if (/\b(fresher|freshers|fresh graduates?|new grad|graduate (engineer|trainee|program)|trainee|entry[- ]level|campus|0\s*(?:-|–|to)\s*[12]\s*(years|yrs))\b/i.test(t)
+      || minYears === 0) return { level: "Fresher", minYears };
+  if ((minYears !== null && minYears >= 1) || /\b(senior|sr\.?|lead|staff|principal|manager|director|head|architect|vp)\b/i.test(job.title))
+    return { level: "Experienced", minYears };
+  return { level: "Not stated", minYears };
+}
+
+function degreesOf(text) {
+  const d = [];
+  if (/bachelor|undergraduate degree|\b(B\.?\s?Tech|B\.E\b|BE\/B\.?Tech|B\.?Sc|BCA|B\.?Com|BBA)\b/i.test(text)) d.push("Bachelor's");
+  if (/master'?s|\bMBA\b|\bM\.?\s?Tech\b|\bM\.?Sc\b|\bMCA\b|\bMS (in|degree)\b|\bM\.S\.|post-?graduate|\bPGDM\b/i.test(text)) d.push("Master's");
+  if (/\bph\.?\s?d|doctorate|doctoral/i.test(text)) d.push("PhD");
+  return d;
+}
 
 // ---------- main ----------
 
@@ -309,12 +367,21 @@ for (const company of config.companies) {
   try {
     const raw = await reader(company.id, company);
     let matched = 0;
+    let detailsOpened = 0;
     for (const j of raw) {
       const city = cityOf(j);
-      if (!city || skipRule.test(j.title)) continue;
+      if (!city) continue;
       const role = roleOf(j.title);
       if (!role) continue;
       matched++;
+      // Open the full posting when the feed left out the description (limited per company).
+      if (!j.text && j.detail && detailsOpened < (company.maxDetails ?? 300)) {
+        detailsOpened++;
+        try { j.text = await j.detail(); } catch { /* fine, keep going without it */ }
+        await sleep(250);
+      }
+      const type = typeOf(j);
+      const { level, minYears } = levelOf(j, type);
       jobs.push({
         id: j.id,
         company: company.name,
@@ -325,8 +392,12 @@ for (const company of config.companies) {
         url: j.url,
         created: j.created,
         firstSeen: firstSeen.get(j.id) ?? today,
-        type: typeOf(j),
+        type,
         mode: modeOf(j),
+        level,
+        minYears,
+        degrees: degreesOf(j.text),
+        salary: j.salary ?? salaryFromText(`${j.title} ${j.text}`),
         snippet: j.text.slice(0, 1500),
       });
     }
