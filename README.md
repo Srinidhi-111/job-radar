@@ -28,6 +28,8 @@ GitHub Pages serves index.html + app.js, which read those files
 | `scripts/collect.mjs` | The collector. One request per company (a few more for large SmartRecruiters companies). |
 | `.github/workflows/collect.yml` | Tells GitHub when to run the collector. |
 | `index.html`, `style.css`, `app.js` | The dashboard (plain HTML/JS, no build step). |
+| `skills-guide.js` | What to learn, practice projects and free references for every skill (shown when you tap a skill). |
+| `resume.js` | The Résumé tab: role matching, keyword check and AI tailoring. |
 | `data/` | Created automatically by the first run. |
 
 ## One-time setup
@@ -68,6 +70,13 @@ Amazon has its own reader: `{ "name": "Amazon", "ats": "amazon", "id": "amazon" 
 Companies with fully custom sites (Google, Microsoft, Apple, TCS, Infosys, Zoho) or Naukri-only hiring can't be read this way.
 
 After each run, the **Company feeds** list at the bottom of the Companies tab shows which companies failed (usually a wrong id, or the company moved to a different system).
+
+## Résumé tab
+
+1. Upload a PDF (or paste text). It stays in your browser; nothing is uploaded to GitHub.
+2. **Roles that fit you** compares the skills in your résumé with what each role is asking for right now in your selected cities.
+3. **Check keywords** (free, no AI) shows which of a role's or a specific job's skills your résumé has and lacks.
+4. **Tailor with AI** rewrites your résumé for the role/job using Google's Gemini API with **your own free key** from [Google AI Studio](https://aistudio.google.com/app/apikey). The key is stored only in your browser. Email, phone numbers and links are removed before sending, and the AI is told never to invent anything. Always review the result.
 
 ## Good to know
 

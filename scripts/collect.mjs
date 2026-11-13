@@ -40,6 +40,14 @@ const BASE = {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Run fn on every item, at most `limit` at the same time (much faster than one by one,
+// while still gentle on the company's servers).
+async function eachLimit(items, limit, fn) {
+  let next = 0;
+  const worker = async () => { while (next < items.length) await fn(items[next++]); };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+}
+
 async function readJson(file, fallback) {
   try { return JSON.parse(await readFile(file, "utf8")); } catch { return fallback; }
 }
@@ -366,20 +374,20 @@ for (const company of config.companies) {
   if (!reader) { sources.push({ ...company, ok: false, error: `unknown ats "${company.ats}"` }); continue; }
   try {
     const raw = await reader(company.id, company);
-    let matched = 0;
-    let detailsOpened = 0;
+    const started = Date.now();
+    // Keep only jobs in our cities that match a role.
+    const kept = [];
     for (const j of raw) {
       const city = cityOf(j);
-      if (!city) continue;
-      const role = roleOf(j.title);
-      if (!role) continue;
-      matched++;
-      // Open the full posting when the feed left out the description (limited per company).
-      if (!j.text && j.detail && detailsOpened < (company.maxDetails ?? 300)) {
-        detailsOpened++;
-        try { j.text = await j.detail(); } catch { /* fine, keep going without it */ }
-        await sleep(250);
-      }
+      const role = city && roleOf(j.title);
+      if (role) kept.push({ j, city, role });
+    }
+    // Open the full posting when the feed left out the description: 6 at a time, max 150 per company.
+    const needText = kept.filter(({ j }) => !j.text && j.detail).slice(0, company.maxDetails ?? 150);
+    await eachLimit(needText, 6, async ({ j }) => {
+      try { j.text = await j.detail(); } catch { /* fine, keep going without it */ }
+    });
+    for (const { j, city, role } of kept) {
       const type = typeOf(j);
       const { level, minYears } = levelOf(j, type);
       jobs.push({
@@ -401,8 +409,9 @@ for (const company of config.companies) {
         snippet: j.text.slice(0, 1500),
       });
     }
+    const matched = kept.length;
     sources.push({ ...company, ok: true, total: raw.length, matched });
-    console.log(`✓ ${company.name.padEnd(18)} ${String(raw.length).padStart(5)} open jobs, ${matched} in our cities`);
+    console.log(`✓ ${company.name.padEnd(18)} ${String(raw.length).padStart(5)} open jobs, ${matched} in our cities (${Math.round((Date.now() - started) / 1000)}s)`);
   } catch (err) {
     sources.push({ ...company, ok: false, error: err.message });
     console.log(`✗ ${company.name.padEnd(18)} ${err.message} — check its "id" in config.json`);

@@ -14,6 +14,7 @@ permissions:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 45 # stop a stuck run instead of letting it go for hours
     steps:
       - name: Get the code
         uses: actions/checkout@v5

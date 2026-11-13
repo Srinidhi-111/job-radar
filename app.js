@@ -264,7 +264,7 @@ function renderSkills() {
   $("skillList").innerHTML = ranked.map((s) => {
     const pct = ((s.count / jobs.length) * 100).toFixed(0);
     const transferable = !role.startsWith("r:") && totalRoles >= 4 && s.roles.size >= Math.ceil(totalRoles * 0.4);
-    return `<li class="skill">
+    return `<li class="skill" data-skill="${esc(s.name)}" tabindex="0" role="button">
       <span><strong>${esc(s.name)}</strong>${transferable ? `<span class="tag">TRANSFERABLE</span>` : ""}</span>
       <span class="meta">${pct}% of postings${role.startsWith("r:") ? "" : ` · ${s.roles.size} role${s.roles.size === 1 ? "" : "s"}`}</span>
       <div class="bar"><span style="width:${(s.count / max) * 100}%"></span></div>
@@ -272,15 +272,59 @@ function renderSkills() {
   }).join("");
 }
 
+// ---------- skill guide pop-up ----------
+// How much a skill is asked for: share of postings overall and the roles that ask most.
+function skillDemand(name) {
+  const re = SKILLS[name];
+  const jobs = state.jobs.filter((j) => state.cities.has(j.city));
+  const byRole = {};
+  let hits = 0;
+  for (const j of jobs) {
+    const r = (byRole[j.role] ??= { n: 0, hit: 0 });
+    r.n++;
+    if (re && re.test(`${j.title} ${j.snippet}`)) { r.hit++; hits++; }
+  }
+  const top = Object.entries(byRole).filter(([, r]) => r.n >= 5 && r.hit)
+    .map(([role, r]) => [role, Math.round((r.hit / r.n) * 100)]).sort((a, b) => b[1] - a[1]).slice(0, 4);
+  return { share: jobs.length ? Math.round((hits / jobs.length) * 100) : 0, count: hits, top };
+}
+
+function openGuide(name) {
+  const g = (window.SKILL_GUIDES ?? {})[name];
+  const d = skillDemand(name);
+  const list = (items, tag = "ul") => `<${tag}>${items.map((x) => `<li>${esc(x)}</li>`).join("")}</${tag}>`;
+  $("guideBody").innerHTML = `
+    <h2>${esc(name)}</h2>
+    ${g ? `<p>${esc(g.about)}</p>` : ""}
+    <p class="demand">Asked for in <strong>${d.share}%</strong> of postings here (${fmt(d.count)} jobs)${d.top.length ? ` · most by ${d.top.map(([r, p]) => `${esc(r)} (${p}%)`).join(", ")}` : ""}</p>
+    ${g ? `<h3>What to learn, in order</h3>${list(g.learn, "ol")}
+    <h3>Practice projects</h3>${list(g.build)}
+    <h3>Free references</h3><ul>${g.refs.map(([t, u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join("")}</ul>`
+    : `<p>No guide yet for this skill. Try <a href="https://roadmap.sh" target="_blank" rel="noopener">roadmap.sh</a>.</p>`}`;
+  $("guide").showModal();
+}
+$("guideClose").addEventListener("click", () => $("guide").close());
+$("guide").addEventListener("click", (e) => { if (e.target === $("guide")) $("guide").close(); }); // tap outside closes
+$("skillList").addEventListener("click", (e) => { const li = e.target.closest("[data-skill]"); if (li) openGuide(li.dataset.skill); });
+$("skillList").addEventListener("keydown", (e) => { const li = e.target.closest("[data-skill]"); if (li && e.key === "Enter") openGuide(li.dataset.skill); });
+
+// Switch tab from code (used by the Résumé tab's "View jobs" buttons).
+function showTab(tab, scrollUp = false) {
+  document.querySelectorAll(".tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  document.querySelectorAll(".panel").forEach((p) => (p.hidden = p.id !== tab));
+  if (scrollUp) window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 // ---------- tabs & startup ----------
 document.querySelector(".tabs").addEventListener("click", (e) => {
   const tab = e.target.dataset?.tab;
-  if (!tab) return;
-  document.querySelectorAll(".tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
-  document.querySelectorAll(".panel").forEach((p) => (p.hidden = p.id !== tab));
+  if (tab) showTab(tab);
 });
 
-function renderAll() { renderTrends(); renderCompanies(); renderSkills(); }
+function renderAll() {
+  renderTrends(); renderCompanies(); renderSkills();
+  window.renderResume?.(); // résumé matches depend on the selected cities too
+}
 
 ["trendSort", "trendArea"].forEach((id) => $(id).addEventListener("change", renderTrends));
 ["companySearch", "roleFilter", "typeFilter", "modeFilter", "salaryFilter", "eduFilter", "newOnly"].forEach((id) =>

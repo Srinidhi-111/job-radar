@@ -24,6 +24,7 @@
     <button role="tab" data-tab="trends" aria-selected="true">Trends</button>
     <button role="tab" data-tab="companies" aria-selected="false">Companies</button>
     <button role="tab" data-tab="skills" aria-selected="false">Skills</button>
+    <button role="tab" data-tab="resume" aria-selected="false">Résumé</button>
   </nav>
 
   <main>
@@ -83,15 +84,65 @@
 
     <!-- SKILLS -->
     <section id="skills" class="panel" hidden>
-      <p class="note">Skills mentioned in current postings. <strong>Transferable</strong> = appears across many different roles, so it stays useful even if one role fades.</p>
+      <p class="note">Skills mentioned in current postings. <strong>Transferable</strong> = appears across many different roles, so it stays useful even if one role fades. Tap a skill to see what to learn.</p>
       <div class="toolbar">
         <select id="skillRoleFilter" class="area" aria-label="Department or role"></select>
       </div>
       <ol class="skills" id="skillList"></ol>
     </section>
+    <!-- RESUME -->
+    <section id="resume" class="panel" hidden>
+      <div class="card">
+        <h2>1 · Add your résumé</h2>
+        <p class="note">Your résumé stays in this browser. Matching runs on your device; only the AI rewrite (step 3) sends text to Google, with your email, phone and links removed first.</p>
+        <label class="file-btn">Upload PDF or .txt<input type="file" id="resumeFile" accept=".pdf,.txt,text/plain,application/pdf" /></label>
+        <textarea id="resumeText" rows="6" placeholder="…or paste your résumé text here"></textarea>
+        <div class="row">
+          <button class="primary" id="analyseBtn">Analyse résumé</button>
+          <label class="check"><input type="checkbox" id="rememberResume" checked /> Remember on this device</label>
+        </div>
+        <p class="note" id="resumeStatus"></p>
+        <div class="chips" id="yourSkills"></div>
+      </div>
+
+      <div class="card" id="matchCard" hidden>
+        <h2>2 · Roles that fit you</h2>
+        <p class="note">Based on the skills companies in your selected cities ask for right now. Tap a missing skill to see how to learn it.</p>
+        <ol class="matches" id="roleMatches"></ol>
+      </div>
+
+      <div class="card" id="tailorCard" hidden>
+        <h2>3 · Tailor your résumé</h2>
+        <div class="toolbar wrap">
+          <select id="tailorRole" aria-label="Target role"></select>
+          <select id="tailorJob" aria-label="Specific job"></select>
+        </div>
+        <div class="row">
+          <button id="keywordBtn">Check keywords</button>
+          <button class="primary" id="aiBtn">Tailor with AI</button>
+        </div>
+        <details class="ai-key">
+          <summary>AI settings (free Google Gemini key)</summary>
+          <p class="note">Get a free key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a>, paste it here. It's saved only in this browser. On Gemini's free tier, Google may use what you send to improve its products, which is why contact details are removed before sending.</p>
+          <div class="row">
+            <input type="password" id="geminiKey" placeholder="Paste Gemini API key" autocomplete="off" />
+            <button id="saveKeyBtn">Save</button>
+            <button id="clearKeyBtn">Clear</button>
+          </div>
+        </details>
+        <div id="tailorOut"></div>
+      </div>
+    </section>
   </main>
 
+  <dialog id="guide">
+    <div id="guideBody"></div>
+    <button class="close" id="guideClose" aria-label="Close">Close</button>
+  </dialog>
+
   <footer>Data: public careers pages of the companies in config.json. Counts = open jobs on the day collected.</footer>
+  <script src="skills-guide.js"></script>
   <script src="app.js"></script>
+  <script src="resume.js"></script>
 </body>
 </html>
