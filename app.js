@@ -115,6 +115,56 @@ function sparkline(values) {
     <polyline points="${pts.join(" ")}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
 }
 
+// ---------- INDIA-WIDE OUTLOOK (from monthly hiring reports, see outlook.json) ----------
+let outlookGroup = "Roles";
+const pctLabel = (v) => v === "stable" ? "Stable" : `${v > 0 ? "+" : ""}${v}%`;
+const pctNum = (v) => (v === "stable" ? 0 : v);
+
+function renderOutlook() {
+  const o = state.outlook;
+  if (!o?.groups) return;
+  $("outlook").hidden = false;
+  const [prev, latest] = o.periods;
+  $("outlookAbout").textContent = `${o.about} Overall: ${pctLabel(o.overall[latest])} in ${latest}, ${pctLabel(o.overall[prev])} in ${prev}.`;
+  $("outlookTabs").innerHTML = Object.keys(o.groups).map((g) =>
+    `<button role="tab" data-group="${esc(g)}" aria-selected="${g === outlookGroup}">${esc(g)}</button>`).join("");
+
+  // Sort by the most recent figure available for each row.
+  const latestOf = (r) => (r.values[latest] !== undefined ? [latest, r.values[latest]] : [prev, r.values[prev]]);
+  const rows = [...o.groups[outlookGroup]].sort((a, b) => pctNum(latestOf(b)[1]) - pctNum(latestOf(a)[1]));
+  const max = Math.max(...rows.map((r) => Math.abs(pctNum(latestOf(r)[1]))), 1);
+
+  $("outlookRows").innerHTML = rows.map((r) => {
+    const [period, v] = latestOf(r);
+    const n = pctNum(v);
+    const cls = v === "stable" || Math.abs(n) < 3 ? "flat" : n > 0 ? "up" : "down";
+    const other = period === latest && r.values[prev] !== undefined ? `${prev.slice(0, 3)} ${pctLabel(r.values[prev])}` : "";
+    return `<li class="ol-row">
+      <span class="ol-name">${esc(r.name)}</span>
+      <span class="badge ${cls}">${pctLabel(v)}</span>
+      <div class="ol-bar ${cls}"><span style="width:${(Math.abs(n) / max) * 100}%"></span></div>
+      <span class="ol-meta">${esc(period)}${other ? ` · ${esc(other)}` : ""}</span>
+      ${r.area ? `<button class="link" data-area="${esc(r.area)}">See jobs →</button>` : ""}
+    </li>`;
+  }).join("");
+
+  $("outlookNote").textContent = [o.notes?.[outlookGroup], o.caveat].filter(Boolean).join(" ");
+  $("outlookSources").innerHTML = `<ul>${o.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>
+    <p>These are year-on-year changes: October 2026 compared with October 2025. A positive number means more job postings than a year ago, not that a field is easy to get into. Updated ${esc(o.updated)}.</p>`;
+}
+
+$("outlookTabs").addEventListener("click", (e) => {
+  const g = e.target.dataset?.group;
+  if (g) { outlookGroup = g; renderOutlook(); }
+});
+$("outlookRows").addEventListener("click", (e) => {
+  const a = e.target.closest("[data-area]");
+  if (!a) return;
+  $("roleFilter").value = a.dataset.area;
+  renderCompanies();
+  showTab("companies", true);
+});
+
 function renderTrends() {
   const dates = Object.keys(state.history).sort();
   if (!dates.length) {
@@ -130,7 +180,7 @@ function renderTrends() {
   const shared = base ? [...lastCos].filter((c) => companiesOn(base).has(c)) : [...lastCos];
   $("historyNote").textContent = base
     ? `Open jobs at ${shared.length} tracked companies, compared with ${base} (${daysBetween(base, last)} days earlier).`
-    : `Open jobs at ${lastCos.size} tracked companies. Growth appears after a second run at least 6 days later (${dates.length} run so far).`;
+    : `Open jobs at ${lastCos.size} tracked companies. Rising/falling needs two snapshots at least 6 days apart, so it starts after next week's automatic run (${dates.length} snapshot${dates.length === 1 ? "" : "s"} so far).`;
 
   const area = $("trendArea").value;
   const roles = state.roles.filter((role) => inArea(role, area)).map((role) => {
@@ -148,6 +198,13 @@ function renderTrends() {
     return { role, now, diff, change, series, perCity };
   });
 
+  // Growth needs an older snapshot. Until then, grey out those options and say when they'll work.
+  const growthOpts = [...$("trendSort").options].filter((o) => o.value !== "count");
+  for (const o of growthOpts) {
+    o.disabled = !base;
+    o.textContent = (o.value === "growth" ? "Fastest growing" : "Fastest falling") + (base ? "" : " (after next weekly run)");
+  }
+  if (!base && $("trendSort").value !== "count") $("trendSort").value = "count";
   const sort = $("trendSort").value;
   const key = (r) => r.change ?? (r.diff ? Math.sign(r.diff) * 100 : 0);
   roles.sort((a, b) =>
@@ -360,11 +417,12 @@ $("skillRoleFilter").addEventListener("change", renderSkills);
 
 (async function init() {
   drawCityButtons();
-  const [history, jobsFile, sourcesFile, config] = await Promise.all([
+  const [history, jobsFile, sourcesFile, config, outlook] = await Promise.all([
     load("data/history.json", {}),
     load("data/jobs.json", { updated: null, jobs: [] }),
     load("data/sources.json", { sources: [] }),
     load("config.json", { roles: [] }),
+    load("outlook.json", null),
   ]);
   state.history = history;
   state.jobs = jobsFile.jobs;
@@ -373,6 +431,8 @@ $("skillRoleFilter").addEventListener("change", renderSkills);
   state.roles = config.roles.map((r) => r.name);
   for (const r of config.roles) state.deptOf[r.name] = r.department;
   state.groupOf = config.departments ?? {};
+  state.outlook = outlook;
+  renderOutlook();
 
   $("trendArea").innerHTML = areaOptions("All roles");
   $("roleFilter").innerHTML = areaOptions("All roles");

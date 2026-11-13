@@ -1,0 +1,59 @@
+{
+  "updated": "2026-11-13",
+  "about": "Year-on-year change in white-collar job postings across India (Naukri JobSpeak index). Positive = more postings than the same month last year.",
+  "periods": ["Sep 2026", "Oct 2026"],
+  "caveat": "October 2026 looks extra strong partly because Diwali fell in October 2025, which lowered last year's number. Read October together with September.",
+  "sources": [
+    { "title": "Naukri JobSpeak — September 2026 data (Naukri blog, 6 Oct 2026)", "url": "https://www.naukri.com/blog/naukri-jobspeak-october-2026-white-collar-hiring-ai-ml-growth/" },
+    { "title": "Naukri JobSpeak — October 2026 data (Wocult, 8 Nov 2026)", "url": "https://www.wocult.com/posts/hiring-is-up-14-per-cent-software-engineering-hiring-is-up-1" },
+    { "title": "Naukri JobSpeak — October 2026 data (Remunance, 4 Nov 2026)", "url": "https://remunance.com/industry-news/naukri-jobspeak-october-2026-white-collar-hiring/" }
+  ],
+  "overall": { "Sep 2026": 2, "Oct 2026": 14 },
+  "groups": {
+    "Roles": [
+      { "name": "AI / Machine Learning", "values": { "Sep 2026": 20, "Oct 2026": 32 }, "area": "d:AI & Data" },
+      { "name": "Production & manufacturing", "values": { "Oct 2026": 39 }, "area": "r:Mechanical / Manufacturing" },
+      { "name": "Research & development", "values": { "Sep 2026": 19 } },
+      { "name": "Engineering – hardware & networks", "values": { "Sep 2026": 19 }, "area": "r:Embedded / Hardware" },
+      { "name": "Merchandising, retail & e-commerce", "values": { "Sep 2026": 18 } },
+      { "name": "Construction & site engineering", "values": { "Sep 2026": 17 } },
+      { "name": "Software engineering & QA", "values": { "Oct 2026": 1 }, "area": "d:Software Engineering" }
+    ],
+    "Industries": [
+      { "name": "Automobile & auto parts", "values": { "Sep 2026": 11, "Oct 2026": 36 } },
+      { "name": "Global Capability Centres (GCCs)", "values": { "Sep 2026": 4, "Oct 2026": 18 } },
+      { "name": "BPO / IT-enabled services", "values": { "Sep 2026": 4, "Oct 2026": 17 } },
+      { "name": "Banking & financial services", "values": { "Sep 2026": "stable", "Oct 2026": 16 } },
+      { "name": "FMCG", "values": { "Sep 2026": -4, "Oct 2026": 6 } },
+      { "name": "IT & software services", "values": { "Sep 2026": -4, "Oct 2026": 5 } },
+      { "name": "Insurance", "values": { "Sep 2026": "stable" } },
+      { "name": "Retail", "values": { "Sep 2026": "stable" } },
+      { "name": "Real estate", "values": { "Sep 2026": "stable" } },
+      { "name": "Healthcare", "values": { "Sep 2026": -3 } },
+      { "name": "Pharma & biotech", "values": { "Sep 2026": -4 } },
+      { "name": "Hospitality & travel", "values": { "Sep 2026": -11 } },
+      { "name": "Education", "values": { "Sep 2026": -18 } }
+    ],
+    "Experience": [
+      { "name": "Freshers", "values": { "Sep 2026": 1, "Oct 2026": 15 } },
+      { "name": "4–7 years", "values": { "Sep 2026": -2 } },
+      { "name": "8–12 years", "values": { "Sep 2026": 5 } },
+      { "name": "13–16 years", "values": { "Sep 2026": 7, "Oct 2026": 22 } },
+      { "name": "16+ years", "values": { "Sep 2026": 5, "Oct 2026": 22 } },
+      { "name": "AI/ML freshers", "values": { "Sep 2026": 19 } }
+    ],
+    "Cities": [
+      { "name": "Hyderabad", "values": { "Sep 2026": 9, "Oct 2026": 15 } },
+      { "name": "Pune", "values": { "Sep 2026": "stable", "Oct 2026": 14 } },
+      { "name": "Delhi NCR", "values": { "Sep 2026": -6, "Oct 2026": 13 } },
+      { "name": "Bengaluru", "values": { "Sep 2026": 4, "Oct 2026": 12 } },
+      { "name": "Mumbai", "values": { "Sep 2026": -6, "Oct 2026": 12 } },
+      { "name": "Chennai", "values": { "Sep 2026": 6 } },
+      { "name": "Kolkata", "values": { "Sep 2026": 4, "Oct 2026": "stable" } }
+    ]
+  },
+  "notes": {
+    "Roles": "Only roles the reports give a number for are listed. Sales, marketing, HR and finance weren't broken out.",
+    "Cities": "Coimbatore isn't reported separately (it's counted under emerging cities, which were flat in September)."
+  }
+}

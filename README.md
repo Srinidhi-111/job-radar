@@ -71,6 +71,19 @@ Companies with fully custom sites (Google, Microsoft, Apple, TCS, Infosys, Zoho)
 
 After each run, the **Company feeds** list at the bottom of the Companies tab shows which companies failed (usually a wrong id, or the company moved to a different system).
 
+## India-wide outlook (top of the Trends tab)
+
+Shows which roles, industries, experience levels and cities are growing or falling **across India**, year on year, from Naukri's monthly JobSpeak hiring index. The list below it shows openings at the companies Job Radar tracks.
+
+The figures live in `outlook.json` and are updated by hand once a month (Naukri publishes early each month):
+
+1. Search "Naukri JobSpeak" + the month and open the report or a news article about it.
+2. In `outlook.json`, set `periods` to the last two months, e.g. `["Oct 2026", "Nov 2026"]`, and update each row's `values` with the same month names. Use a number for a % change (`12`, `-4`) or `"stable"`. Leave a month out if the report doesn't give it.
+3. Update `overall`, `sources`, `updated` and, if needed, `caveat`.
+4. Commit and push. No workflow run needed.
+
+Each row can have an `area` that links "See jobs →" to the Companies tab: `d:` + a department name or `r:` + a role name from `config.json`.
+
 ## Résumé tab
 
 1. Upload a PDF (or paste text). It stays in your browser; nothing is uploaded to GitHub.
