@@ -1120,7 +1120,7 @@
      "Remote (India)": 4
     },
     "Cloud / DevOps / SRE": {
-     "Bangalore": 5
+     "Bangalore": 4
     },
     "Backend Developer": {
      "Bangalore": 10
@@ -1532,6 +1532,10 @@
     }
    },
    "Bosch": {
+    "Solutions / Support Engineer": {
+     "Bangalore": 4,
+     "Chennai": 1
+    },
     "Admin / Office": {
      "Bangalore": 3,
      "Coimbatore": 1
@@ -1547,10 +1551,6 @@
     },
     "Customer Success / Support": {
      "Coimbatore": 1,
-     "Bangalore": 3
-    },
-    "Solutions / Support Engineer": {
-     "Chennai": 1,
      "Bangalore": 3
     },
     "Mobile App Developer": {
@@ -1729,7 +1729,10 @@
    },
    "Salesforce": {
     "Sales / Business Development": {
-     "Bangalore": 37
+     "Bangalore": 38
+    },
+    "Backend Developer": {
+     "Bangalore": 1
     },
     "Software Engineer (general)": {
      "Bangalore": 7
@@ -1741,7 +1744,7 @@
      "Bangalore": 3
     },
     "Generative AI / LLM": {
-     "Bangalore": 2
+     "Bangalore": 1
     },
     "Marketing": {
      "Bangalore": 1
@@ -1865,6 +1868,9 @@
     }
    },
    "Target": {
+    "Backend Developer": {
+     "Bangalore": 2
+    },
     "Other roles": {
      "Bangalore": 12
     },
@@ -1879,9 +1885,6 @@
     },
     "UI/UX Designer": {
      "Bangalore": 4
-    },
-    "Backend Developer": {
-     "Bangalore": 2
     },
     "Mechanical / Manufacturing": {
      "Bangalore": 1
@@ -2139,7 +2142,7 @@
      "Coimbatore": 1
     },
     "Software Engineer (general)": {
-     "Bangalore": 217,
+     "Bangalore": 216,
      "Chennai": 26
     },
     "Sales / Business Development": {

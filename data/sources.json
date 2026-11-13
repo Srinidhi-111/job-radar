@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13T09:25:58.153Z",
+ "updated": "2026-11-13T09:52:52.180Z",
  "sources": [
   {
    "name": "Freshworks",
@@ -70,15 +70,15 @@
    "ats": "greenhouse",
    "id": "databricks",
    "ok": true,
-   "total": 906,
-   "matched": 84
+   "total": 905,
+   "matched": 83
   },
   {
    "name": "Stripe",
    "ats": "greenhouse",
    "id": "stripe",
    "ok": true,
-   "total": 787,
+   "total": 789,
    "matched": 43
   },
   {
@@ -158,8 +158,8 @@
    "ats": "smartrecruiters",
    "id": "BoschGroup",
    "ok": true,
-   "total": 592,
-   "matched": 478
+   "total": 593,
+   "matched": 479
   },
   {
    "name": "ServiceNow",
@@ -186,8 +186,8 @@
    "host": "salesforce.wd12.myworkdayjobs.com",
    "site": "External_Career_Site",
    "ok": true,
-   "total": 72,
-   "matched": 72
+   "total": 74,
+   "matched": 73
   },
   {
    "name": "Adobe",
@@ -274,8 +274,8 @@
    "ats": "amazon",
    "id": "amazon",
    "ok": true,
-   "total": 2107,
-   "matched": 1089
+   "total": 2106,
+   "matched": 1088
   },
   {
    "name": "LinkedIn",
