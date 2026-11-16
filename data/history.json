@@ -3262,5 +3262,1506 @@
     }
    }
   }
+ },
+ "2026-11-16": {
+  "counts": {
+   "Freshworks": {
+    "Product Manager": {
+     "Chennai": 2,
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Chennai": 4,
+     "Bangalore": 3
+    },
+    "Other roles": {
+     "Chennai": 3,
+     "Bangalore": 1
+    },
+    "Sales / Business Development": {
+     "Chennai": 1,
+     "Bangalore": 3
+    },
+    "Finance / Accounting": {
+     "Bangalore": 2
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1,
+     "Chennai": 1
+    },
+    "Full Stack Developer": {
+     "Chennai": 2
+    },
+    "Operations / Supply Chain": {
+     "Chennai": 1
+    },
+    "Software Engineer (general)": {
+     "Chennai": 1
+    },
+    "Marketing": {
+     "Chennai": 1
+    }
+   },
+   "Toast": {
+    "Finance / Accounting": {
+     "Chennai": 3,
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Bangalore": 1,
+     "Chennai": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 5,
+     "Chennai": 3
+    },
+    "Sales / Business Development": {
+     "Bangalore": 1
+    },
+    "Customer Success / Support": {
+     "Chennai": 4
+    },
+    "Program / Project Manager": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Full Stack Developer": {
+     "Chennai": 2
+    }
+   },
+   "Razorpay": {
+    "UI/UX Designer": {
+     "Bangalore": 2
+    },
+    "Other roles": {
+     "Chennai": 1,
+     "Bangalore": 4
+    },
+    "Sales / Business Development": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Admin / Office": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 7
+    }
+   },
+   "CRED": {
+    "Sales / Business Development": {
+     "Bangalore": 3
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Marketing": {
+     "Bangalore": 3
+    },
+    "Other roles": {
+     "Bangalore": 3
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    }
+   },
+   "Meesho": {
+    "Other roles": {
+     "Bangalore": 6
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Finance / Accounting": {
+     "Bangalore": 7
+    },
+    "HR / Recruiting": {
+     "Bangalore": 5
+    },
+    "Data Scientist": {
+     "Bangalore": 4
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 3
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 2
+    },
+    "Product Manager": {
+     "Bangalore": 2
+    },
+    "Mechanical / Manufacturing": {
+     "Bangalore": 2
+    },
+    "Marketing": {
+     "Bangalore": 3
+    },
+    "Sales / Business Development": {
+     "Bangalore": 3
+    },
+    "Legal / Compliance": {
+     "Bangalore": 1
+    },
+    "AI Engineer": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Admin / Office": {
+     "Bangalore": 1
+    }
+   },
+   "Paytm": {
+    "Sales / Business Development": {
+     "Bangalore": 6,
+     "Coimbatore": 1
+    },
+    "Marketing": {
+     "Chennai": 1,
+     "Bangalore": 7
+    },
+    "Backend Developer": {
+     "Bangalore": 2
+    },
+    "Other roles": {
+     "Bangalore": 15,
+     "Chennai": 3
+    },
+    "Data Analyst": {
+     "Bangalore": 1
+    },
+    "HR / Recruiting": {
+     "Bangalore": 3
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    }
+   },
+   "Groww": {
+    "Finance / Accounting": {
+     "Bangalore": 2
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Bangalore": 3
+    },
+    "Legal / Compliance": {
+     "Bangalore": 1
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 1
+    }
+   },
+   "HackerRank": {
+    "Other roles": {
+     "Bangalore": 2
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 8
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    }
+   },
+   "Databricks": {
+    "Sales / Business Development": {
+     "Bangalore": 4
+    },
+    "Other roles": {
+     "Bangalore": 6,
+     "Remote (India)": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 31,
+     "Remote (India)": 4
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 5
+    },
+    "Backend Developer": {
+     "Bangalore": 10
+    },
+    "AI Engineer": {
+     "Bangalore": 3
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 4
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 9
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 2
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    }
+   },
+   "Stripe": {
+    "Sales / Business Development": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Bangalore": 7
+    },
+    "Finance / Accounting": {
+     "Bangalore": 8
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 7
+    },
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 8
+    },
+    "HR / Recruiting": {
+     "Bangalore": 2
+    },
+    "Customer Success / Support": {
+     "Bangalore": 2
+    },
+    "Legal / Compliance": {
+     "Bangalore": 1
+    },
+    "Marketing": {
+     "Bangalore": 2
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Data Analyst": {
+     "Bangalore": 1
+    }
+   },
+   "Rubrik": {
+    "Sales / Business Development": {
+     "Remote (India)": 3,
+     "Bangalore": 2
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Customer Success / Support": {
+     "Remote (India)": 1
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 4
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 2
+    },
+    "Other roles": {
+     "Bangalore": 3
+    },
+    "Program / Project Manager": {
+     "Bangalore": 2
+    },
+    "Legal / Compliance": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 4
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "AI Engineer": {
+     "Bangalore": 3
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    }
+   },
+   "Harness": {
+    "Customer Success / Support": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 8
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Admin / Office": {
+     "Bangalore": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 1
+    }
+   },
+   "Zscaler": {
+    "Sales / Business Development": {
+     "Remote (India)": 2,
+     "Bangalore": 3
+    },
+    "Customer Success / Support": {
+     "Bangalore": 2
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 3
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 4,
+     "Remote (India)": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 33
+    },
+    "Cybersecurity": {
+     "Bangalore": 4
+    },
+    "Finance / Accounting": {
+     "Remote (India)": 2,
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 3
+    },
+    "Backend Developer": {
+     "Bangalore": 4
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Remote (India)": 2,
+     "Bangalore": 8
+    },
+    "AI Engineer": {
+     "Remote (India)": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 1
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    }
+   },
+   "GitLab (remote)": {
+    "Other roles": {
+     "Bangalore": 1,
+     "Remote (India)": 1
+    },
+    "Solutions / Support Engineer": {
+     "Remote (India)": 2,
+     "Bangalore": 3
+    },
+    "Customer Success / Support": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 6
+    },
+    "Cybersecurity": {
+     "Bangalore": 4
+    },
+    "Backend Developer": {
+     "Bangalore": 5
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Program / Project Manager": {
+     "Bangalore": 2
+    },
+    "HR / Recruiting": {
+     "Remote (India)": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 4
+    },
+    "Sales / Business Development": {
+     "Remote (India)": 2
+    },
+    "Operations / Supply Chain": {
+     "Remote (India)": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Data Analyst": {
+     "Bangalore": 1
+    }
+   },
+   "Twilio": {
+    "Software Engineer (general)": {
+     "Remote (India)": 6
+    },
+    "Solutions / Support Engineer": {
+     "Remote (India)": 2
+    },
+    "Operations / Supply Chain": {
+     "Remote (India)": 1
+    },
+    "Other roles": {
+     "Remote (India)": 2
+    },
+    "Machine Learning Engineer": {
+     "Remote (India)": 1
+    }
+   },
+   "Okta": {
+    "Other roles": {
+     "Bangalore": 10
+    },
+    "Customer Success / Support": {
+     "Bangalore": 1
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 2
+    },
+    "Sales / Business Development": {
+     "Bangalore": 4,
+     "Remote (India)": 3
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 3
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 34
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 10
+    },
+    "Finance / Accounting": {
+     "Bangalore": 3
+    },
+    "QA / Test Automation": {
+     "Bangalore": 2
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Program / Project Manager": {
+     "Bangalore": 1
+    },
+    "Mobile App Developer": {
+     "Bangalore": 1
+    },
+    "Full Stack Developer": {
+     "Bangalore": 11
+    },
+    "Backend Developer": {
+     "Bangalore": 5
+    },
+    "Mechanical / Manufacturing": {
+     "Bangalore": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 3
+    }
+   },
+   "Glean": {
+    "Finance / Accounting": {
+     "Bangalore": 3
+    },
+    "Data Analyst": {
+     "Bangalore": 1
+    },
+    "Customer Success / Support": {
+     "Bangalore": 2
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Sales / Business Development": {
+     "Bangalore": 2
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 1
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    }
+   },
+   "Druva": {},
+   "Sarvam AI": {
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 5
+    },
+    "Frontend Developer": {
+     "Bangalore": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 2
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 5,
+     "Chennai": 2
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 2
+    },
+    "Backend Developer": {
+     "Bangalore": 5
+    },
+    "Marketing": {
+     "Bangalore": 5
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Chennai": 2,
+     "Bangalore": 6
+    },
+    "Other roles": {
+     "Bangalore": 4
+    }
+   },
+   "Bosch": {
+    "Operations / Supply Chain": {
+     "Bangalore": 14,
+     "Coimbatore": 1
+    },
+    "Embedded / Hardware": {
+     "Coimbatore": 21,
+     "Bangalore": 31,
+     "Chennai": 1
+    },
+    "Other roles": {
+     "Bangalore": 88,
+     "Coimbatore": 7
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 100,
+     "Coimbatore": 15
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 8
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 4,
+     "Chennai": 1
+    },
+    "Admin / Office": {
+     "Bangalore": 3,
+     "Coimbatore": 1
+    },
+    "Sales / Business Development": {
+     "Bangalore": 13,
+     "Remote (India)": 1,
+     "Chennai": 1
+    },
+    "Customer Success / Support": {
+     "Coimbatore": 1,
+     "Bangalore": 3
+    },
+    "Mobile App Developer": {
+     "Bangalore": 4,
+     "Coimbatore": 6
+    },
+    "QA / Test Automation": {
+     "Bangalore": 22
+    },
+    "Data Engineer": {
+     "Bangalore": 5
+    },
+    "Marketing": {
+     "Bangalore": 3
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 14,
+     "Coimbatore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 9,
+     "Coimbatore": 1
+    },
+    "Program / Project Manager": {
+     "Bangalore": 10,
+     "Coimbatore": 1
+    },
+    "Full Stack Developer": {
+     "Bangalore": 4,
+     "Coimbatore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 4,
+     "Coimbatore": 4
+    },
+    "Mechanical / Manufacturing": {
+     "Bangalore": 23,
+     "Chennai": 1,
+     "Coimbatore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 2
+    },
+    "AI Engineer": {
+     "Bangalore": 6
+    },
+    "Cybersecurity": {
+     "Bangalore": 8
+    },
+    "Data Analyst": {
+     "Bangalore": 2
+    },
+    "HR / Recruiting": {
+     "Bangalore": 2
+    },
+    "Electrical / Electronics": {
+     "Bangalore": 4
+    },
+    "Science / Healthcare": {
+     "Bangalore": 1
+    },
+    "UI/UX Designer": {
+     "Bangalore": 4,
+     "Coimbatore": 3
+    },
+    "Frontend Developer": {
+     "Bangalore": 9
+    },
+    "Data Scientist": {
+     "Bangalore": 3
+    },
+    "Legal / Compliance": {
+     "Bangalore": 3
+    },
+    "Product Manager": {
+     "Bangalore": 2
+    }
+   },
+   "ServiceNow": {
+    "UI/UX Designer": {
+     "Bangalore": 3
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 2
+    },
+    "Sales / Business Development": {
+     "Bangalore": 3
+    },
+    "Other roles": {
+     "Bangalore": 4
+    },
+    "Customer Success / Support": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 4
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    }
+   },
+   "Amazon": {
+    "Finance / Accounting": {
+     "Bangalore": 36,
+     "Chennai": 1
+    },
+    "Other roles": {
+     "Bangalore": 152,
+     "Chennai": 47,
+     "Coimbatore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 217,
+     "Chennai": 24
+    },
+    "Sales / Business Development": {
+     "Bangalore": 51
+    },
+    "Program / Project Manager": {
+     "Bangalore": 83,
+     "Chennai": 6
+    },
+    "Operations / Supply Chain": {
+     "Chennai": 16,
+     "Bangalore": 49,
+     "Coimbatore": 1
+    },
+    "Data Scientist": {
+     "Bangalore": 70,
+     "Chennai": 2
+    },
+    "Data Analyst": {
+     "Bangalore": 28,
+     "Chennai": 1
+    },
+    "Data Engineer": {
+     "Chennai": 2,
+     "Bangalore": 18
+    },
+    "Solutions / Support Engineer": {
+     "Bangalore": 27,
+     "Chennai": 2
+    },
+    "Product Manager": {
+     "Bangalore": 33,
+     "Chennai": 1
+    },
+    "Legal / Compliance": {
+     "Bangalore": 49
+    },
+    "QA / Test Automation": {
+     "Bangalore": 10,
+     "Chennai": 2
+    },
+    "AI Engineer": {
+     "Bangalore": 4
+    },
+    "Marketing": {
+     "Chennai": 8,
+     "Bangalore": 47
+    },
+    "UI/UX Designer": {
+     "Bangalore": 6
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 10,
+     "Chennai": 4
+    },
+    "Customer Success / Support": {
+     "Bangalore": 16,
+     "Chennai": 2
+    },
+    "Mechanical / Manufacturing": {
+     "Bangalore": 9,
+     "Chennai": 1
+    },
+    "Frontend Developer": {
+     "Bangalore": 1
+    },
+    "Embedded / Hardware": {
+     "Bangalore": 2
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 9
+    },
+    "Generative AI / LLM": {
+     "Bangalore": 3
+    },
+    "HR / Recruiting": {
+     "Bangalore": 14
+    },
+    "Mobile App Developer": {
+     "Bangalore": 2
+    },
+    "Admin / Office": {
+     "Bangalore": 3
+    },
+    "Cybersecurity": {
+     "Bangalore": 11
+    },
+    "Science / Healthcare": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    }
+   },
+   "LinkedIn": {
+    "Other roles": {
+     "Bangalore": 8
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 4
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    }
+   },
+   "Acceldata": {
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 4
+    },
+    "Sales / Business Development": {
+     "Bangalore": 1
+    },
+    "Frontend Developer": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 3
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Full Stack Developer": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 2
+    }
+   },
+   "ValGenesis": {
+    "Software Engineer (general)": {
+     "Chennai": 3
+    },
+    "HR / Recruiting": {
+     "Chennai": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Chennai": 1
+    },
+    "Data Engineer": {
+     "Chennai": 3
+    },
+    "Machine Learning Engineer": {
+     "Chennai": 1
+    },
+    "Other roles": {
+     "Chennai": 1
+    },
+    "Full Stack Developer": {
+     "Chennai": 1
+    }
+   },
+   "100ms": {
+    "Generative AI / LLM": {
+     "Bangalore": 6
+    },
+    "HR / Recruiting": {
+     "Bangalore": 3
+    },
+    "Sales / Business Development": {
+     "Bangalore": 1
+    }
+   },
+   "Safe Security": {
+    "Software Engineer (general)": {
+     "Bangalore": 8
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    },
+    "Mobile App Developer": {
+     "Bangalore": 1
+    }
+   },
+   "Equativ": {},
+   "DexCare": {
+    "Admin / Office": {
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 2
+    }
+   },
+   "Yugabyte": {},
+   "CommerceIQ": {
+    "Customer Success / Support": {
+     "Bangalore": 1
+    },
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Chennai": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Program / Project Manager": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 2
+    }
+   },
+   "Enterpret": {
+    "AI Engineer": {
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 1
+    },
+    "Machine Learning Engineer": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 2
+    }
+   },
+   "Prophecy": {
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    }
+   },
+   "Narvar": {},
+   "Extreme Networks": {
+    "AI Engineer": {
+     "Bangalore": 1,
+     "Chennai": 1
+    },
+    "Generative AI / LLM": {
+     "Chennai": 9,
+     "Bangalore": 1
+    },
+    "Backend Developer": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Chennai": 4
+    },
+    "Software Engineer (general)": {
+     "Remote (India)": 1,
+     "Bangalore": 8,
+     "Chennai": 2
+    },
+    "QA / Test Automation": {
+     "Bangalore": 6,
+     "Chennai": 1
+    },
+    "Program / Project Manager": {
+     "Bangalore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Embedded / Hardware": {
+     "Bangalore": 2
+    }
+   },
+   "Brillio": {
+    "Other roles": {
+     "Bangalore": 18
+    },
+    "AI Engineer": {
+     "Bangalore": 10
+    },
+    "Finance / Accounting": {
+     "Bangalore": 2
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 44,
+     "Chennai": 2
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 2
+    },
+    "Data Analyst": {
+     "Bangalore": 6
+    },
+    "Data Scientist": {
+     "Bangalore": 12,
+     "Chennai": 3
+    },
+    "Frontend Developer": {
+     "Chennai": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 6
+    },
+    "Science / Healthcare": {
+     "Bangalore": 1
+    },
+    "Mechanical / Manufacturing": {
+     "Bangalore": 6
+    },
+    "Program / Project Manager": {
+     "Bangalore": 3
+    },
+    "QA / Test Automation": {
+     "Bangalore": 2
+    },
+    "Sales / Business Development": {
+     "Bangalore": 1
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 6
+    },
+    "Cybersecurity": {
+     "Bangalore": 2
+    }
+   },
+   "Cprime": {
+    "Software Engineer (general)": {
+     "Chennai": 2
+    }
+   },
+   "Paytm Payments Services": {
+    "Other roles": {
+     "Chennai": 14,
+     "Bangalore": 26,
+     "Coimbatore": 4
+    },
+    "Sales / Business Development": {
+     "Bangalore": 40,
+     "Coimbatore": 4,
+     "Chennai": 10
+    },
+    "Operations / Supply Chain": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    }
+   },
+   "Dozee": {
+    "Sales / Business Development": {
+     "Bangalore": 1,
+     "Chennai": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Marketing": {
+     "Bangalore": 1
+    },
+    "Embedded / Hardware": {
+     "Bangalore": 2
+    },
+    "Science / Healthcare": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "HR / Recruiting": {
+     "Bangalore": 1
+    }
+   },
+   "Appian": {
+    "Other roles": {
+     "Chennai": 5
+    },
+    "Cloud / DevOps / SRE": {
+     "Chennai": 2
+    },
+    "Sales / Business Development": {
+     "Chennai": 1
+    },
+    "Software Engineer (general)": {
+     "Chennai": 2
+    },
+    "Product Manager": {
+     "Chennai": 2
+    },
+    "HR / Recruiting": {
+     "Chennai": 1
+    }
+   },
+   "WPP": {
+    "Software Engineer (general)": {
+     "Chennai": 4
+    },
+    "Mechanical / Manufacturing": {
+     "Chennai": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Chennai": 2
+    },
+    "Cybersecurity": {
+     "Chennai": 3
+    },
+    "Operations / Supply Chain": {
+     "Chennai": 1
+    },
+    "Other roles": {
+     "Chennai": 7
+    },
+    "Product Manager": {
+     "Chennai": 1
+    },
+    "Program / Project Manager": {
+     "Chennai": 1
+    },
+    "Finance / Accounting": {
+     "Chennai": 3,
+     "Bangalore": 1
+    }
+   },
+   "FourKites": {
+    "Product Manager": {
+     "Chennai": 2
+    },
+    "Customer Success / Support": {
+     "Chennai": 2
+    },
+    "Other roles": {
+     "Chennai": 1
+    }
+   },
+   "AppViewX": {
+    "Software Engineer (general)": {
+     "Bangalore": 2,
+     "Coimbatore": 1
+    },
+    "Cybersecurity": {
+     "Bangalore": 1,
+     "Coimbatore": 1
+    },
+    "Finance / Accounting": {
+     "Coimbatore": 1
+    },
+    "QA / Test Automation": {
+     "Bangalore": 1
+    }
+   },
+   "Arcana Analytics": {
+    "Data Analyst": {
+     "Bangalore": 1,
+     "Coimbatore": 1
+    },
+    "Other roles": {
+     "Coimbatore": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 1
+    },
+    "Mobile App Developer": {
+     "Bangalore": 1
+    },
+    "Solutions / Support Engineer": {
+     "Coimbatore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 2
+    },
+    "Product Manager": {
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Coimbatore": 2
+    },
+    "AI Engineer": {
+     "Bangalore": 1
+    },
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Frontend Developer": {
+     "Bangalore": 2
+    },
+    "Cybersecurity": {
+     "Bangalore": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 1
+    },
+    "Customer Success / Support": {
+     "Bangalore": 1
+    }
+   },
+   "Orion Innovation": {
+    "Software Engineer (general)": {
+     "Chennai": 1
+    },
+    "Data Analyst": {
+     "Chennai": 1
+    }
+   },
+   "Thoughtworks": {},
+   "Platform Science": {
+    "Software Engineer (general)": {
+     "Chennai": 3
+    },
+    "Full Stack Developer": {
+     "Chennai": 1
+    },
+    "QA / Test Automation": {
+     "Chennai": 1
+    }
+   },
+   "NETGEAR": {
+    "Software Engineer (general)": {
+     "Bangalore": 10,
+     "Chennai": 7
+    },
+    "Embedded / Hardware": {
+     "Chennai": 2
+    },
+    "QA / Test Automation": {
+     "Bangalore": 4,
+     "Chennai": 1
+    },
+    "Sales / Business Development": {
+     "Chennai": 1
+    },
+    "Other roles": {
+     "Chennai": 1
+    },
+    "Product Manager": {
+     "Chennai": 1
+    },
+    "Cloud / DevOps / SRE": {
+     "Chennai": 1
+    },
+    "Customer Success / Support": {
+     "Bangalore": 1
+    }
+   },
+   "Kovai.co": {
+    "Data Scientist": {
+     "Chennai": 1
+    },
+    "Product Manager": {
+     "Coimbatore": 1
+    },
+    "Frontend Developer": {
+     "Coimbatore": 2
+    }
+   },
+   "WNS": {
+    "Other roles": {
+     "Remote (India)": 1,
+     "Bangalore": 2,
+     "Chennai": 2
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 2
+    },
+    "Data Scientist": {
+     "Bangalore": 1
+    },
+    "Data Engineer": {
+     "Bangalore": 3
+    },
+    "Science / Healthcare": {
+     "Remote (India)": 1
+    },
+    "Software Engineer (general)": {
+     "Bangalore": 2
+    }
+   },
+   "Rotork": {
+    "Customer Success / Support": {
+     "Chennai": 1
+    },
+    "Admin / Office": {
+     "Bangalore": 1
+    },
+    "Other roles": {
+     "Chennai": 2
+    },
+    "Software Engineer (general)": {
+     "Chennai": 4
+    },
+    "Data Analyst": {
+     "Chennai": 1
+    },
+    "QA / Test Automation": {
+     "Chennai": 1
+    },
+    "Operations / Supply Chain": {
+     "Chennai": 3
+    },
+    "Mechanical / Manufacturing": {
+     "Chennai": 1
+    }
+   },
+   "Ally": {
+    "Software Engineer (general)": {
+     "Chennai": 4
+    }
+   },
+   "Sutherland": {
+    "Other roles": {
+     "Chennai": 1
+    }
+   },
+   "AECOM": {
+    "Software Engineer (general)": {
+     "Chennai": 8,
+     "Bangalore": 31
+    },
+    "Other roles": {
+     "Chennai": 11,
+     "Bangalore": 11,
+     "Remote (India)": 1
+    },
+    "Electrical / Electronics": {
+     "Chennai": 1,
+     "Bangalore": 3
+    },
+    "UI/UX Designer": {
+     "Bangalore": 9
+    },
+    "Mechanical / Manufacturing": {
+     "Bangalore": 4,
+     "Chennai": 2
+    },
+    "Admin / Office": {
+     "Bangalore": 1
+    },
+    "Finance / Accounting": {
+     "Bangalore": 8
+    },
+    "Cloud / DevOps / SRE": {
+     "Bangalore": 2
+    }
+   },
+   "Uniphore": {
+    "Cloud / DevOps / SRE": {
+     "Chennai": 1,
+     "Bangalore": 1
+    },
+    "QA / Test Automation": {
+     "Chennai": 1
+    },
+    "Cybersecurity": {
+     "Chennai": 1,
+     "Bangalore": 1
+    }
+   }
+  }
  }
 }
