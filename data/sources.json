@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T14:36:14.509Z",
+ "updated": "2026-11-22T14:55:27.419Z",
  "sources": [
   {
    "name": "Freshworks",
@@ -16,8 +16,8 @@
    "id": "toast",
    "ok": true,
    "lastOk": "2026-11-22",
-   "total": 325,
-   "matched": 25
+   "total": 324,
+   "matched": 24
   },
   {
    "name": "Razorpay",
@@ -79,7 +79,7 @@
    "id": "databricks",
    "ok": true,
    "lastOk": "2026-11-22",
-   "total": 895,
+   "total": 894,
    "matched": 77
   },
   {
@@ -196,9 +196,9 @@
    "id": "nvidia",
    "host": "nvidia.wd5.myworkdayjobs.com",
    "site": "NVIDIAExternalCareerSite",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "HTTP 429: server busy or refusing requests"
+   "linkOnly": true
   },
   {
    "name": "Salesforce",
@@ -206,9 +206,9 @@
    "id": "salesforce",
    "host": "salesforce.wd12.myworkdayjobs.com",
    "site": "External_Career_Site",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "HTTP 429: server busy or refusing requests"
+   "linkOnly": true
   },
   {
    "name": "Adobe",
@@ -216,9 +216,9 @@
    "id": "adobe",
    "host": "adobe.wd5.myworkdayjobs.com",
    "site": "external_experienced",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "HTTP 429: server busy or refusing requests"
+   "linkOnly": true
   },
   {
    "name": "Intel",
@@ -226,9 +226,9 @@
    "id": "intel",
    "host": "intel.wd1.myworkdayjobs.com",
    "site": "External",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "PayPal",
@@ -236,9 +236,9 @@
    "id": "paypal",
    "host": "paypal.wd1.myworkdayjobs.com",
    "site": "jobs",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Target",
@@ -246,9 +246,9 @@
    "id": "target",
    "host": "target.wd5.myworkdayjobs.com",
    "site": "targetcareers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Workday",
@@ -256,9 +256,9 @@
    "id": "workday",
    "host": "workday.wd5.myworkdayjobs.com",
    "site": "Workday",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "HP",
@@ -266,9 +266,9 @@
    "id": "hp",
    "host": "hp.wd5.myworkdayjobs.com",
    "site": "ExternalCareerSite",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Caterpillar",
@@ -276,9 +276,9 @@
    "id": "cat",
    "host": "cat.wd5.myworkdayjobs.com",
    "site": "CaterpillarCareers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Philips",
@@ -286,9 +286,9 @@
    "id": "philips",
    "host": "philips.wd3.myworkdayjobs.com",
    "site": "jobs-and-careers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Amazon",
@@ -593,9 +593,9 @@
    "id": "hitachi",
    "host": "hitachi.wd1.myworkdayjobs.com",
    "site": "hitachi",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Bank of America",
@@ -603,9 +603,9 @@
    "id": "ghr",
    "host": "ghr.wd1.myworkdayjobs.com",
    "site": "lateral-ba_continuum",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Flowserve",
@@ -613,9 +613,9 @@
    "id": "flowserve",
    "host": "flowserve.wd1.myworkdayjobs.com",
    "site": "applied",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Hillenbrand",
@@ -623,9 +623,9 @@
    "id": "hillenbrand",
    "host": "hillenbrand.wd3.myworkdayjobs.com",
    "site": "Global",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "KLA",
@@ -633,9 +633,9 @@
    "id": "kla",
    "host": "kla.wd1.myworkdayjobs.com",
    "site": "Search",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "U.S. Bank",
@@ -643,9 +643,9 @@
    "id": "usbank",
    "host": "usbank.wd1.myworkdayjobs.com",
    "site": "us_bank_careers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Flex",
@@ -653,9 +653,9 @@
    "id": "flextronics",
    "host": "flextronics.wd1.myworkdayjobs.com",
    "site": "Careers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Uniphore",
@@ -663,9 +663,9 @@
    "id": "uniphore",
    "host": "uniphore.wd503.myworkdayjobs.com",
    "site": "Uniphore",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Comcast",
@@ -673,9 +673,9 @@
    "id": "comcast",
    "host": "comcast.wd115.myworkdayjobs.com",
    "site": "Comcast_Careers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "athenahealth",
@@ -683,9 +683,9 @@
    "id": "athenahealth",
    "host": "athenahealth.wd1.myworkdayjobs.com",
    "site": "External",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Verizon",
@@ -693,9 +693,9 @@
    "id": "verizon",
    "host": "verizon.wd12.myworkdayjobs.com",
    "site": "verizon-careers",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Citi",
@@ -703,9 +703,9 @@
    "id": "citi",
    "host": "citi.wd5.myworkdayjobs.com",
    "site": "2",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Barclays",
@@ -713,9 +713,9 @@
    "id": "barclays",
    "host": "barclays.wd3.myworkdayjobs.com",
    "site": "External_Career_Site_Barclays",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   },
   {
    "name": "Wells Fargo",
@@ -723,9 +723,9 @@
    "id": "wf",
    "host": "wf.wd1.myworkdayjobs.com",
    "site": "WellsFargoJobs",
+   "mode": "link",
    "ok": false,
-   "lastOk": null,
-   "error": "skipped: Workday was refusing requests this run"
+   "linkOnly": true
   }
  ]
 }
