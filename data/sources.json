@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-13T10:15:00.385Z",
+ "updated": "2026-11-16T08:20:13.823Z",
  "sources": [
   {
    "name": "Freshworks",
    "ats": "smartrecruiters",
    "id": "Freshworks",
    "ok": true,
-   "total": 33,
-   "matched": 28
+   "total": 32,
+   "matched": 27
   },
   {
    "name": "Toast",
    "ats": "greenhouse",
    "id": "toast",
    "ok": true,
-   "total": 357,
-   "matched": 20
+   "total": 353,
+   "matched": 23
   },
   {
    "name": "Razorpay",
@@ -23,7 +23,7 @@
    "id": "razorpaysoftwareprivatelimited",
    "ok": true,
    "total": 25,
-   "matched": 20
+   "matched": 19
   },
   {
    "name": "CRED",
@@ -46,8 +46,8 @@
    "ats": "lever",
    "id": "paytm",
    "ok": true,
-   "total": 202,
-   "matched": 40
+   "total": 204,
+   "matched": 41
   },
   {
    "name": "Groww",
@@ -70,7 +70,7 @@
    "ats": "greenhouse",
    "id": "databricks",
    "ok": true,
-   "total": 905,
+   "total": 895,
    "matched": 83
   },
   {
@@ -78,23 +78,23 @@
    "ats": "greenhouse",
    "id": "stripe",
    "ok": true,
-   "total": 789,
-   "matched": 43
+   "total": 785,
+   "matched": 42
   },
   {
    "name": "Rubrik",
    "ats": "greenhouse",
    "id": "rubrik",
    "ok": true,
-   "total": 181,
-   "matched": 35
+   "total": 182,
+   "matched": 34
   },
   {
    "name": "Harness",
    "ats": "greenhouse",
    "id": "harnessinc",
    "ok": true,
-   "total": 69,
+   "total": 67,
    "matched": 16
   },
   {
@@ -103,38 +103,38 @@
    "id": "zscaler",
    "ok": true,
    "total": 378,
-   "matched": 76
+   "matched": 78
   },
   {
    "name": "GitLab (remote)",
    "ats": "greenhouse",
    "id": "gitlab",
    "ok": true,
-   "total": 254,
-   "matched": 37
+   "total": 258,
+   "matched": 36
   },
   {
    "name": "Twilio",
    "ats": "greenhouse",
    "id": "twilio",
    "ok": true,
-   "total": 116,
-   "matched": 11
+   "total": 114,
+   "matched": 12
   },
   {
    "name": "Okta",
    "ats": "greenhouse",
    "id": "okta",
    "ok": true,
-   "total": 367,
-   "matched": 102
+   "total": 362,
+   "matched": 101
   },
   {
    "name": "Glean",
    "ats": "greenhouse",
    "id": "gleanwork",
    "ok": true,
-   "total": 120,
+   "total": 119,
    "matched": 20
   },
   {
@@ -142,7 +142,7 @@
    "ats": "greenhouse",
    "id": "druva",
    "ok": true,
-   "total": 29,
+   "total": 28,
    "matched": 0
   },
   {
@@ -150,16 +150,16 @@
    "ats": "ashby",
    "id": "sarvam",
    "ok": true,
-   "total": 49,
-   "matched": 40
+   "total": 50,
+   "matched": 41
   },
   {
    "name": "Bosch",
    "ats": "smartrecruiters",
    "id": "BoschGroup",
    "ok": true,
-   "total": 593,
-   "matched": 479
+   "total": 589,
+   "matched": 477
   },
   {
    "name": "ServiceNow",
@@ -167,7 +167,7 @@
    "id": "ServiceNow",
    "ok": true,
    "total": 82,
-   "matched": 20
+   "matched": 19
   },
   {
    "name": "NVIDIA",
@@ -175,9 +175,8 @@
    "id": "nvidia",
    "host": "nvidia.wd5.myworkdayjobs.com",
    "site": "NVIDIAExternalCareerSite",
-   "ok": true,
-   "total": 196,
-   "matched": 194
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Salesforce",
@@ -185,9 +184,8 @@
    "id": "salesforce",
    "host": "salesforce.wd12.myworkdayjobs.com",
    "site": "External_Career_Site",
-   "ok": true,
-   "total": 73,
-   "matched": 73
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Adobe",
@@ -195,9 +193,8 @@
    "id": "adobe",
    "host": "adobe.wd5.myworkdayjobs.com",
    "site": "external_experienced",
-   "ok": true,
-   "total": 25,
-   "matched": 25
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Intel",
@@ -205,9 +202,8 @@
    "id": "intel",
    "host": "intel.wd1.myworkdayjobs.com",
    "site": "External",
-   "ok": true,
-   "total": 98,
-   "matched": 97
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "PayPal",
@@ -215,9 +211,8 @@
    "id": "paypal",
    "host": "paypal.wd1.myworkdayjobs.com",
    "site": "jobs",
-   "ok": true,
-   "total": 17,
-   "matched": 17
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Target",
@@ -225,9 +220,8 @@
    "id": "target",
    "host": "target.wd5.myworkdayjobs.com",
    "site": "targetcareers",
-   "ok": true,
-   "total": 63,
-   "matched": 63
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Workday",
@@ -235,9 +229,8 @@
    "id": "workday",
    "host": "workday.wd5.myworkdayjobs.com",
    "site": "Workday",
-   "ok": true,
-   "total": 3,
-   "matched": 0
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "HP",
@@ -245,9 +238,8 @@
    "id": "hp",
    "host": "hp.wd5.myworkdayjobs.com",
    "site": "ExternalCareerSite",
-   "ok": true,
-   "total": 75,
-   "matched": 75
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Caterpillar",
@@ -255,9 +247,8 @@
    "id": "cat",
    "host": "cat.wd5.myworkdayjobs.com",
    "site": "CaterpillarCareers",
-   "ok": true,
-   "total": 117,
-   "matched": 117
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Philips",
@@ -265,17 +256,16 @@
    "id": "philips",
    "host": "philips.wd3.myworkdayjobs.com",
    "site": "jobs-and-careers",
-   "ok": true,
-   "total": 47,
-   "matched": 47
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Amazon",
    "ats": "amazon",
    "id": "amazon",
    "ok": true,
-   "total": 2105,
-   "matched": 1088
+   "total": 2078,
+   "matched": 1083
   },
   {
    "name": "LinkedIn",
@@ -290,7 +280,7 @@
    "ats": "lever",
    "id": "acceldata",
    "ok": true,
-   "total": 38,
+   "total": 39,
    "matched": 15
   },
   {
@@ -298,8 +288,8 @@
    "ats": "lever",
    "id": "valgenesis",
    "ok": true,
-   "total": 12,
-   "matched": 10
+   "total": 13,
+   "matched": 11
   },
   {
    "name": "100ms",
@@ -322,7 +312,7 @@
    "ats": "lever",
    "id": "equativ",
    "ok": true,
-   "total": 21,
+   "total": 23,
    "matched": 0
   },
   {
@@ -346,7 +336,7 @@
    "ats": "greenhouse",
    "id": "commerceiq",
    "ok": true,
-   "total": 19,
+   "total": 18,
    "matched": 10
   },
   {
@@ -387,7 +377,7 @@
    "id": "brillio-2",
    "ok": true,
    "total": 213,
-   "matched": 128
+   "matched": 129
   },
   {
    "name": "Cprime",
@@ -402,54 +392,47 @@
    "ats": "lever",
    "id": "paytmpayments",
    "ok": true,
-   "total": 1133,
-   "matched": 102
+   "total": 1129,
+   "matched": 100
   },
   {
    "name": "Dozee",
    "ats": "lever",
    "id": "dozee",
    "ok": true,
-   "total": 19,
-   "matched": 9
+   "total": 20,
+   "matched": 10
   },
   {
    "name": "Appian",
    "ats": "greenhouse",
    "id": "appian",
    "ok": true,
-   "total": 157,
+   "total": 155,
    "matched": 13
-  },
-  {
-   "name": "Arcadia",
-   "ats": "greenhouse",
-   "id": "arcadiacareers",
-   "ok": false,
-   "error": "HTTP 404"
   },
   {
    "name": "WPP",
    "ats": "greenhouse",
    "id": "wpp",
    "ok": true,
-   "total": 211,
-   "matched": 23
+   "total": 213,
+   "matched": 24
   },
   {
    "name": "FourKites",
    "ats": "greenhouse",
    "id": "fourkites",
    "ok": true,
-   "total": 12,
-   "matched": 4
+   "total": 13,
+   "matched": 5
   },
   {
    "name": "AppViewX",
    "ats": "greenhouse",
    "id": "appviewx",
    "ok": true,
-   "total": 11,
+   "total": 13,
    "matched": 7
   },
   {
@@ -473,8 +456,8 @@
    "ats": "greenhouse",
    "id": "thoughtworks",
    "ok": true,
-   "total": 47,
-   "matched": 1
+   "total": 46,
+   "matched": 0
   },
   {
    "name": "Platform Science",
@@ -489,7 +472,7 @@
    "ats": "ashby",
    "id": "netgear",
    "ok": true,
-   "total": 50,
+   "total": 49,
    "matched": 29
   },
   {
@@ -505,8 +488,8 @@
    "ats": "smartrecruiters",
    "id": "WNSGlobalServices144",
    "ok": true,
-   "total": 67,
-   "matched": 16
+   "total": 60,
+   "matched": 14
   },
   {
    "name": "Rotork",
@@ -537,8 +520,8 @@
    "ats": "smartrecruiters",
    "id": "aecom2",
    "ok": true,
-   "total": 389,
-   "matched": 82
+   "total": 410,
+   "matched": 92
   },
   {
    "name": "Hitachi",
@@ -546,9 +529,8 @@
    "id": "hitachi",
    "host": "hitachi.wd1.myworkdayjobs.com",
    "site": "hitachi",
-   "ok": true,
-   "total": 434,
-   "matched": 430
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Bank of America",
@@ -556,9 +538,8 @@
    "id": "ghr",
    "host": "ghr.wd1.myworkdayjobs.com",
    "site": "lateral-ba_continuum",
-   "ok": true,
-   "total": 25,
-   "matched": 25
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Flowserve",
@@ -566,9 +547,8 @@
    "id": "flowserve",
    "host": "flowserve.wd1.myworkdayjobs.com",
    "site": "applied",
-   "ok": true,
-   "total": 33,
-   "matched": 33
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Hillenbrand",
@@ -576,18 +556,8 @@
    "id": "hillenbrand",
    "host": "hillenbrand.wd3.myworkdayjobs.com",
    "site": "Global",
-   "ok": true,
-   "total": 16,
-   "matched": 16
-  },
-  {
-   "name": "Poshmark",
-   "ats": "workday",
-   "id": "poshmark",
-   "host": "poshmark.wd5.myworkdayjobs.com",
-   "site": "Poshmark_Careers",
    "ok": false,
-   "error": "HTTP 422"
+   "error": "server kept failing"
   },
   {
    "name": "KLA",
@@ -595,9 +565,8 @@
    "id": "kla",
    "host": "kla.wd1.myworkdayjobs.com",
    "site": "Search",
-   "ok": true,
-   "total": 41,
-   "matched": 41
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "U.S. Bank",
@@ -605,9 +574,8 @@
    "id": "usbank",
    "host": "usbank.wd1.myworkdayjobs.com",
    "site": "us_bank_careers",
-   "ok": true,
-   "total": 47,
-   "matched": 47
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Flex",
@@ -615,9 +583,8 @@
    "id": "flextronics",
    "host": "flextronics.wd1.myworkdayjobs.com",
    "site": "Careers",
-   "ok": true,
-   "total": 27,
-   "matched": 27
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Uniphore",
@@ -635,9 +602,8 @@
    "id": "comcast",
    "host": "comcast.wd115.myworkdayjobs.com",
    "site": "Comcast_Careers",
-   "ok": true,
-   "total": 31,
-   "matched": 31
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "athenahealth",
@@ -645,9 +611,8 @@
    "id": "athenahealth",
    "host": "athenahealth.wd1.myworkdayjobs.com",
    "site": "External",
-   "ok": true,
-   "total": 23,
-   "matched": 23
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Verizon",
@@ -655,9 +620,8 @@
    "id": "verizon",
    "host": "verizon.wd12.myworkdayjobs.com",
    "site": "verizon-careers",
-   "ok": true,
-   "total": 28,
-   "matched": 28
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Citi",
@@ -665,9 +629,8 @@
    "id": "citi",
    "host": "citi.wd5.myworkdayjobs.com",
    "site": "2",
-   "ok": true,
-   "total": 127,
-   "matched": 127
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Barclays",
@@ -675,9 +638,8 @@
    "id": "barclays",
    "host": "barclays.wd3.myworkdayjobs.com",
    "site": "External_Career_Site_Barclays",
-   "ok": true,
-   "total": 81,
-   "matched": 81
+   "ok": false,
+   "error": "server kept failing"
   },
   {
    "name": "Wells Fargo",
@@ -685,9 +647,8 @@
    "id": "wf",
    "host": "wf.wd1.myworkdayjobs.com",
    "site": "WellsFargoJobs",
-   "ok": true,
-   "total": 39,
-   "matched": 39
+   "ok": false,
+   "error": "server kept failing"
   }
  ]
 }
