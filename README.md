@@ -56,6 +56,8 @@ Open the company's careers page and click any job. The link tells you which syst
 
 Add `{ "name": "…", "ats": "…", "id": "…" }` to `companies` in `config.json`.
 
+> **Workday is link-only (since Nov 2026).** Workday's careers sites started refusing automated requests (HTTP 429 on the first request, from GitHub and from a home connection alike), so Workday companies are marked `"mode": "link"` in `config.json`. The collector doesn't contact them; the Companies tab lists them under "check directly" with links to each company's own search for your cities. Remove `"mode": "link"` from a company to try reading it again.
+
 **Workday** companies (link looks like `nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/…`) need two extra fields:
 
 ```json

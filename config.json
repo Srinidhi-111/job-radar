@@ -272,70 +272,80 @@
       "ats": "workday",
       "id": "nvidia",
       "host": "nvidia.wd5.myworkdayjobs.com",
-      "site": "NVIDIAExternalCareerSite"
+      "site": "NVIDIAExternalCareerSite",
+      "mode": "link"
     },
     {
       "name": "Salesforce",
       "ats": "workday",
       "id": "salesforce",
       "host": "salesforce.wd12.myworkdayjobs.com",
-      "site": "External_Career_Site"
+      "site": "External_Career_Site",
+      "mode": "link"
     },
     {
       "name": "Adobe",
       "ats": "workday",
       "id": "adobe",
       "host": "adobe.wd5.myworkdayjobs.com",
-      "site": "external_experienced"
+      "site": "external_experienced",
+      "mode": "link"
     },
     {
       "name": "Intel",
       "ats": "workday",
       "id": "intel",
       "host": "intel.wd1.myworkdayjobs.com",
-      "site": "External"
+      "site": "External",
+      "mode": "link"
     },
     {
       "name": "PayPal",
       "ats": "workday",
       "id": "paypal",
       "host": "paypal.wd1.myworkdayjobs.com",
-      "site": "jobs"
+      "site": "jobs",
+      "mode": "link"
     },
     {
       "name": "Target",
       "ats": "workday",
       "id": "target",
       "host": "target.wd5.myworkdayjobs.com",
-      "site": "targetcareers"
+      "site": "targetcareers",
+      "mode": "link"
     },
     {
       "name": "Workday",
       "ats": "workday",
       "id": "workday",
       "host": "workday.wd5.myworkdayjobs.com",
-      "site": "Workday"
+      "site": "Workday",
+      "mode": "link"
     },
     {
       "name": "HP",
       "ats": "workday",
       "id": "hp",
       "host": "hp.wd5.myworkdayjobs.com",
-      "site": "ExternalCareerSite"
+      "site": "ExternalCareerSite",
+      "mode": "link"
     },
     {
       "name": "Caterpillar",
       "ats": "workday",
       "id": "cat",
       "host": "cat.wd5.myworkdayjobs.com",
-      "site": "CaterpillarCareers"
+      "site": "CaterpillarCareers",
+      "mode": "link"
     },
     {
       "name": "Philips",
       "ats": "workday",
       "id": "philips",
       "host": "philips.wd3.myworkdayjobs.com",
-      "site": "jobs-and-careers"
+      "site": "jobs-and-careers",
+      "mode": "link"
     },
     {
       "name": "Amazon",
@@ -507,98 +517,112 @@
       "ats": "workday",
       "id": "hitachi",
       "host": "hitachi.wd1.myworkdayjobs.com",
-      "site": "hitachi"
+      "site": "hitachi",
+      "mode": "link"
     },
     {
       "name": "Bank of America",
       "ats": "workday",
       "id": "ghr",
       "host": "ghr.wd1.myworkdayjobs.com",
-      "site": "lateral-ba_continuum"
+      "site": "lateral-ba_continuum",
+      "mode": "link"
     },
     {
       "name": "Flowserve",
       "ats": "workday",
       "id": "flowserve",
       "host": "flowserve.wd1.myworkdayjobs.com",
-      "site": "applied"
+      "site": "applied",
+      "mode": "link"
     },
     {
       "name": "Hillenbrand",
       "ats": "workday",
       "id": "hillenbrand",
       "host": "hillenbrand.wd3.myworkdayjobs.com",
-      "site": "Global"
+      "site": "Global",
+      "mode": "link"
     },
     {
       "name": "KLA",
       "ats": "workday",
       "id": "kla",
       "host": "kla.wd1.myworkdayjobs.com",
-      "site": "Search"
+      "site": "Search",
+      "mode": "link"
     },
     {
       "name": "U.S. Bank",
       "ats": "workday",
       "id": "usbank",
       "host": "usbank.wd1.myworkdayjobs.com",
-      "site": "us_bank_careers"
+      "site": "us_bank_careers",
+      "mode": "link"
     },
     {
       "name": "Flex",
       "ats": "workday",
       "id": "flextronics",
       "host": "flextronics.wd1.myworkdayjobs.com",
-      "site": "Careers"
+      "site": "Careers",
+      "mode": "link"
     },
     {
       "name": "Uniphore",
       "ats": "workday",
       "id": "uniphore",
       "host": "uniphore.wd503.myworkdayjobs.com",
-      "site": "Uniphore"
+      "site": "Uniphore",
+      "mode": "link"
     },
     {
       "name": "Comcast",
       "ats": "workday",
       "id": "comcast",
       "host": "comcast.wd115.myworkdayjobs.com",
-      "site": "Comcast_Careers"
+      "site": "Comcast_Careers",
+      "mode": "link"
     },
     {
       "name": "athenahealth",
       "ats": "workday",
       "id": "athenahealth",
       "host": "athenahealth.wd1.myworkdayjobs.com",
-      "site": "External"
+      "site": "External",
+      "mode": "link"
     },
     {
       "name": "Verizon",
       "ats": "workday",
       "id": "verizon",
       "host": "verizon.wd12.myworkdayjobs.com",
-      "site": "verizon-careers"
+      "site": "verizon-careers",
+      "mode": "link"
     },
     {
       "name": "Citi",
       "ats": "workday",
       "id": "citi",
       "host": "citi.wd5.myworkdayjobs.com",
-      "site": "2"
+      "site": "2",
+      "mode": "link"
     },
     {
       "name": "Barclays",
       "ats": "workday",
       "id": "barclays",
       "host": "barclays.wd3.myworkdayjobs.com",
-      "site": "External_Career_Site_Barclays"
+      "site": "External_Career_Site_Barclays",
+      "mode": "link"
     },
     {
       "name": "Wells Fargo",
       "ats": "workday",
       "id": "wf",
       "host": "wf.wd1.myworkdayjobs.com",
-      "site": "WellsFargoJobs"
+      "site": "WellsFargoJobs",
+      "mode": "link"
     }
   ],
   "smartrecruitersMaxPages": 10,

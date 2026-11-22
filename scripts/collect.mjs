@@ -399,6 +399,9 @@ const KEEP_OLD_DAYS = 21;
 let workdayBusyStreak = 0;
 
 for (const company of config.companies) {
+  // "mode": "link" = the company's site doesn't allow automatic reading (e.g. Workday since Nov 2026).
+  // We don't contact it at all; the dashboard shows a link to its careers site instead.
+  if (company.mode === "link") { sources.push({ ...company, ok: false, linkOnly: true }); continue; }
   const reader = readers[company.ats];
   if (!reader) { sources.push({ ...company, ok: false, error: `unknown ats "${company.ats}"` }); continue; }
   try {
@@ -489,5 +492,6 @@ await save("jobs.json", { updated: new Date().toISOString(), jobs });
 await save("history.json", history);
 await save("sources.json", { updated: new Date().toISOString(), sources });
 
-const ok = sources.filter((s) => s.ok).length;
-console.log(`\nDone: ${ok}/${sources.length} company feeds worked, ${jobs.length} matching jobs saved.`);
+const readable = sources.filter((x) => !x.linkOnly);
+console.log(`\nDone: ${readable.filter((x) => x.ok).length}/${readable.length} company feeds worked, ${jobs.length} matching jobs saved`
+  + `${sources.length > readable.length ? ` (${sources.length - readable.length} more shown as links only)` : ""}.`);

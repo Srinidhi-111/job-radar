@@ -316,3 +316,12 @@ dialog#guide::backdrop { background: rgba(4,6,13,.7); backdrop-filter: blur(4px)
 .ol-item summary .badge { white-space: nowrap; flex: none; }
 .ol-item summary .ol-name { flex: 1; min-width: 0; }
 .sources .stale { color: #e9d9a6; }
+
+/* companies to check directly */
+details.direct { margin-top: 14px; }
+details.direct summary { cursor: pointer; font-weight: 600; }
+#directList { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+#directList li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; align-items: baseline; border-top: 1px solid var(--line); padding-top: 8px; font-size: 14px; }
+.direct-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.direct-links a { color: #c4b5fd; font: 12px var(--mono); text-decoration: none; }
+.direct-links a:hover { text-decoration: underline; }

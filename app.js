@@ -386,13 +386,33 @@ function renderCompanies() {
     </details>`;
   }).join("") || `<p class="empty">No matches. Try loosening the filters.</p>`;
   renderSources();
+  renderDirect();
+}
+
+// Companies we can't read automatically: link to their careers search for each selected city.
+function renderDirect() {
+  const list = state.sources.filter((s) => s.linkOnly && s.host && s.site);
+  $("directBox").hidden = !list.length;
+  if (!list.length) return;
+  const q = $("companySearch").value.trim().toLowerCase();
+  const shown = list.filter((s) => !q || s.name.toLowerCase().includes(q));
+  const cityWord = { Bangalore: "Bengaluru", Chennai: "Chennai", Coimbatore: "Coimbatore" };
+  const cities = CITIES.filter((c) => state.cities.has(c) && cityWord[c]);
+  $("directSummary").textContent = `${list.length} more companies to check directly`;
+  $("directList").innerHTML = shown.map((s) => `<li>
+      <strong>${esc(s.name)}</strong>
+      <span class="direct-links">${cities.map((c) =>
+        `<a href="https://${esc(s.host)}/en-US/${esc(s.site)}?q=${encodeURIComponent(cityWord[c])}" target="_blank" rel="noopener">${esc(c)} ↗</a>`).join("")
+        || `<a href="https://${esc(s.host)}/en-US/${esc(s.site)}" target="_blank" rel="noopener">Careers ↗</a>`}</span>
+    </li>`).join("") || `<li class="note">No match for your search.</li>`;
 }
 
 function renderSources() {
-  const ok = state.sources.filter((s) => s.ok);
-  const stale = state.sources.filter((s) => !s.ok && s.stale), bad = state.sources.filter((s) => !s.ok && !s.stale);
+  const read = state.sources.filter((s) => !s.linkOnly);
+  const ok = read.filter((s) => s.ok);
+  const stale = read.filter((s) => !s.ok && s.stale), bad = read.filter((s) => !s.ok && !s.stale);
   const fmtDate = (d) => new Date(`${d}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
-  $("sourcesSummary").textContent = `Company feeds: ${ok.length} of ${state.sources.length} updated this run`
+  $("sourcesSummary").textContent = `Company feeds: ${ok.length} of ${read.length} updated this run`
     + (stale.length ? ` · ${stale.length} showing earlier data` : "") + (bad.length ? ` · ${bad.length} failed` : "");
   $("sourcesList").innerHTML = `<ul>${[
     ...bad.map((s) => `<li class="bad">✗ ${esc(s.name)} (${esc(s.ats)} "${esc(s.id)}"): ${esc(s.error)}</li>`),
