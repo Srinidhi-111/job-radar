@@ -59,16 +59,29 @@ function plain(s = "") {
     .replace(/<[^>]*>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
 }
 
+// 429 = "too many requests", 5xx = server trouble. Both are usually temporary, so we wait and retry
+// (respecting the server's "Retry-After" hint when it sends one). After 3 tries we give up and mark the
+// error as "busy", so the main loop can keep last week's data for that company instead of dropping it.
 async function getJson(url, body) {
+  let status;
   for (let attempt = 1; attempt <= 3; attempt++) {
     const res = await fetch(url, body === undefined
       ? { headers: { "User-Agent": "job-radar (personal project)", Accept: "application/json" } }
       : { method: "POST", body: JSON.stringify(body), headers: { "User-Agent": "job-radar (personal project)", Accept: "application/json", "Content-Type": "application/json" } });
     if (res.ok) return res.json();
-    if (res.status === 429 || res.status >= 500) { await sleep(attempt * 5000); continue; }
-    throw new Error(`HTTP ${res.status}`); // 404 usually means the company id in config.json is wrong
+    status = res.status;
+    if (status === 429 || status >= 500) {
+      if (attempt < 3) {
+        const hint = Number(res.headers.get("retry-after"));
+        await sleep(Math.min(60, hint > 0 ? hint : attempt === 1 ? 10 : 30) * 1000);
+      }
+      continue;
+    }
+    throw new Error(`HTTP ${status}`); // 404 usually means the company id in config.json is wrong
   }
-  throw new Error("server kept failing");
+  const err = new Error(`HTTP ${status}: server busy or refusing requests`);
+  err.busy = true;
+  throw err;
 }
 
 // ---------- one reader per careers platform ----------
@@ -373,12 +386,29 @@ const history = await readJson(path.join(DATA, "history.json"), {});
 
 const jobs = [];
 const sources = [];
+// When a company's feed fails, we reuse its jobs from the last good run (if recent),
+// so a temporary outage doesn't make hundreds of jobs vanish from the dashboard.
+const prevSources = new Map((await readJson(path.join(DATA, "sources.json"), { sources: [] })).sources.map((x) => [x.name, x]));
+const prevJobsByCompany = new Map();
+for (const j of previous.jobs) {
+  if (!prevJobsByCompany.has(j.company)) prevJobsByCompany.set(j.company, []);
+  prevJobsByCompany.get(j.company).push(j);
+}
+const KEEP_OLD_DAYS = 21;
+// If Workday refuses several companies in a row, skip the rest this run instead of hammering it.
+let workdayBusyStreak = 0;
 
 for (const company of config.companies) {
   const reader = readers[company.ats];
   if (!reader) { sources.push({ ...company, ok: false, error: `unknown ats "${company.ats}"` }); continue; }
   try {
+    if (company.ats === "workday" && workdayBusyStreak >= 3) {
+      const e = new Error("skipped: Workday was refusing requests this run");
+      e.busy = true;
+      throw e;
+    }
     const raw = await reader(company.id, company);
+    if (company.ats === "workday") workdayBusyStreak = 0;
     const started = Date.now();
     // Keep only jobs in our cities that match a role.
     const kept = [];
@@ -391,7 +421,7 @@ for (const company of config.companies) {
     }
     // Open the full posting when the feed left out the description: 6 at a time, max 150 per company.
     const needText = kept.filter(({ j }) => !j.text && j.detail).slice(0, company.maxDetails ?? 150);
-    await eachLimit(needText, 6, async ({ j }) => {
+    await eachLimit(needText, company.ats === "workday" ? 2 : 6, async ({ j }) => {
       try { j.text = await j.detail(); } catch { /* fine, keep going without it */ }
     });
     for (const { j, city, cities, role } of kept) {
@@ -418,13 +448,23 @@ for (const company of config.companies) {
       });
     }
     const matched = kept.length;
-    sources.push({ ...company, ok: true, total: raw.length, matched });
+    sources.push({ ...company, ok: true, lastOk: today, total: raw.length, matched });
     console.log(`✓ ${company.name.padEnd(18)} ${String(raw.length).padStart(5)} open jobs, ${matched} in our cities (${Math.round((Date.now() - started) / 1000)}s)`);
   } catch (err) {
-    sources.push({ ...company, ok: false, error: err.message });
-    console.log(`✗ ${company.name.padEnd(18)} ${err.message} — check its "id" in config.json`);
+    if (company.ats === "workday" && err.busy) workdayBusyStreak++;
+    const lastOk = prevSources.get(company.name)?.lastOk ?? (prevSources.get(company.name)?.ok ? prevSources.get(company.name)?.date : null);
+    const old = prevJobsByCompany.get(company.name) ?? [];
+    const fresh = lastOk && (Date.parse(today) - Date.parse(lastOk)) / 86400000 <= KEEP_OLD_DAYS;
+    if (err.busy && fresh && old.length) {
+      jobs.push(...old);
+      sources.push({ ...company, ok: false, stale: true, lastOk, kept: old.length, error: err.message });
+      console.log(`⚠ ${company.name.padEnd(18)} ${err.message} — kept ${old.length} jobs from ${lastOk}`);
+    } else {
+      sources.push({ ...company, ok: false, lastOk, error: err.message });
+      console.log(`✗ ${company.name.padEnd(18)} ${err.message}${err.busy ? "" : ' — check its "id" in config.json'}`);
+    }
   }
-  await sleep(300);
+  await sleep(company.ats === "workday" ? 2000 : 300);
 }
 
 if (!sources.some((s) => s.ok)) {
@@ -437,6 +477,7 @@ if (!sources.some((s) => s.ok)) {
 const counts = {};
 for (const s of sources) if (s.ok) counts[s.name] = {};
 for (const j of jobs) {
+  if (!counts[j.company]) continue; // kept-over jobs from a failed feed don't count toward this run's trends
   const byRole = (counts[j.company][j.role] ??= {});
   byRole[j.city] = (byRole[j.city] ?? 0) + 1;
 }

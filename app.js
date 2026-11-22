@@ -389,10 +389,14 @@ function renderCompanies() {
 }
 
 function renderSources() {
-  const ok = state.sources.filter((s) => s.ok), bad = state.sources.filter((s) => !s.ok);
-  $("sourcesSummary").textContent = `Company feeds: ${ok.length} of ${state.sources.length} working`;
+  const ok = state.sources.filter((s) => s.ok);
+  const stale = state.sources.filter((s) => !s.ok && s.stale), bad = state.sources.filter((s) => !s.ok && !s.stale);
+  const fmtDate = (d) => new Date(`${d}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+  $("sourcesSummary").textContent = `Company feeds: ${ok.length} of ${state.sources.length} updated this run`
+    + (stale.length ? ` · ${stale.length} showing earlier data` : "") + (bad.length ? ` · ${bad.length} failed` : "");
   $("sourcesList").innerHTML = `<ul>${[
     ...bad.map((s) => `<li class="bad">✗ ${esc(s.name)} (${esc(s.ats)} "${esc(s.id)}"): ${esc(s.error)}</li>`),
+    ...stale.map((s) => `<li class="stale">⚠ ${esc(s.name)}: didn't respond this run, showing ${s.kept} jobs from ${esc(fmtDate(s.lastOk))}</li>`),
     ...ok.map((s) => `<li>✓ ${esc(s.name)}: ${s.matched} here / ${s.total} worldwide</li>`),
   ].join("")}</ul>`;
 }

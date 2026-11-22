@@ -315,3 +315,4 @@ dialog#guide::backdrop { background: rgba(4,6,13,.7); backdrop-filter: blur(4px)
 .outlook .sources p { font-size: 13px; margin: 8px 0; }
 .ol-item summary .badge { white-space: nowrap; flex: none; }
 .ol-item summary .ol-name { flex: 1; min-width: 0; }
+.sources .stale { color: #e9d9a6; }
