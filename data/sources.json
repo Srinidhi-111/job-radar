@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-22T14:55:27.419Z",
+ "updated": "2026-11-23T09:12:16.357Z",
  "sources": [
   {
    "name": "Freshworks",
    "ats": "smartrecruiters",
    "id": "Freshworks",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 30,
    "matched": 27
   },
@@ -15,25 +15,25 @@
    "ats": "greenhouse",
    "id": "toast",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 324,
-   "matched": 24
+   "lastOk": "2026-11-23",
+   "total": 325,
+   "matched": 25
   },
   {
    "name": "Razorpay",
    "ats": "greenhouse",
    "id": "razorpaysoftwareprivatelimited",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 29,
-   "matched": 23
+   "lastOk": "2026-11-23",
+   "total": 28,
+   "matched": 22
   },
   {
    "name": "CRED",
    "ats": "lever",
    "id": "cred",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 11,
    "matched": 7
   },
@@ -42,25 +42,25 @@
    "ats": "lever",
    "id": "meesho",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 47,
-   "matched": 45
+   "lastOk": "2026-11-23",
+   "total": 48,
+   "matched": 46
   },
   {
    "name": "Paytm",
    "ats": "lever",
    "id": "paytm",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 199,
-   "matched": 37
+   "lastOk": "2026-11-23",
+   "total": 188,
+   "matched": 35
   },
   {
    "name": "Groww",
    "ats": "greenhouse",
    "id": "groww",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 8,
    "matched": 7
   },
@@ -69,7 +69,7 @@
    "ats": "greenhouse",
    "id": "hackerrank",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 31,
    "matched": 16
   },
@@ -78,34 +78,34 @@
    "ats": "greenhouse",
    "id": "databricks",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 894,
-   "matched": 77
+   "lastOk": "2026-11-23",
+   "total": 893,
+   "matched": 76
   },
   {
    "name": "Stripe",
    "ats": "greenhouse",
    "id": "stripe",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 777,
-   "matched": 44
+   "lastOk": "2026-11-23",
+   "total": 776,
+   "matched": 43
   },
   {
    "name": "Rubrik",
    "ats": "greenhouse",
    "id": "rubrik",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 208,
-   "matched": 42
+   "lastOk": "2026-11-23",
+   "total": 214,
+   "matched": 41
   },
   {
    "name": "Harness",
    "ats": "greenhouse",
    "id": "harnessinc",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 66,
    "matched": 14
   },
@@ -114,16 +114,16 @@
    "ats": "greenhouse",
    "id": "zscaler",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 387,
-   "matched": 83
+   "lastOk": "2026-11-23",
+   "total": 386,
+   "matched": 82
   },
   {
    "name": "GitLab (remote)",
    "ats": "greenhouse",
    "id": "gitlab",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 246,
    "matched": 31
   },
@@ -132,25 +132,25 @@
    "ats": "greenhouse",
    "id": "twilio",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 109,
-   "matched": 15
+   "lastOk": "2026-11-23",
+   "total": 110,
+   "matched": 16
   },
   {
    "name": "Okta",
    "ats": "greenhouse",
    "id": "okta",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 373,
-   "matched": 102
+   "lastOk": "2026-11-23",
+   "total": 377,
+   "matched": 106
   },
   {
    "name": "Glean",
    "ats": "greenhouse",
    "id": "gleanwork",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 129,
    "matched": 18
   },
@@ -159,7 +159,7 @@
    "ats": "greenhouse",
    "id": "druva",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 29,
    "matched": 0
   },
@@ -168,7 +168,7 @@
    "ats": "ashby",
    "id": "sarvam",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 42,
    "matched": 34
   },
@@ -177,18 +177,18 @@
    "ats": "smartrecruiters",
    "id": "BoschGroup",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 666,
-   "matched": 541
+   "lastOk": "2026-11-23",
+   "total": 673,
+   "matched": 546
   },
   {
    "name": "ServiceNow",
    "ats": "smartrecruiters",
    "id": "ServiceNow",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 80,
-   "matched": 34
+   "lastOk": "2026-11-23",
+   "total": 84,
+   "matched": 35
   },
   {
    "name": "NVIDIA",
@@ -295,17 +295,17 @@
    "ats": "amazon",
    "id": "amazon",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 2022,
-   "matched": 1048
+   "lastOk": "2026-11-23",
+   "total": 2045,
+   "matched": 1065
   },
   {
    "name": "LinkedIn",
    "ats": "lever",
    "id": "linkedin",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 23,
+   "lastOk": "2026-11-23",
+   "total": 24,
    "matched": 14
   },
   {
@@ -313,7 +313,7 @@
    "ats": "lever",
    "id": "acceldata",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 41,
    "matched": 16
   },
@@ -322,7 +322,7 @@
    "ats": "lever",
    "id": "valgenesis",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 13,
    "matched": 11
   },
@@ -331,7 +331,7 @@
    "ats": "lever",
    "id": "100ms",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 11,
    "matched": 11
   },
@@ -340,7 +340,7 @@
    "ats": "lever",
    "id": "safe",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 21,
    "matched": 11
   },
@@ -349,7 +349,7 @@
    "ats": "lever",
    "id": "equativ",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 20,
    "matched": 0
   },
@@ -358,7 +358,7 @@
    "ats": "lever",
    "id": "dexcarehealth",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 3,
    "matched": 3
   },
@@ -367,7 +367,7 @@
    "ats": "greenhouse",
    "id": "yugabyte",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 21,
    "matched": 0
   },
@@ -376,7 +376,7 @@
    "ats": "greenhouse",
    "id": "commerceiq",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 13,
    "matched": 7
   },
@@ -385,16 +385,16 @@
    "ats": "greenhouse",
    "id": "enterpret",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 14,
-   "matched": 7
+   "lastOk": "2026-11-23",
+   "total": 15,
+   "matched": 8
   },
   {
    "name": "Prophecy",
    "ats": "greenhouse",
    "id": "prophecysimpledatalabs",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 4,
    "matched": 1
   },
@@ -403,7 +403,7 @@
    "ats": "greenhouse",
    "id": "narvar",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 4,
    "matched": 0
   },
@@ -412,7 +412,7 @@
    "ats": "lever",
    "id": "extremenetworks",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 71,
    "matched": 38
   },
@@ -421,16 +421,16 @@
    "ats": "lever",
    "id": "brillio-2",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 219,
-   "matched": 131
+   "lastOk": "2026-11-23",
+   "total": 217,
+   "matched": 130
   },
   {
    "name": "Cprime",
    "ats": "lever",
    "id": "cprime",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 6,
    "matched": 4
   },
@@ -439,8 +439,8 @@
    "ats": "lever",
    "id": "paytmpayments",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 1116,
+   "lastOk": "2026-11-23",
+   "total": 1117,
    "matched": 104
   },
   {
@@ -448,8 +448,8 @@
    "ats": "lever",
    "id": "dozee",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 22,
+   "lastOk": "2026-11-23",
+   "total": 26,
    "matched": 13
   },
   {
@@ -457,7 +457,7 @@
    "ats": "greenhouse",
    "id": "appian",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 159,
    "matched": 14
   },
@@ -466,16 +466,16 @@
    "ats": "greenhouse",
    "id": "wpp",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 211,
-   "matched": 29
+   "lastOk": "2026-11-23",
+   "total": 210,
+   "matched": 28
   },
   {
    "name": "FourKites",
    "ats": "greenhouse",
    "id": "fourkites",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 11,
    "matched": 4
   },
@@ -484,7 +484,7 @@
    "ats": "greenhouse",
    "id": "appviewx",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 14,
    "matched": 7
   },
@@ -493,7 +493,7 @@
    "ats": "greenhouse",
    "id": "arcanaanalytics",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 30,
    "matched": 19
   },
@@ -502,16 +502,16 @@
    "ats": "greenhouse",
    "id": "orioninnovationnaukri",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 5,
-   "matched": 1
+   "lastOk": "2026-11-23",
+   "total": 4,
+   "matched": 0
   },
   {
    "name": "Thoughtworks",
    "ats": "greenhouse",
    "id": "thoughtworks",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 31,
    "matched": 0
   },
@@ -520,7 +520,7 @@
    "ats": "greenhouse",
    "id": "platformscience",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 27,
    "matched": 6
   },
@@ -529,7 +529,7 @@
    "ats": "ashby",
    "id": "netgear",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 56,
    "matched": 33
   },
@@ -538,7 +538,7 @@
    "ats": "smartrecruiters",
    "id": "Kovaico",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 4,
    "matched": 4
   },
@@ -547,16 +547,16 @@
    "ats": "smartrecruiters",
    "id": "WNSGlobalServices144",
    "ok": true,
-   "lastOk": "2026-11-22",
-   "total": 69,
-   "matched": 13
+   "lastOk": "2026-11-23",
+   "total": 60,
+   "matched": 12
   },
   {
    "name": "Rotork",
    "ats": "smartrecruiters",
    "id": "Rotork1",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 18,
    "matched": 15
   },
@@ -565,7 +565,7 @@
    "ats": "smartrecruiters",
    "id": "Ally1",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 4,
    "matched": 4
   },
@@ -574,7 +574,7 @@
    "ats": "smartrecruiters",
    "id": "Sutherland1",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 1,
    "matched": 1
   },
@@ -583,7 +583,7 @@
    "ats": "smartrecruiters",
    "id": "aecom2",
    "ok": true,
-   "lastOk": "2026-11-22",
+   "lastOk": "2026-11-23",
    "total": 409,
    "matched": 90
   },
